@@ -727,6 +727,21 @@ footer{
   content:'›';position:absolute;left:0;
   color:var(--cyan);font-weight:700;font-size:1.1rem;
 }
+
+/* ── Fix responsive interventions-grid (doit rester APRÈS la déclaration de base ci-dessus pour bien s'appliquer sur mobile) ── */
+@media(max-width:900px){
+  .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+}
+@media(max-width:680px){
+  .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
+  .interv-card{padding:1.7rem 1.4rem;}
+  .interv-card-icon{font-size:2.3rem;margin-bottom:.8rem;}
+  .interv-card h4{font-size:1.15rem;}
+  .interv-card-num{font-size:2.6rem;top:.9rem;right:1.1rem;}
+}
+@media(max-width:400px){
+  .interventions-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
