@@ -601,6 +601,23 @@ footer{
 }
 .hero-inner{position:relative;z-index:1;}
 
+/* ── Watermark AC : recentrage vertical sur mobile (uniquement le logo, le texte n'est pas touché) ── */
+@media(max-width:680px){
+  .hero-watermark{
+    top:47%;
+    width:min(680px,150vw);
+    height:min(680px,150vw);
+  }
+}
+@media(max-width:400px){
+  .hero-watermark{
+    top:46%;
+    width:min(560px,165vw);
+    height:min(560px,165vw);
+  }
+}
+
+
 /* ── Autocomplétion adresse ── */
 .adresse-wrap{position:relative;}
 .adresse-suggestions{
