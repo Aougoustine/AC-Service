@@ -156,12 +156,18 @@ footer span{color:var(--cyan);}
 
 /* ── Garantie / Engagements ── */
 #garantie,#engagements{padding:4rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
-.garantie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:800px;margin:0 auto;}
-.gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;transition:transform .3s;}
+.garantie-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:800px;margin:0 auto;}
+.gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;transition:transform .3s;flex:1 1 220px;max-width:260px;}
 .gar-card:hover{transform:translateY(-4px);}
 .gar-icon{font-size:2.5rem;margin-bottom:1rem;}
 .gar-card h4{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem;}
 .gar-card p{font-size:.88rem;color:var(--text-light);line-height:1.5;}
+
+/* ══ DESKTOP (> 900px) : les 5 cartes restent alignées sur une seule ligne ══ */
+@media(min-width:901px){
+  .garantie-grid{flex-wrap:nowrap;}
+  .garantie-grid .gar-card{flex:0 1 250px;max-width:260px;}
+}
 
 /* ── Contact ── */
 #contact{padding:3rem 2rem;background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -176,7 +182,7 @@ footer span{color:var(--cyan);}
   .conditions-grid{grid-template-columns:repeat(2,1fr);}
   .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
   .forfaits-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
-  .garantie-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+  .garantie-grid .gar-card{flex-basis:180px;}
   .contact-inner{gap:1.2rem;}
 }
 
@@ -194,7 +200,7 @@ footer span{color:var(--cyan);}
   .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
   .conditions-grid{grid-template-columns:1fr 1fr;}
   .forfaits-grid{grid-template-columns:1fr;}
-  .garantie-grid{grid-template-columns:repeat(2,1fr);}
+  .garantie-grid .gar-card{flex-basis:160px;}
   .forfait-card{padding:2rem 1.5rem;}
   .zone-radius{font-size:3rem;}
   .contact-inner{flex-direction:column;align-items:flex-start;gap:1rem;}
@@ -205,7 +211,7 @@ footer span{color:var(--cyan);}
 @media(max-width:400px){
   .interventions-grid{grid-template-columns:1fr;}
   .conditions-grid{grid-template-columns:1fr;}
-  .garantie-grid{grid-template-columns:1fr;}
+  .garantie-grid .gar-card{flex-basis:100%;max-width:320px;}
   .section-title{font-size:1.4rem;}
 }
 
@@ -369,7 +375,7 @@ footer span{color:var(--cyan);}
 <section id="engagements">
   <h2 class="section-title reveal">Pourquoi choisir <span>AC Service</span> ?</h2>
   <div class="section-line reveal"></div>
-  <div class="garantie-grid" style="max-width:1100px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+  <div class="garantie-grid" style="max-width:1450px;">
     <div class="gar-card reveal">
       <div class="gar-icon">⏱️</div>
       <h4>Prise en charge rapide</h4>
