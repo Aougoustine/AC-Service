@@ -466,10 +466,7 @@ function updateSummary(){
 function sendToGestionApp(d){
   try{
     const issueParts = [d.panne];
-    if(d.marque) issueParts.push('Marque/modèle : '+d.marque);
     if(d.dispos) issueParts.push('Disponibilités souhaitées : '+d.dispos);
-    if(d.source) issueParts.push('Origine : '+d.source);
-    if(d.email) issueParts.push('Email : '+d.email);
 
     fetch('https://ac-service-application.vercel.app/api/rendezvous', {
       method: 'POST',
@@ -480,8 +477,11 @@ function sendToGestionApp(d){
       body: JSON.stringify({
         clientName: d.prenom + ' ' + d.nom,
         phone: d.tel,
+        email: d.email,
         address: d.adresse,
         applianceType: d.appareil,
+        brand: d.marque,
+        referral: d.source,
         issue: issueParts.join('\n')
       })
     }).catch(function(){ /* échec silencieux, sans impact sur le formulaire */ });
