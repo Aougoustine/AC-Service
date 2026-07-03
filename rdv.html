@@ -459,6 +459,35 @@ function updateSummary(){
   document.getElementById('dispos').value=lines.join(' | ');
 }
 
+/* ────────── Passerelle vers l'appli de gestion interne ──────────
+   Envoi indépendant de l'email Web3Forms ci-dessous : en cas d'échec (réseau,
+   clé API absente...), on l'ignore silencieusement pour ne jamais bloquer ou
+   perturber l'envoi de la demande de RDV par email, qui reste le canal principal. */
+function sendToGestionApp(d){
+  try{
+    const issueParts = [d.panne];
+    if(d.marque) issueParts.push('Marque/modèle : '+d.marque);
+    if(d.dispos) issueParts.push('Disponibilités souhaitées : '+d.dispos);
+    if(d.source) issueParts.push('Origine : '+d.source);
+    if(d.email) issueParts.push('Email : '+d.email);
+
+    fetch('https://ac-service-application.vercel.app/api/rendezvous', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': '7f3a9c1e4b8d2f6a0c5e9b3d7a1f4c8e6b2d9a3f5c7e1b4d8a2f6c9e3b5d7a1f'
+      },
+      body: JSON.stringify({
+        clientName: d.prenom + ' ' + d.nom,
+        phone: d.tel,
+        address: d.adresse,
+        applianceType: d.appareil,
+        issue: issueParts.join('\n')
+      })
+    }).catch(function(){ /* échec silencieux, sans impact sur le formulaire */ });
+  }catch(err){ /* idem : on ne laisse jamais cet appel perturber le formulaire */ }
+}
+
 /* ────────── Envoi Web3Forms → Gmail ────────── */
 function handleSubmit(e){
   e.preventDefault();
@@ -472,6 +501,14 @@ function handleSubmit(e){
     return;
   }
   document.getElementById('hidden_subject').value='Demande de RDV – AC SERVICE – '+prenom+' '+nom;
+
+  // Envoi silencieux vers l'appli de gestion interne (en plus de l'email ci-dessous,
+  // jamais à la place). Si la passerelle est indisponible, l'email part quand même :
+  // le formulaire ne dépend jamais de cet appel.
+  sendToGestionApp({
+    prenom: prenom, nom: nom, tel: tel, adresse: adresse, appareil: appareil, panne: panne,
+    marque: fv('marque'), email: fv('email'), dispos: fv('dispos'), source: fv('source')
+  });
 
   const btn=document.getElementById('submitBtn');
   const txtSpan=document.getElementById('submitText');
