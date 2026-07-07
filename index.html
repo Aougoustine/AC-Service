@@ -34,6 +34,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hamburger.open span:nth-child(2){opacity:0;}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
+.nav-menu-item{position:relative;list-style:none;}
+.nav-menu-btn{background:none;border:none;display:flex;flex-direction:column;gap:4px;cursor:pointer;padding:6px;}
+.nav-menu-btn span{display:block;width:22px;height:2px;background:var(--text-light);border-radius:2px;transition:.25s;}
+.nav-menu-btn:hover span{background:var(--cyan);}
+.nav-menu-panel{position:absolute;top:calc(100% + 14px);right:0;min-width:230px;background:rgba(1,13,33,.98);border:1px solid var(--border);border-top:3px solid var(--cyan);border-radius:10px;padding:.6rem;display:none;flex-direction:column;gap:.2rem;box-shadow:0 10px 30px rgba(0,0,0,.4);z-index:1001;}
+.nav-menu-panel.open{display:flex;}
+.nav-menu-panel a{font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.04em;color:var(--text-light);text-decoration:none;text-transform:uppercase;padding:.6rem .8rem;border-radius:6px;transition:.2s;}
+.nav-menu-panel a:hover{background:rgba(0,180,216,.1);color:var(--cyan);}
+
 .nav-logo{display:flex;align-items:center;gap:.7rem;}
 .nav-logo img{height:52px;mix-blend-mode:screen;}
 .nav-brand-name{font-family:'Rajdhani',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:.06em;color:#fff;line-height:1;text-transform:uppercase;white-space:nowrap;}
@@ -67,6 +76,7 @@ footer span{color:var(--cyan);}
   .hamburger{display:flex;}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(1,13,33,.98);flex-direction:column;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);}
   .nav-links.open{display:flex;}
+  .nav-menu-panel{position:fixed;top:auto;right:1rem;left:1rem;min-width:0;}
 }
 
 
@@ -251,6 +261,18 @@ footer span{color:var(--cyan);}
   </div></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Accueil</a></li>
+    <li class="nav-menu-item">
+      <button class="nav-menu-btn" id="sectionMenuBtn" type="button" aria-label="Ouvrir le menu des sections" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu-panel" id="sectionMenuPanel">
+        <a href="#interventions">Appareils réparés</a>
+        <a href="#engagements">Pourquoi nous ?</a>
+        <a href="#forfaits">Nos forfaits</a>
+        <a href="#conditions">Nos conditions applicables</a>
+        <a href="#zone">Zones d'intervention</a>
+      </div>
+    </li>
     <li><a href="rdv.html" class="nav-cta">Prendre RDV</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
@@ -581,6 +603,25 @@ const ham=document.getElementById('hamburger');
 const navLinks=document.getElementById('navLinks');
 ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classList.toggle('open');});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
+
+/* ── Menu déroulant "sections" (trois barres) ── */
+const sectionMenuBtn=document.getElementById('sectionMenuBtn');
+const sectionMenuPanel=document.getElementById('sectionMenuPanel');
+sectionMenuBtn.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  const isOpen=sectionMenuPanel.classList.toggle('open');
+  sectionMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+document.addEventListener('click',(e)=>{
+  if(!sectionMenuPanel.contains(e.target) && e.target!==sectionMenuBtn){
+    sectionMenuPanel.classList.remove('open');
+    sectionMenuBtn.setAttribute('aria-expanded','false');
+  }
+});
+sectionMenuPanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  sectionMenuPanel.classList.remove('open');
+  sectionMenuBtn.setAttribute('aria-expanded','false');
+}));
 
 /* ── Particules hero ── */
 (function(){
