@@ -124,6 +124,8 @@ textarea{resize:vertical;min-height:110px;}
 .slot-btn{background:rgba(255,255,255,.06);border:1px solid var(--border);color:#fff;padding:.5rem 1rem;border-radius:8px;font-size:.83rem;cursor:pointer;transition:all .2s;}
 .slot-btn:hover{border-color:var(--cyan);}
 .slot-btn.slot-active{background:rgba(0,180,216,.3);border-color:var(--cyan);color:var(--cyan);font-weight:600;}
+.slot-btn:disabled{opacity:.35;cursor:not-allowed;}
+.slot-btn small{display:block;font-size:.72rem;color:rgba(255,255,255,.6);margin-top:.2rem;}
 .cal-summary{margin-top:.8rem;font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.7;padding:.7rem 1rem;background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.25);border-radius:8px;}
 
 /* ── Autocomplétion adresse (Géoplateforme IGN) ── */
@@ -275,13 +277,15 @@ textarea{resize:vertical;min-height:110px;}
             <div class="cal-grid" id="calGrid"></div>
             <div id="calSlots" class="cal-slots-panel" style="display:none">
               <p class="cal-slots-title">Créneaux pour <strong id="calSlotDate"></strong></p>
-              <div class="cal-slots-btns">
-                <button type="button" class="slot-btn" data-slot="matin" onclick="toggleSlot(this)">🌅 Matin (9h – 12h)</button>
-                <button type="button" class="slot-btn" data-slot="aprem" onclick="toggleSlot(this)">🌇 Après-midi (12h – 17h)</button>
+              <div class="cal-slots-btns" id="calSlotsBtns">
+                <button type="button" class="slot-btn" data-slot="morning" onclick="selectSlot(this)">🌅 Matin</button>
+                <button type="button" class="slot-btn" data-slot="afternoon" onclick="selectSlot(this)">🌇 Après-midi</button>
               </div>
             </div>
             <div id="calSummary" class="cal-summary" style="display:none"></div>
             <input type="hidden" id="dispos" name="disponibilites">
+            <input type="hidden" id="rdvDate" name="rdv_date">
+            <input type="hidden" id="rdvSlot" name="rdv_slot">
           </div>
         </div>
 
@@ -348,20 +352,29 @@ ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classLis
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
 
 
-/* ────────── Calendrier de disponibilités ────────── */
+/* ────────── Calendrier de disponibilités (connecté à l'agenda réel) ────────── */
+const GATEWAY_BASE = 'https://ac-service-application.vercel.app';
 const MOIS_LONG=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const MOIS_COURT=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
 const NOM_JOUR_LONG=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 const NOM_JOUR_COURT=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
 
-let calYear, calMonth, calSelDate=null;
-const calChoices=new Map(); // Map<"YYYY-MM-DD", Set<"matin"|"aprem">>
+let calYear, calMonth, calSelDate=null, selectedSlot=null;
+let availabilityByDate={}; // "YYYY-MM-DD" -> {isOpen, morningRemaining, afternoonRemaining, closureMessage}
+let scheduleInfo=null;
+let availabilityLoaded=false;
 
 function calInit(){
   const today=new Date();
   calYear=today.getFullYear();
   calMonth=today.getMonth();
-  renderCal();
+  document.getElementById('calGrid').innerHTML='<span style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,.5);font-size:.82rem;padding:1rem 0;">Chargement des disponibilités…</span>';
+  loadAvailability().then(function(){
+    availabilityLoaded=true;
+    renderCal();
+  }).catch(function(){
+    document.getElementById('calGrid').innerHTML='<span style="grid-column:1/-1;text-align:center;color:#ff8080;font-size:.82rem;padding:1rem 0;">Disponibilités momentanément indisponibles. Contactez-nous par téléphone.</span>';
+  });
   document.getElementById('calPrev').addEventListener('click',function(){
     calMonth--;
     if(calMonth<0){calMonth=11;calYear--;}
@@ -374,14 +387,31 @@ function calInit(){
   });
 }
 
+function loadAvailability(){
+  return fetch(GATEWAY_BASE+'/api/availability').then(function(res){
+    if(!res.ok) throw new Error('Erreur disponibilité');
+    return res.json();
+  }).then(function(data){
+    scheduleInfo=data.schedule;
+    availabilityByDate={};
+    (data.days||[]).forEach(function(d){ availabilityByDate[d.date]=d; });
+  });
+}
+
+function fmtHour(hhmm){
+  if(!hhmm) return '';
+  const parts=hhmm.split(':');
+  return parts[1]==='00' ? parts[0]+'h' : parts[0]+'h'+parts[1];
+}
+
 function renderCal(){
   document.getElementById('calMonthLabel').textContent=MOIS_LONG[calMonth]+' '+calYear;
   const grid=document.getElementById('calGrid');
   grid.innerHTML='';
   const today=new Date();today.setHours(0,0,0,0);
   const first=new Date(calYear,calMonth,1);
-  let startDow=first.getDay(); // 0=dim
-  startDow=(startDow+6)%7;    // lun=0
+  let startDow=first.getDay();
+  startDow=(startDow+6)%7;
   const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
 
   for(let i=0;i<startDow;i++){
@@ -394,11 +424,12 @@ function renderCal(){
     cell.textContent=d;
     const dateStr=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
     const date=new Date(calYear,calMonth,d);
-    if(date<today||date.getDay()===0){
+    const avail=availabilityByDate[dateStr];
+    const hasAnyPlace=avail && avail.isOpen && ((avail.morningRemaining||0)>0 || (avail.afternoonRemaining||0)>0);
+    if(date<today || !availabilityLoaded || !avail || !hasAnyPlace){
       cell.classList.add('cal-disabled');
       cell.disabled=true;
     } else {
-      if(calChoices.has(dateStr)&&calChoices.get(dateStr).size>0) cell.classList.add('cal-selected');
       if(calSelDate===dateStr) cell.classList.add('cal-active');
       (function(ds,day){
         cell.addEventListener('click',function(){openSlots(ds,day);});
@@ -410,53 +441,62 @@ function renderCal(){
 
 function openSlots(dateStr,d){
   calSelDate=dateStr;
+  selectedSlot=null;
   renderCal();
+  const avail=availabilityByDate[dateStr]||{};
   const panel=document.getElementById('calSlots');
   panel.style.display='block';
   const dow=new Date(calYear,calMonth,d).getDay();
   document.getElementById('calSlotDate').textContent=NOM_JOUR_LONG[dow]+' '+d+' '+MOIS_LONG[calMonth]+' '+calYear;
-  const slots=panel.querySelectorAll('.slot-btn');
-  const chosen=calChoices.get(dateStr)||new Set();
-  slots.forEach(function(btn){
-    btn.classList.toggle('slot-active',chosen.has(btn.dataset.slot));
-  });
+
+  const morningBtn=document.querySelector('.slot-btn[data-slot="morning"]');
+  const afternoonBtn=document.querySelector('.slot-btn[data-slot="afternoon"]');
+  const mRem=avail.morningRemaining||0, aRem=avail.afternoonRemaining||0;
+
+  morningBtn.innerHTML='🌅 Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')<small>'+(mRem>0?(mRem+' place'+(mRem>1?'s':'')+' restante'+(mRem>1?'s':'')):'Complet')+'</small>';
+  afternoonBtn.innerHTML='🌇 Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')<small>'+(aRem>0?(aRem+' place'+(aRem>1?'s':'')+' restante'+(aRem>1?'s':'')):'Complet')+'</small>';
+  morningBtn.disabled = mRem<=0;
+  afternoonBtn.disabled = aRem<=0;
+  morningBtn.classList.remove('slot-active');
+  afternoonBtn.classList.remove('slot-active');
 }
 
-function toggleSlot(btn){
-  if(!calSelDate)return;
-  if(!calChoices.has(calSelDate)) calChoices.set(calSelDate,new Set());
-  const set=calChoices.get(calSelDate);
+function selectSlot(btn){
+  if(!calSelDate || btn.disabled) return;
   const slot=btn.dataset.slot;
-  if(set.has(slot)){set.delete(slot);btn.classList.remove('slot-active');}
-  else{set.add(slot);btn.classList.add('slot-active');}
-  if(set.size===0) calChoices.delete(calSelDate);
+  const wasActive=btn.classList.contains('slot-active');
+  document.querySelectorAll('.slot-btn').forEach(function(b){b.classList.remove('slot-active');});
+  if(wasActive){
+    selectedSlot=null;
+  } else {
+    btn.classList.add('slot-active');
+    selectedSlot=slot;
+  }
   renderCal();
   updateSummary();
 }
 
 function updateSummary(){
   const summary=document.getElementById('calSummary');
-  if(calChoices.size===0){
+  if(!calSelDate || !selectedSlot){
     summary.style.display='none';
     document.getElementById('dispos').value='';
+    document.getElementById('rdvDate').value='';
+    document.getElementById('rdvSlot').value='';
     return;
   }
+  const parts=calSelDate.split('-');
+  const y=parseInt(parts[0]),m=parseInt(parts[1]),d=parseInt(parts[2]);
+  const date=new Date(y,m-1,d);
+  const nomJour=NOM_JOUR_LONG[date.getDay()];
+  const creneauLabel = selectedSlot==='morning'
+    ? 'Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')'
+    : 'Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')';
   summary.style.display='block';
-  const lines=[];
-  const keys=Array.from(calChoices.keys()).sort();
-  keys.forEach(function(k){
-    const parts=k.split('-');
-    const y=parseInt(parts[0]),m=parseInt(parts[1]),d=parseInt(parts[2]);
-    const date=new Date(y,m-1,d);
-    const nomJour=NOM_JOUR_COURT[date.getDay()];
-    const set=calChoices.get(k);
-    const creneau=[];
-    if(set.has('matin')) creneau.push('matin (9h-12h)');
-    if(set.has('aprem')) creneau.push('après-midi (12h-17h)');
-    lines.push(nomJour+' '+d+' '+MOIS_COURT[m-1]+' : '+creneau.join(' & '));
-  });
-  summary.innerHTML='<strong>✅ Vos créneaux :</strong><br>'+lines.join('<br>');
-  document.getElementById('dispos').value=lines.join(' | ');
+  summary.innerHTML='<strong>✅ Votre créneau :</strong><br>'+nomJour+' '+d+' '+MOIS_LONG[m-1]+' '+y+' — '+creneauLabel;
+  document.getElementById('dispos').value=nomJour+' '+d+' '+MOIS_COURT[m-1]+' '+y+' : '+creneauLabel;
+  document.getElementById('rdvDate').value=calSelDate;
+  document.getElementById('rdvSlot').value=selectedSlot;
 }
 
 /* ────────── Passerelle vers l'appli de gestion interne ──────────
@@ -465,9 +505,6 @@ function updateSummary(){
    perturber l'envoi de la demande de RDV par email, qui reste le canal principal. */
 function sendToGestionApp(d){
   try{
-    const issueParts = [d.panne];
-    if(d.dispos) issueParts.push('Disponibilités souhaitées : '+d.dispos);
-
     fetch('https://ac-service-application.vercel.app/api/rendezvous', {
       method: 'POST',
       headers: {
@@ -482,7 +519,9 @@ function sendToGestionApp(d){
         applianceType: d.appareil,
         brand: d.marque,
         referral: d.source,
-        issue: issueParts.join('\n')
+        issue: d.panne,
+        date: d.rdvDate,
+        slot: d.rdvSlot
       })
     }).catch(function(){ /* échec silencieux, sans impact sur le formulaire */ });
   }catch(err){ /* idem : on ne laisse jamais cet appel perturber le formulaire */ }
@@ -495,9 +534,14 @@ function handleSubmit(e){
   const prenom=fv('prenom'),nom=fv('nom'),tel=fv('tel'),adresse=fv('adresse');
   const appareil=document.getElementById('appareil').value;
   const panne=fv('panne');
+  const rdvDate=fv('rdvDate'), rdvSlot=fv('rdvSlot');
 
   if(!prenom||!nom||!tel||!adresse||!appareil||!panne){
     alert('Merci de remplir tous les champs obligatoires (*).');
+    return;
+  }
+  if(!rdvDate||!rdvSlot){
+    alert('Merci de choisir un jour et un créneau (matin ou après-midi) dans le calendrier.');
     return;
   }
   document.getElementById('hidden_subject').value='Demande de RDV – AC SERVICE – '+prenom+' '+nom;
@@ -507,7 +551,7 @@ function handleSubmit(e){
   // le formulaire ne dépend jamais de cet appel.
   sendToGestionApp({
     prenom: prenom, nom: nom, tel: tel, adresse: adresse, appareil: appareil, panne: panne,
-    marque: fv('marque'), email: fv('email'), dispos: fv('dispos'), source: fv('source')
+    marque: fv('marque'), email: fv('email'), source: fv('source'), rdvDate: rdvDate, rdvSlot: rdvSlot
   });
 
   const btn=document.getElementById('submitBtn');
