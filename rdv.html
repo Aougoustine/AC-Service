@@ -107,10 +107,18 @@ textarea{resize:vertical;min-height:110px;}
 /* ── Calendrier disponibilités ── */
 .cal-wrapper{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1rem;}
 .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;}
-.cal-nav{background:transparent;border:1px solid var(--border);color:#fff;font-size:1.3rem;width:2rem;height:2rem;border-radius:50%;cursor:pointer;line-height:1;transition:background .2s;}
-.cal-nav:hover{background:var(--cyan);}
-#calMonthLabel{font-weight:600;font-size:.95rem;color:#fff;letter-spacing:.03em;}
-.cal-grid-head{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:.7rem;color:rgba(255,255,255,.5);margin-bottom:.4rem;}
+.cal-strip-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;}
+.cal-strip-wrapper::-webkit-scrollbar{height:6px;}
+.cal-strip-wrapper::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+.cal-strip{display:flex;gap:.6rem;min-width:min-content;}
+.day-card{flex:0 0 auto;width:62px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:.6rem .2rem;text-align:center;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;}
+.day-card:hover:not(.day-disabled){border-color:var(--cyan);}
+.day-card .dow{font-size:.66rem;text-transform:uppercase;color:rgba(255,255,255,.55);letter-spacing:.03em;}
+.day-card .num{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1.15;margin:.15rem 0;}
+.day-card .mon{font-size:.66rem;color:rgba(255,255,255,.55);text-transform:uppercase;}
+.day-card.day-disabled{opacity:.3;cursor:not-allowed;}
+.day-card.day-active{background:rgba(0,180,216,.25);border-color:var(--cyan);}
+.day-card.day-active .num,.day-card.day-active .dow,.day-card.day-active .mon{color:var(--cyan);}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
 .cal-cell{background:transparent;border:1px solid transparent;color:#fff;font-size:.78rem;padding:.35rem 0;border-radius:6px;cursor:pointer;transition:all .15s;}
 .cal-cell:hover:not(:disabled){border-color:var(--cyan);color:var(--cyan);}
@@ -171,7 +179,7 @@ textarea{resize:vertical;min-height:110px;}
   <div class="form-container reveal">
     <!-- Bandeau rassurant -->
     <div class="form-reassurance">
-      <p class="form-reassurance-title">✉️ Une simple prise de contact — sans engagement</p>
+      <p class="form-reassurance-title">📅 Réservez votre créneau en direct — sans engagement</p>
       <div class="form-reassurance-items">
         <div class="fr-item">
           <span class="fr-icon">🆓</span>
@@ -264,17 +272,11 @@ textarea{resize:vertical;min-height:110px;}
 
         <!-- ── Calendrier de disponibilités ── -->
         <div class="form-full">
-          <label>Disponibilités souhaitées <span style="font-weight:400;font-size:.85em;opacity:.75">(sélectionnez un ou plusieurs créneaux)</span></label>
+          <label>Choisir un créneau pour votre rendez-vous !</label>
           <div class="cal-wrapper">
-            <div class="cal-header">
-              <button type="button" class="cal-nav" id="calPrev">&#8249;</button>
-              <span id="calMonthLabel"></span>
-              <button type="button" class="cal-nav" id="calNext">&#8250;</button>
+            <div class="cal-strip-wrapper">
+              <div class="cal-strip" id="calStrip"></div>
             </div>
-            <div class="cal-grid-head">
-              <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
-            </div>
-            <div class="cal-grid" id="calGrid"></div>
             <div id="calSlots" class="cal-slots-panel" style="display:none">
               <p class="cal-slots-title">Créneaux pour <strong id="calSlotDate"></strong></p>
               <div class="cal-slots-btns" id="calSlotsBtns">
@@ -352,38 +354,23 @@ ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classLis
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
 
 
-/* ────────── Calendrier de disponibilités (connecté à l'agenda réel) ────────── */
+/* ────────── Calendrier de disponibilités (bande défilante, connectée à l'agenda réel) ────────── */
 const GATEWAY_BASE = 'https://ac-service-application.vercel.app';
 const MOIS_LONG=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-const MOIS_COURT=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
+const MOIS_COURT=['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
 const NOM_JOUR_LONG=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 const NOM_JOUR_COURT=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
 
-let calYear, calMonth, calSelDate=null, selectedSlot=null;
-let availabilityByDate={}; // "YYYY-MM-DD" -> {isOpen, morningRemaining, afternoonRemaining, closureMessage}
+let calSelDate=null, selectedSlot=null;
+let availabilityDays=[]; // [{date,isOpen,morningRemaining,afternoonRemaining,closureMessage}, ...] triés par date
 let scheduleInfo=null;
-let availabilityLoaded=false;
 
 function calInit(){
-  const today=new Date();
-  calYear=today.getFullYear();
-  calMonth=today.getMonth();
-  document.getElementById('calGrid').innerHTML='<span style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,.5);font-size:.82rem;padding:1rem 0;">Chargement des disponibilités…</span>';
+  document.getElementById('calStrip').innerHTML='<span style="color:rgba(255,255,255,.5);font-size:.82rem;padding:1rem;">Chargement des disponibilités…</span>';
   loadAvailability().then(function(){
-    availabilityLoaded=true;
-    renderCal();
+    renderStrip();
   }).catch(function(){
-    document.getElementById('calGrid').innerHTML='<span style="grid-column:1/-1;text-align:center;color:#ff8080;font-size:.82rem;padding:1rem 0;">Disponibilités momentanément indisponibles. Contactez-nous par téléphone.</span>';
-  });
-  document.getElementById('calPrev').addEventListener('click',function(){
-    calMonth--;
-    if(calMonth<0){calMonth=11;calYear--;}
-    renderCal();
-  });
-  document.getElementById('calNext').addEventListener('click',function(){
-    calMonth++;
-    if(calMonth>11){calMonth=0;calYear++;}
-    renderCal();
+    document.getElementById('calStrip').innerHTML='<span style="color:#ff8080;font-size:.82rem;padding:1rem;">Disponibilités momentanément indisponibles. Contactez-nous par téléphone.</span>';
   });
 }
 
@@ -393,8 +380,7 @@ function loadAvailability(){
     return res.json();
   }).then(function(data){
     scheduleInfo=data.schedule;
-    availabilityByDate={};
-    (data.days||[]).forEach(function(d){ availabilityByDate[d.date]=d; });
+    availabilityDays=(data.days||[]).slice().sort(function(a,b){return a.date.localeCompare(b.date);});
   });
 }
 
@@ -404,54 +390,52 @@ function fmtHour(hhmm){
   return parts[1]==='00' ? parts[0]+'h' : parts[0]+'h'+parts[1];
 }
 
-function renderCal(){
-  document.getElementById('calMonthLabel').textContent=MOIS_LONG[calMonth]+' '+calYear;
-  const grid=document.getElementById('calGrid');
-  grid.innerHTML='';
-  const today=new Date();today.setHours(0,0,0,0);
-  const first=new Date(calYear,calMonth,1);
-  let startDow=first.getDay();
-  startDow=(startDow+6)%7;
-  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+function parseDateStr(dateStr){
+  const p=dateStr.split('-');
+  return new Date(parseInt(p[0]),parseInt(p[1])-1,parseInt(p[2]));
+}
 
-  for(let i=0;i<startDow;i++){
-    const e=document.createElement('span');e.className='cal-cell cal-empty';grid.appendChild(e);
-  }
-  for(let d=1;d<=daysInMonth;d++){
-    const cell=document.createElement('button');
-    cell.type='button';
-    cell.className='cal-cell';
-    cell.textContent=d;
-    const dateStr=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    const date=new Date(calYear,calMonth,d);
-    const avail=availabilityByDate[dateStr];
-    const hasAnyPlace=avail && avail.isOpen && ((avail.morningRemaining||0)>0 || (avail.afternoonRemaining||0)>0);
-    if(date<today || !availabilityLoaded || !avail || !hasAnyPlace){
-      cell.classList.add('cal-disabled');
-      cell.disabled=true;
+/* La bande se recalcule à chaque chargement de page à partir de la date du jour :
+   un jour passé disparaît automatiquement de lui-même le lendemain, sans rien à faire. */
+function renderStrip(){
+  const strip=document.getElementById('calStrip');
+  strip.innerHTML='';
+  const today=new Date();today.setHours(0,0,0,0);
+
+  availabilityDays.forEach(function(day){
+    const date=parseDateStr(day.date);
+    if(date<today) return;
+    const hasAnyPlace = day.isOpen && ((day.morningRemaining||0)>0 || (day.afternoonRemaining||0)>0);
+    const card=document.createElement('button');
+    card.type='button';
+    card.className='day-card'+(hasAnyPlace?'':' day-disabled')+(calSelDate===day.date?' day-active':'');
+    card.innerHTML='<span class="dow">'+NOM_JOUR_COURT[date.getDay()]+'</span><span class="num">'+date.getDate()+'</span><span class="mon">'+MOIS_COURT[date.getMonth()]+'</span>';
+    if(hasAnyPlace){
+      card.addEventListener('click',function(){ openSlots(day.date); });
     } else {
-      if(calSelDate===dateStr) cell.classList.add('cal-active');
-      (function(ds,day){
-        cell.addEventListener('click',function(){openSlots(ds,day);});
-      })(dateStr,d);
+      card.disabled=true;
     }
-    grid.appendChild(cell);
+    strip.appendChild(card);
+  });
+
+  if(!strip.children.length){
+    strip.innerHTML='<span style="color:rgba(255,255,255,.5);font-size:.82rem;padding:1rem;">Aucun créneau disponible pour le moment. Contactez-nous directement.</span>';
   }
 }
 
-function openSlots(dateStr,d){
+function openSlots(dateStr){
   calSelDate=dateStr;
   selectedSlot=null;
-  renderCal();
-  const avail=availabilityByDate[dateStr]||{};
+  renderStrip();
+  const day=availabilityDays.find(function(x){return x.date===dateStr;})||{};
+  const date=parseDateStr(dateStr);
   const panel=document.getElementById('calSlots');
   panel.style.display='block';
-  const dow=new Date(calYear,calMonth,d).getDay();
-  document.getElementById('calSlotDate').textContent=NOM_JOUR_LONG[dow]+' '+d+' '+MOIS_LONG[calMonth]+' '+calYear;
+  document.getElementById('calSlotDate').textContent=NOM_JOUR_LONG[date.getDay()]+' '+date.getDate()+' '+MOIS_LONG[date.getMonth()];
 
   const morningBtn=document.querySelector('.slot-btn[data-slot="morning"]');
   const afternoonBtn=document.querySelector('.slot-btn[data-slot="afternoon"]');
-  const mRem=avail.morningRemaining||0, aRem=avail.afternoonRemaining||0;
+  const mRem=day.morningRemaining||0, aRem=day.afternoonRemaining||0;
 
   morningBtn.innerHTML='🌅 Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')<small>'+(mRem>0?(mRem+' place'+(mRem>1?'s':'')+' restante'+(mRem>1?'s':'')):'Complet')+'</small>';
   afternoonBtn.innerHTML='🌇 Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')<small>'+(aRem>0?(aRem+' place'+(aRem>1?'s':'')+' restante'+(aRem>1?'s':'')):'Complet')+'</small>';
@@ -472,7 +456,6 @@ function selectSlot(btn){
     btn.classList.add('slot-active');
     selectedSlot=slot;
   }
-  renderCal();
   updateSummary();
 }
 
@@ -485,16 +468,14 @@ function updateSummary(){
     document.getElementById('rdvSlot').value='';
     return;
   }
-  const parts=calSelDate.split('-');
-  const y=parseInt(parts[0]),m=parseInt(parts[1]),d=parseInt(parts[2]);
-  const date=new Date(y,m-1,d);
+  const date=parseDateStr(calSelDate);
   const nomJour=NOM_JOUR_LONG[date.getDay()];
   const creneauLabel = selectedSlot==='morning'
     ? 'Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')'
     : 'Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')';
   summary.style.display='block';
-  summary.innerHTML='<strong>✅ Votre créneau :</strong><br>'+nomJour+' '+d+' '+MOIS_LONG[m-1]+' '+y+' — '+creneauLabel;
-  document.getElementById('dispos').value=nomJour+' '+d+' '+MOIS_COURT[m-1]+' '+y+' : '+creneauLabel;
+  summary.innerHTML='<strong>✅ Votre créneau :</strong><br>'+nomJour+' '+date.getDate()+' '+MOIS_LONG[date.getMonth()]+' '+date.getFullYear()+' — '+creneauLabel;
+  document.getElementById('dispos').value=nomJour+' '+date.getDate()+' '+MOIS_COURT[date.getMonth()]+' '+date.getFullYear()+' : '+creneauLabel;
   document.getElementById('rdvDate').value=calSelDate;
   document.getElementById('rdvSlot').value=selectedSlot;
 }
