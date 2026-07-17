@@ -236,9 +236,17 @@ textarea{resize:vertical;min-height:110px;}
         <div class="form-full">
           <label for="adresse">Adresse d'intervention *</label>
           <div class="adresse-wrap">
-            <input type="text" id="adresse" name="adresse" placeholder="12 rue de la Paix, 59..." required autocomplete="off">
+            <input type="text" id="adresse" name="adresse" placeholder="12 rue de la Paix" required autocomplete="off">
             <div class="adresse-suggestions" id="adresseSuggestions"></div>
           </div>
+        </div>
+        <div>
+          <label for="codePostal">Code postal *</label>
+          <input type="text" id="codePostal" name="code_postal" placeholder="59000" inputmode="numeric" maxlength="5" required>
+        </div>
+        <div>
+          <label for="ville">Ville *</label>
+          <input type="text" id="ville" name="ville" placeholder="Lille" required>
         </div>
         <div>
           <label for="appareil">Type d'appareil *</label>
@@ -497,6 +505,8 @@ function sendToGestionApp(d){
         phone: d.tel,
         email: d.email,
         address: d.adresse,
+        postalCode: d.codePostal,
+        city: d.ville,
         applianceType: d.appareil,
         brand: d.marque,
         referral: d.source,
@@ -513,11 +523,12 @@ function handleSubmit(e){
   e.preventDefault();
   function fv(id){return document.getElementById(id).value.trim();}
   const prenom=fv('prenom'),nom=fv('nom'),tel=fv('tel'),adresse=fv('adresse');
+  const codePostal=fv('codePostal'),ville=fv('ville');
   const appareil=document.getElementById('appareil').value;
   const panne=fv('panne');
   const rdvDate=fv('rdvDate'), rdvSlot=fv('rdvSlot');
 
-  if(!prenom||!nom||!tel||!adresse||!appareil||!panne){
+  if(!prenom||!nom||!tel||!adresse||!codePostal||!ville||!appareil||!panne){
     alert('Merci de remplir tous les champs obligatoires (*).');
     return;
   }
@@ -531,7 +542,7 @@ function handleSubmit(e){
   // jamais à la place). Si la passerelle est indisponible, l'email part quand même :
   // le formulaire ne dépend jamais de cet appel.
   sendToGestionApp({
-    prenom: prenom, nom: nom, tel: tel, adresse: adresse, appareil: appareil, panne: panne,
+    prenom: prenom, nom: nom, tel: tel, adresse: adresse, codePostal: codePostal, ville: ville, appareil: appareil, panne: panne,
     marque: fv('marque'), email: fv('email'), source: fv('source'), rdvDate: rdvDate, rdvSlot: rdvSlot
   });
 
@@ -639,7 +650,11 @@ document.addEventListener('DOMContentLoaded', calInit);
 
   function selectItem(idx){
     if(!items[idx]) return;
-    input.value = items[idx].full;
+    input.value = items[idx].label || items[idx].full;
+    const cpEl = document.getElementById('codePostal');
+    const villeEl = document.getElementById('ville');
+    if(cpEl && items[idx].postcode) cpEl.value = items[idx].postcode;
+    if(villeEl && items[idx].city) villeEl.value = items[idx].city;
     closeBox();
   }
 
