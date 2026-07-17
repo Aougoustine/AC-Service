@@ -270,8 +270,12 @@ textarea{resize:vertical;min-height:110px;}
           </select>
         </div>
         <div>
-          <label for="marque">Marque &amp; modèle</label>
-          <input type="text" id="marque" name="marque" placeholder="Ex : Bosch WAE24467FF">
+          <label for="marque">Marque</label>
+          <input type="text" id="marque" name="marque" placeholder="Ex : Bosch">
+        </div>
+        <div>
+          <label for="modele">Modèle</label>
+          <input type="text" id="modele" name="modele" placeholder="Ex : WAE24467FF">
         </div>
         <div class="form-full">
           <label for="panne">Description de la panne *</label>
@@ -509,6 +513,7 @@ function sendToGestionApp(d){
         city: d.ville,
         applianceType: d.appareil,
         brand: d.marque,
+        model: d.modele,
         referral: d.source,
         issue: d.panne,
         date: d.rdvDate,
@@ -543,7 +548,7 @@ function handleSubmit(e){
   // le formulaire ne dépend jamais de cet appel.
   sendToGestionApp({
     prenom: prenom, nom: nom, tel: tel, adresse: adresse, codePostal: codePostal, ville: ville, appareil: appareil, panne: panne,
-    marque: fv('marque'), email: fv('email'), source: fv('source'), rdvDate: rdvDate, rdvSlot: rdvSlot
+    marque: fv('marque'), modele: fv('modele'), email: fv('email'), source: fv('source'), rdvDate: rdvDate, rdvSlot: rdvSlot
   });
 
   const btn=document.getElementById('submitBtn');
