@@ -78,11 +78,12 @@ footer span{color:var(--cyan);}
 
 /* ── Formulaire RDV ── */
 #rdv{padding:3.5rem 2rem 5rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
-.form-container{max-width:680px;margin:0 auto;background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:3rem 2.5rem;backdrop-filter:blur(8px);}
+.form-container{max-width:680px;width:100%;margin:0 auto;background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:3rem 2.5rem;backdrop-filter:blur(8px);box-sizing:border-box;overflow:hidden;}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.form-grid>div{min-width:0;}
 .form-full{grid-column:1 / -1;}
 label{display:block;font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:.4rem;}
-input:not([type="checkbox"]):not([type="radio"]),select,textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(0,180,216,.25);border-radius:8px;color:var(--white);font-family:'Nunito',sans-serif;font-size:.95rem;padding:.75rem 1rem;transition:border-color .25s,box-shadow .25s;outline:none;-webkit-appearance:none;}
+input:not([type="checkbox"]):not([type="radio"]),select,textarea{width:100%;max-width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1px solid rgba(0,180,216,.25);border-radius:8px;color:var(--white);font-family:'Nunito',sans-serif;font-size:16px;padding:.75rem 1rem;transition:border-color .25s,box-shadow .25s;outline:none;-webkit-appearance:none;}
 input:not([type="checkbox"]):not([type="radio"]):focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,180,216,.15);}
 select option{background:var(--navy-mid);color:var(--white);}
 textarea{resize:vertical;min-height:110px;}
@@ -95,7 +96,7 @@ textarea{resize:vertical;min-height:110px;}
 #form-success p{color:var(--text-light);font-size:.95rem;}
 
 /* ── Bandeau rassurant ── */
-.form-reassurance{max-width:700px;margin:0 auto 2rem;background:rgba(0,180,216,.06);border:1px solid rgba(0,180,216,.2);border-radius:14px;padding:1.3rem 1.6rem;display:flex;flex-direction:column;gap:.85rem;}
+.form-reassurance{max-width:700px;width:100%;box-sizing:border-box;margin:0 auto 2rem;background:rgba(0,180,216,.06);border:1px solid rgba(0,180,216,.2);border-radius:14px;padding:1.3rem 1.6rem;display:flex;flex-direction:column;gap:.85rem;overflow:hidden;}
 .form-reassurance-title{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;text-align:center;margin-bottom:.1rem;}
 .form-reassurance-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.65rem;}
 .fr-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.84rem;color:rgba(240,244,255,.78);line-height:1.45;}
@@ -105,7 +106,7 @@ textarea{resize:vertical;min-height:110px;}
 .form-reassurance-legal strong{color:rgba(240,244,255,.6);}
 
 /* ── Calendrier disponibilités ── */
-.cal-wrapper{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1rem;}
+.cal-wrapper{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1rem;box-sizing:border-box;max-width:100%;overflow:hidden;}
 .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;}
 .cal-strip-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;}
 .cal-strip-wrapper::-webkit-scrollbar{height:6px;}
@@ -147,11 +148,26 @@ textarea{resize:vertical;min-height:110px;}
 .adresse-suggestion-item .item-ctx{font-size:.78rem;color:rgba(168,192,214,.6);margin-top:.1rem;}
 
 @media(max-width:680px){
+  html,body{overflow-x:hidden;max-width:100%;}
   .page-hero{padding:6rem 1.2rem 2.5rem;}
   .form-grid{grid-template-columns:1fr;}
   .form-container{padding:1.8rem 1.2rem;}
   .form-reassurance{padding:1rem 1.2rem;}
+  .form-reassurance-items{grid-template-columns:1fr;}
   #rdv{padding:2.5rem 1.2rem 3.5rem;}
+}
+
+@media(max-width:420px){
+  #rdv{padding:2rem .8rem 3rem;}
+  .form-container{padding:1.4rem .9rem;border-radius:14px;}
+  .form-reassurance{padding:.9rem .9rem;}
+  .fr-item{font-size:.8rem;}
+  .cal-wrapper{padding:.9rem .6rem;}
+  .day-card{width:52px;padding:.5rem .1rem;}
+  .cal-strip{gap:.4rem;}
+  .cal-slots-btns{gap:.5rem;}
+  .slot-btn{padding:.45rem .8rem;font-size:.8rem;}
+  input:not([type="checkbox"]):not([type="radio"]),select,textarea{padding:.7rem .8rem;}
 }
 
 </style>
