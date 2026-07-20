@@ -364,6 +364,16 @@ textarea{resize:vertical;min-height:110px;}
 
 <script>
 
+/* ── Défilement à la molette sur la bande de calendrier ── */
+document.addEventListener('wheel', function(e){
+  const wrapper = e.target.closest && e.target.closest('.cal-strip-wrapper');
+  if(!wrapper) return;
+  if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+    wrapper.scrollLeft += e.deltaY;
+    e.preventDefault();
+  }
+}, { passive:false });
+
 /* ── Scroll en haut au chargement ── */
 if(history.scrollRestoration){history.scrollRestoration='manual';}
 window.scrollTo(0,0);
