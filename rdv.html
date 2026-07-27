@@ -278,12 +278,10 @@ textarea{resize:vertical;min-height:110px;}
             <option>Réfrigérateur</option>
             <option>Congélateur</option>
             <option>Combiné frigo-congélo</option>
-            <option value="Autre">Autre (précisez ci-dessous)</option>
+            <option value="Autre">Autre (précisez)</option>
           </select>
-        </div>
-        <div id="appareilAutreWrap" style="display:none;">
-          <label for="appareilAutre">Précisez le type d'appareil *</label>
-          <input type="text" id="appareilAutre" name="appareil_autre" placeholder="Ex : Hotte aspirante">
+          <input type="text" id="appareilAutre" name="appareil_autre" placeholder="Précisez le type d'appareil" style="display:none;margin-top:.6rem;">
+          <a href="#" id="appareilBackToList" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:.4rem;">↩ Choisir dans la liste</a>
         </div>
         <div>
           <label for="marque">Marque</label>
@@ -660,8 +658,10 @@ function handleSubmit(e){
 
   const form=document.getElementById('rdvForm');
   const data=new FormData(form);
-  if(window.selectedPhotoAppareil) data.append('photo_appareil', window.selectedPhotoAppareil, window.selectedPhotoAppareil.name);
-  if(window.selectedPhotoPlaque) data.append('photo_plaque_signaletique', window.selectedPhotoPlaque, window.selectedPhotoPlaque.name);
+  // Les photos ne sont volontairement PAS jointes ici : les pièces jointes sont une
+  // fonctionnalité payante (PRO) de Web3Forms. Elles continuent d'arriver dans
+  // l'appli de gestion via sendToGestionApp ci-dessus (passerelle Supabase),
+  // indépendamment de cet envoi par email.
 
   fetch('https://api.web3forms.com/submit',{method:'POST',body:data})
     .then(function(res){return res.json();})
@@ -763,14 +763,27 @@ document.addEventListener('DOMContentLoaded', calInit);
 /* ────────── Champ "Autre" pour le type d'appareil ────────── */
 (function(){
   const sel = document.getElementById('appareil');
-  const wrap = document.getElementById('appareilAutreWrap');
   const input = document.getElementById('appareilAutre');
-  if(!sel || !wrap || !input) return;
+  const backLink = document.getElementById('appareilBackToList');
+  if(!sel || !input || !backLink) return;
   sel.addEventListener('change', function(){
-    const isAutre = sel.value === 'Autre';
-    wrap.style.display = isAutre ? 'block' : 'none';
-    input.required = isAutre;
-    if(!isAutre) input.value = '';
+    if(sel.value === 'Autre'){
+      sel.style.display = 'none';
+      input.style.display = 'block';
+      backLink.style.display = 'inline-block';
+      input.required = true;
+      input.value = '';
+      input.focus();
+    }
+  });
+  backLink.addEventListener('click', function(e){
+    e.preventDefault();
+    input.style.display = 'none';
+    backLink.style.display = 'none';
+    input.required = false;
+    input.value = '';
+    sel.style.display = 'block';
+    sel.value = '';
   });
 })();
 
