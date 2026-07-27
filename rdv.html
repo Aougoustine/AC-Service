@@ -90,6 +90,8 @@ textarea{resize:vertical;min-height:110px;}
 .form-submit{margin-top:1.5rem;width:100%;background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff;border:none;border-radius:8px;padding:1rem;font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,180,216,.3);}
 .form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
 .form-note{margin-top:1rem;text-align:center;font-size:.82rem;color:var(--text-light);}
+.photo-modal-btn{width:100%;box-sizing:border-box;background:linear-gradient(135deg,var(--cyan),#0077b6);border:none;border-radius:8px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.75rem 1rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,180,216,.3);transition:transform .2s,box-shadow .2s;}
+.photo-modal-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
 #form-success{display:none;text-align:center;padding:2rem;}
 #form-success .check{font-size:3.5rem;}
 #form-success h3{font-family:'Rajdhani',sans-serif;font-size:1.6rem;margin:.8rem 0 .5rem;color:var(--cyan);}
@@ -230,7 +232,7 @@ textarea{resize:vertical;min-height:110px;}
       </p>
       <a href="index.html" class="btn-primary" style="margin-top:1.5rem;">← Retour à l'accueil</a>
     </div>
-    <form id="rdvForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
+    <form id="rdvForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
       <div class="form-grid">
         <div>
           <label for="prenom">Prénom *</label>
@@ -276,7 +278,12 @@ textarea{resize:vertical;min-height:110px;}
             <option>Réfrigérateur</option>
             <option>Congélateur</option>
             <option>Combiné frigo-congélo</option>
+            <option value="Autre">Autre (précisez ci-dessous)</option>
           </select>
+        </div>
+        <div id="appareilAutreWrap" style="display:none;">
+          <label for="appareilAutre">Précisez le type d'appareil *</label>
+          <input type="text" id="appareilAutre" name="appareil_autre" placeholder="Ex : Hotte aspirante">
         </div>
         <div>
           <label for="marque">Marque</label>
@@ -285,6 +292,10 @@ textarea{resize:vertical;min-height:110px;}
         <div>
           <label for="modele">Modèle</label>
           <input type="text" id="modele" name="modele" placeholder="Ex : WAE24467FF">
+        </div>
+        <div>
+          <label>&nbsp;</label>
+          <button type="button" id="openPhotoModalBtn" class="photo-modal-btn">📷 <span id="photoModalBtnLabel">Ajouter des photos</span></button>
         </div>
         <div class="form-full">
           <label for="panne">Description de la panne *</label>
@@ -336,6 +347,33 @@ textarea{resize:vertical;min-height:110px;}
   </div>
 </section>
 
+<!-- ── Fenêtre d'ajout de photos (appareil + plaque signalétique) ── -->
+<div id="photoModalOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:center;justify-content:center;padding:1.2rem;">
+  <div style="background:#010e22;border:1px solid var(--border);border-top:3px solid var(--cyan);border-radius:14px;max-width:480px;width:100%;padding:1.8rem;max-height:90vh;overflow-y:auto;">
+    <h3 style="font-family:'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">📷 Ajouter des photos</h3>
+    <p style="font-size:.82rem;opacity:.65;margin-bottom:1.4rem;">Facultatif, mais ça nous aide à préparer l'intervention. Vous pouvez choisir une photo depuis votre galerie ou en prendre une directement.</p>
+
+    <label style="display:block;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem;">Photo de l'appareil</label>
+    <label id="photoAppareilCard" style="display:flex;align-items:center;gap:1rem;border:1px dashed var(--border);border-radius:10px;padding:1rem;cursor:pointer;margin-bottom:1.4rem;">
+      <div id="photoAppareilPreview" style="width:56px;height:56px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem;">📱</div>
+      <span id="photoAppareilLabel" style="font-size:.88rem;">Choisir ou prendre une photo…</span>
+      <input type="file" id="photoAppareil" name="photo_appareil" accept="image/*" style="display:none;">
+    </label>
+
+    <label style="display:block;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem;">Photo de la plaque signalétique</label>
+    <label id="photoPlaqueCard" style="display:flex;align-items:center;gap:1rem;border:1px dashed var(--border);border-radius:10px;padding:1rem;cursor:pointer;margin-bottom:1.6rem;">
+      <div id="photoPlaquePreview" style="width:56px;height:56px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem;">🏷️</div>
+      <span id="photoPlaqueLabel" style="font-size:.88rem;">Choisir ou prendre une photo…</span>
+      <input type="file" id="photoPlaque" name="photo_plaque_signaletique" accept="image/*" style="display:none;">
+    </label>
+
+    <button type="button" id="closePhotoModalBtn" class="btn-primary" style="width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:.6rem;">
+      <span style="font-size:1.2rem;line-height:1;">✅</span>
+      Valider
+    </button>
+  </div>
+</div>
+
 <footer>
   <div class="footer-legal-links">
     <a href="mentions-legales.html">Mentions légales</a>
@@ -363,16 +401,6 @@ textarea{resize:vertical;min-height:110px;}
 
 
 <script>
-
-/* ── Défilement à la molette sur la bande de calendrier ── */
-document.addEventListener('wheel', function(e){
-  const wrapper = e.target.closest && e.target.closest('.cal-strip-wrapper');
-  if(!wrapper) return;
-  if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
-    wrapper.scrollLeft += e.deltaY;
-    e.preventDefault();
-  }
-}, { passive:false });
 
 /* ── Scroll en haut au chargement ── */
 if(history.scrollRestoration){history.scrollRestoration='manual';}
@@ -515,8 +543,41 @@ function updateSummary(){
    Envoi indépendant de l'email Web3Forms ci-dessous : en cas d'échec (réseau,
    clé API absente...), on l'ignore silencieusement pour ne jamais bloquer ou
    perturber l'envoi de la demande de RDV par email, qui reste le canal principal. */
-function sendToGestionApp(d){
+// Compresse une image côté navigateur (redimension + JPEG) avant envoi, pour ne
+// jamais pousser une photo de plusieurs Mo directement depuis le téléphone du client.
+function compressImageForUpload(file, maxDim, quality){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        let w = img.width, h = img.height;
+        const scale = Math.min(1, maxDim / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function sendToGestionApp(d){
   try{
+    const photoAppareilFile = document.getElementById('photoAppareil').files[0];
+    const photoPlaqueFile = document.getElementById('photoPlaque').files[0];
+    let photoAppareilDataUrl = null, photoPlaqueDataUrl = null;
+    if(photoAppareilFile){
+      try{ photoAppareilDataUrl = await compressImageForUpload(photoAppareilFile, 1400, 0.75); }catch(e){ /* tant pis, on continue sans */ }
+    }
+    if(photoPlaqueFile){
+      try{ photoPlaqueDataUrl = await compressImageForUpload(photoPlaqueFile, 1400, 0.75); }catch(e){ /* idem */ }
+    }
     fetch('https://ac-service-application.vercel.app/api/rendezvous', {
       method: 'POST',
       headers: {
@@ -536,7 +597,9 @@ function sendToGestionApp(d){
         referral: d.source,
         issue: d.panne,
         date: d.rdvDate,
-        slot: d.rdvSlot
+        slot: d.rdvSlot,
+        photoAppareilDataUrl: photoAppareilDataUrl,
+        photoPlaqueDataUrl: photoPlaqueDataUrl
       })
     }).catch(function(){ /* échec silencieux, sans impact sur le formulaire */ });
   }catch(err){ /* idem : on ne laisse jamais cet appel perturber le formulaire */ }
@@ -548,7 +611,9 @@ function handleSubmit(e){
   function fv(id){return document.getElementById(id).value.trim();}
   const prenom=fv('prenom'),nom=fv('nom'),tel=fv('tel'),adresse=fv('adresse');
   const codePostal=fv('codePostal'),ville=fv('ville');
-  const appareil=document.getElementById('appareil').value;
+  const appareilSelect=document.getElementById('appareil').value;
+  const appareilAutre=fv('appareilAutre');
+  const appareil = (appareilSelect==='Autre') ? appareilAutre : appareilSelect;
   const panne=fv('panne');
   const rdvDate=fv('rdvDate'), rdvSlot=fv('rdvSlot');
 
@@ -601,7 +666,65 @@ function handleSubmit(e){
     });
 }
 
+/* ────────── Fenêtre d'ajout de photos ────────── */
+(function(){
+  const overlay = document.getElementById('photoModalOverlay');
+  const openBtn = document.getElementById('openPhotoModalBtn');
+  const closeBtn = document.getElementById('closePhotoModalBtn');
+  const btnLabel = document.getElementById('photoModalBtnLabel');
+  if(!overlay || !openBtn) return;
+
+  function updateBtnLabel(){
+    const count = (document.getElementById('photoAppareil').files.length ? 1 : 0)
+                + (document.getElementById('photoPlaque').files.length ? 1 : 0);
+    btnLabel.textContent = count ? count + ' photo' + (count>1?'s':'') + ' ajoutée' + (count>1?'s':'') : 'Ajouter des photos';
+  }
+
+  function wirePreview(inputId, previewId, labelId, fallbackIcon){
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    const label = document.getElementById(labelId);
+    input.addEventListener('change', function(){
+      const file = input.files[0];
+      if(!file){ preview.innerHTML = fallbackIcon; label.textContent = 'Choisir ou prendre une photo…'; updateBtnLabel(); return; }
+      const reader = new FileReader();
+      reader.onload = function(e){
+        preview.innerHTML = '<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">';
+      };
+      reader.readAsDataURL(file);
+      label.textContent = file.name;
+      updateBtnLabel();
+    });
+  }
+  wirePreview('photoAppareil', 'photoAppareilPreview', 'photoAppareilLabel', '📱');
+  wirePreview('photoPlaque', 'photoPlaquePreview', 'photoPlaqueLabel', '🏷️');
+
+  openBtn.addEventListener('click', function(){
+    overlay.style.display = 'flex';
+  });
+  closeBtn.addEventListener('click', function(){
+    overlay.style.display = 'none';
+  });
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) overlay.style.display = 'none';
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', calInit);
+
+/* ────────── Champ "Autre" pour le type d'appareil ────────── */
+(function(){
+  const sel = document.getElementById('appareil');
+  const wrap = document.getElementById('appareilAutreWrap');
+  const input = document.getElementById('appareilAutre');
+  if(!sel || !wrap || !input) return;
+  sel.addEventListener('change', function(){
+    const isAutre = sel.value === 'Autre';
+    wrap.style.display = isAutre ? 'block' : 'none';
+    input.required = isAutre;
+    if(!isAutre) input.value = '';
+  });
+})();
 
 /* ────────── Autocomplétion adresse (Géoplateforme IGN) ────────── */
 (function(){
