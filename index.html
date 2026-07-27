@@ -128,7 +128,7 @@ footer span{color:var(--cyan);}
 
 /* ── Forfaits ── */
 #forfaits{padding:5rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
-.forfaits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:0 auto;}
+.forfaits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1100px;margin:0 auto;}
 .forfait-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
 .forfait-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));}
 .forfait-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,180,216,.2);}
@@ -507,6 +507,20 @@ footer span{color:var(--cyan);}
         <li>Réparation garantie 15 jours</li>
       </ul>
     </div>
+    <div class="forfait-card card-autres reveal">
+      <div class="forfait-price"><sup>€</sup>50 <span>TTC</span></div>
+      <div class="forfait-name">📥 Dépôt &amp; Diagnostic</div>
+      <div class="forfait-appareils">
+        <span class="tag">Tous types d'appareils</span>
+      </div>
+      <ul class="forfait-features">
+        <li>Dépôt de l'appareil à l'atelier</li>
+        <li>Diagnostic technique complet</li>
+        <li>Bon de dépôt signé</li>
+        <li>Devis détaillé avant toute réparation</li>
+        <li>Restitution signée à la récupération</li>
+      </ul>
+    </div>
   </div>
 
   <!-- Note tarifaire 1er / 2ème passage -->
@@ -519,6 +533,11 @@ footer span{color:var(--cyan);}
     <div class="forfaits-note-row">
       <span class="forfaits-note-icon">2️⃣</span>
       <span><strong>2ème passage (pose de la pièce commandée) :</strong> forfait déplacement de <strong>30 €</strong> uniquement + prix de la pièce — le forfait d'intervention complet n'est plus refacturé.</span>
+    </div>
+    <div class="fn-sep"></div>
+    <div class="forfaits-note-row">
+      <span class="forfaits-note-icon">📥</span>
+      <span><strong>Dépôt à l'atelier :</strong> pour les appareils transportables, un forfait <strong>Dépôt &amp; Diagnostic à 50 €</strong> couvre l'examen technique complet à l'atelier. Un devis de réparation est ensuite établi et soumis à votre accord avant toute intervention.</span>
     </div>
   </div>
 </section>
