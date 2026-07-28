@@ -655,8 +655,14 @@ async function sendToGestionApp(d){
         photoAppareilDataUrl: photoAppareilDataUrl,
         photoPlaqueDataUrl: photoPlaqueDataUrl
       })
-    }).catch(function(){ /* échec silencieux, sans impact sur le formulaire */ });
-  }catch(err){ /* idem : on ne laisse jamais cet appel perturber le formulaire */ }
+    }).then(async function(res){
+      if(!res.ok){
+        let detail = '';
+        try{ detail = JSON.stringify(await res.json()); }catch(e){}
+        console.error('[AC SERVICE] Échec envoi vers l\'appli de gestion — statut '+res.status+' : '+detail);
+      }
+    }).catch(function(e){ console.error('[AC SERVICE] Échec réseau vers l\'appli de gestion :', e); });
+  }catch(err){ console.error('[AC SERVICE] Erreur avant envoi vers l\'appli de gestion :', err); }
 }
 
 /* ────────── Envoi Web3Forms → Gmail ────────── */
