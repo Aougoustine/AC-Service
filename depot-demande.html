@@ -27,6 +27,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--text-light);text-decoration:none;text-transform:uppercase;transition:color .25s;}
 .nav-links a:hover{color:var(--cyan);}
 .nav-cta{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;padding:.5rem 1.4rem;border-radius:4px;font-weight:700!important;transition:transform .2s,box-shadow .2s!important;}
+.mode-switch{display:inline-flex;align-items:center;gap:.2rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:.3rem;}
+.mode-switch-item{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.1rem;border-radius:50px;font-family:'Rajdhani',sans-serif;font-weight:700!important;font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;color:var(--text-light)!important;text-decoration:none;transition:.2s;white-space:nowrap;}
+.mode-switch-item.active{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;}
+.mode-switch-item:not(.active):hover{color:var(--white)!important;}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,216,.4)!important;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
 .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
@@ -181,7 +185,12 @@ textarea{resize:vertical;min-height:110px;}
     <span class="nav-brand-name">AC <span style="color:var(--cyan)">Service</span></span>
   </div></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="rdv.html" class="nav-cta">Prendre RDV</a></li>
+    <li>
+      <div class="mode-switch">
+        <a href="rdv.html" class="mode-switch-item">🏠 À domicile</a>
+        <a href="depot-demande.html" class="mode-switch-item active">📥 Dépôt</a>
+      </div>
+    </li>
   </ul>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
