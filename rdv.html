@@ -80,6 +80,8 @@ footer span{color:var(--cyan);}
 #rdv{padding:3.5rem 2rem 5rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
 .form-container{max-width:680px;width:100%;margin:0 auto;background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:3rem 2.5rem;backdrop-filter:blur(8px);box-sizing:border-box;overflow:hidden;}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.form-section{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:1.6rem;margin-bottom:1.5rem;}
+.form-section-title{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--cyan);font-size:.9rem;margin-bottom:1.3rem;}
 .form-grid>div{min-width:0;}
 .form-full{grid-column:1 / -1;}
 label{display:block;font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:.4rem;}
@@ -163,6 +165,7 @@ textarea{resize:vertical;min-height:110px;}
   #rdv{padding:2rem .8rem 3rem;}
   .form-container{padding:1.4rem .9rem;border-radius:14px;}
   .form-reassurance{padding:.9rem .9rem;}
+  .form-section{padding:1rem .9rem;}
   .fr-item{font-size:.8rem;}
   .cal-wrapper{padding:.9rem .6rem;}
   .day-card{width:52px;padding:.5rem .1rem;}
@@ -181,6 +184,7 @@ textarea{resize:vertical;min-height:110px;}
     <span class="nav-brand-name">AC <span style="color:var(--cyan)">Service</span></span>
   </div></a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="depot-demande.html" class="nav-cta">📥 Demander un dépôt</a></li>
     <li><a href="rdv.html" class="nav-cta">Prendre RDV</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
@@ -233,97 +237,123 @@ textarea{resize:vertical;min-height:110px;}
       <a href="index.html" class="btn-primary" style="margin-top:1.5rem;">← Retour à l'accueil</a>
     </div>
     <form id="rdvForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
-      <div class="form-grid">
-        <div>
-          <label for="prenom">Prénom *</label>
-          <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
-        </div>
-        <div>
-          <label for="nom">Nom *</label>
-          <input type="text" id="nom" name="nom" placeholder="Dupont" required>
-        </div>
-        <div>
-          <label for="tel">Téléphone *</label>
-          <input type="tel" id="tel" name="telephone" placeholder="06 XX XX XX XX" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="jean@exemple.fr">
-        </div>
-        <div class="form-full">
-          <label for="adresse">Adresse d'intervention *</label>
-          <div class="adresse-wrap">
-            <input type="text" id="adresse" name="adresse" placeholder="12 rue de la Paix" required autocomplete="off">
-            <div class="adresse-suggestions" id="adresseSuggestions"></div>
+      <div class="form-section">
+        <div class="form-section-title">Vos coordonnées</div>
+        <div class="form-grid">
+          <div>
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
+          </div>
+          <div>
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+          </div>
+          <div class="form-full">
+            <label for="adresse">Adresse d'intervention *</label>
+            <div class="adresse-wrap">
+              <input type="text" id="adresse" name="adresse" placeholder="12 rue de la Paix" required autocomplete="off">
+              <div class="adresse-suggestions" id="adresseSuggestions"></div>
+            </div>
+          </div>
+          <div class="form-full">
+            <label for="complementAdresse">Complément d'adresse (optionnel)</label>
+            <input type="text" id="complementAdresse" name="complement_adresse" placeholder="Appartement, bâtiment, étage…">
+          </div>
+          <div>
+            <label for="codePostal">Code postal *</label>
+            <input type="text" id="codePostal" name="code_postal" placeholder="59000" inputmode="numeric" maxlength="5" required>
+          </div>
+          <div>
+            <label for="ville">Ville *</label>
+            <input type="text" id="ville" name="ville" placeholder="Lille" required>
+          </div>
+          <div>
+            <label for="tel">Téléphone *</label>
+            <input type="tel" id="tel" name="telephone" placeholder="06 XX XX XX XX" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.fr">
+          </div>
+          <div class="form-full">
+            <label for="autreNumero">Autre numéro pour le jour du RDV (optionnel — si ce n'est pas vous qui accueillerez le technicien)</label>
+            <input type="tel" id="autreNumero" name="autre_numero" placeholder="Ex : numéro d'un proche présent sur place">
           </div>
         </div>
-        <div>
-          <label for="codePostal">Code postal *</label>
-          <input type="text" id="codePostal" name="code_postal" placeholder="59000" inputmode="numeric" maxlength="5" required>
-        </div>
-        <div>
-          <label for="ville">Ville *</label>
-          <input type="text" id="ville" name="ville" placeholder="Lille" required>
-        </div>
-        <div>
-          <label for="appareil">Type d'appareil *</label>
-          <select id="appareil" name="appareil" required>
-            <option value="" disabled selected>Choisir…</option>
-            <option>Lave-linge</option>
-            <option>Sèche-linge</option>
-            <option>Lave-vaisselle</option>
-            <option>Four</option>
-            <option>Micro-onde</option>
-            <option>Plaque de cuisson (hors gaz)</option>
-            <option>Réfrigérateur</option>
-            <option>Congélateur</option>
-            <option>Combiné frigo-congélo</option>
-            <option value="Autre">Autre (précisez)</option>
-          </select>
-          <input type="text" id="appareilAutre" name="appareil_autre" placeholder="Précisez le type d'appareil" style="display:none;margin-top:.6rem;">
-          <a href="#" id="appareilBackToList" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:.4rem;">↩ Choisir dans la liste</a>
-        </div>
-        <div>
-          <label for="marque">Marque</label>
-          <input type="text" id="marque" name="marque" placeholder="Ex : Bosch">
-        </div>
-        <div>
-          <label for="modele">Modèle</label>
-          <input type="text" id="modele" name="modele" placeholder="Ex : WAE24467FF">
-        </div>
-        <div>
-          <label>&nbsp;</label>
-          <button type="button" id="openPhotoModalBtn" class="photo-modal-btn">📷 <span id="photoModalBtnLabel">Ajouter des photos</span></button>
-        </div>
-        <div class="form-full">
-          <label for="panne">Description de la panne *</label>
-          <textarea id="panne" name="panne" placeholder="Décrivez le problème rencontré…" required></textarea>
-        </div>
+      </div>
 
-        <!-- ── Calendrier de disponibilités ── -->
-        <div class="form-full">
-          <label>Choisir un créneau pour votre rendez-vous !</label>
-          <div class="cal-wrapper">
-            <div class="cal-strip-wrapper">
-              <div class="cal-strip" id="calStrip"></div>
-            </div>
-            <div id="calSlots" class="cal-slots-panel" style="display:none">
-              <p class="cal-slots-title">Créneaux pour <strong id="calSlotDate"></strong></p>
-              <div class="cal-slots-btns" id="calSlotsBtns">
-                <button type="button" class="slot-btn" data-slot="morning" onclick="selectSlot(this)">🌅 Matin</button>
-                <button type="button" class="slot-btn" data-slot="afternoon" onclick="selectSlot(this)">🌇 Après-midi</button>
+      <div class="form-section">
+        <div class="form-section-title">Votre panne</div>
+        <div class="form-grid">
+          <div class="form-full">
+            <label for="appareil">Type d'appareil *</label>
+            <select id="appareil" name="appareil" required>
+              <option value="" disabled selected>Choisir…</option>
+              <option>Lave-linge</option>
+              <option>Sèche-linge</option>
+              <option>Lave-vaisselle</option>
+              <option>Four</option>
+              <option>Micro-onde</option>
+              <option>Plaque de cuisson (hors gaz)</option>
+              <option>Réfrigérateur</option>
+              <option>Congélateur</option>
+              <option>Combiné frigo-congélo</option>
+              <option value="Autre">Autre (précisez)</option>
+            </select>
+            <input type="text" id="appareilAutre" name="appareil_autre" placeholder="Précisez le type d'appareil" style="display:none;margin-top:.6rem;">
+            <a href="#" id="appareilBackToList" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:.4rem;">↩ Choisir dans la liste</a>
+          </div>
+          <div>
+            <label for="marque">Marque (facultatif)</label>
+            <input type="text" id="marque" name="marque" placeholder="ex : Bosch, Samsung, Whirlpool…">
+          </div>
+          <div>
+            <label for="modele">Modèle (facultatif)</label>
+            <input type="text" id="modele" name="modele" placeholder="ex : WAT28440FF (visible sur la plaque signalétique)">
+          </div>
+          <div class="form-full">
+            <label for="panne">Description de la panne *</label>
+            <textarea id="panne" name="panne" placeholder="Décrivez le problème rencontré…" required></textarea>
+          </div>
+          <div class="form-full">
+            <label>&nbsp;</label>
+            <button type="button" id="openPhotoModalBtn" class="photo-modal-btn">📷 <span id="photoModalBtnLabel">Ajouter des photos</span></button>
+            <p style="font-size:.78rem;color:rgba(240,244,255,.5);margin-top:.5rem;">Nous aide à préparer la bonne pièce avant notre passage.</p>
+          </div>
+          <div class="form-full">
+            <label for="notePourTechnicien">Note pour le technicien (optionnel)</label>
+            <textarea id="notePourTechnicien" name="note_technicien" placeholder="Ex : ne pas sonner, maison bleue, code portail 1234…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">Choisissez une date</div>
+        <div class="form-grid">
+          <!-- ── Calendrier de disponibilités ── -->
+          <div class="form-full">
+            <label>Choisir un créneau pour votre rendez-vous !</label>
+            <div class="cal-wrapper">
+              <div class="cal-strip-wrapper">
+                <div class="cal-strip" id="calStrip"></div>
               </div>
+              <div id="calSlots" class="cal-slots-panel" style="display:none">
+                <p class="cal-slots-title">Créneaux pour <strong id="calSlotDate"></strong></p>
+                <div class="cal-slots-btns" id="calSlotsBtns">
+                  <button type="button" class="slot-btn" data-slot="morning" onclick="selectSlot(this)">🌅 Matin</button>
+                  <button type="button" class="slot-btn" data-slot="afternoon" onclick="selectSlot(this)">🌇 Après-midi</button>
+                </div>
+              </div>
+              <div id="calSummary" class="cal-summary" style="display:none"></div>
+              <input type="hidden" id="dispos" name="disponibilites">
+              <input type="hidden" id="rdvDate" name="rdv_date">
+              <input type="hidden" id="rdvSlot" name="rdv_slot">
             </div>
-            <div id="calSummary" class="cal-summary" style="display:none"></div>
-            <input type="hidden" id="dispos" name="disponibilites">
-            <input type="hidden" id="rdvDate" name="rdv_date">
-            <input type="hidden" id="rdvSlot" name="rdv_slot">
           </div>
-        </div>
-
-        <div>
-          <label for="source">Comment nous avez-vous trouvés ?</label>
-          <input type="text" id="source" name="source" placeholder="Bouche à oreille, Google…">
+          <div class="form-full">
+            <label for="source">Comment nous avez-vous trouvés ?</label>
+            <input type="text" id="source" name="source" placeholder="Bouche à oreille, Google…">
+          </div>
         </div>
       </div>
       <!-- Champs Web3Forms cachés -->
@@ -625,10 +655,13 @@ function handleSubmit(e){
   function fv(id){return document.getElementById(id).value.trim();}
   const prenom=fv('prenom'),nom=fv('nom'),tel=fv('tel'),adresse=fv('adresse');
   const codePostal=fv('codePostal'),ville=fv('ville');
+  const complementAdresse=fv('complementAdresse');
+  const autreNumero=fv('autreNumero');
+  const notePourTechnicien=fv('notePourTechnicien');
   const appareilSelect=document.getElementById('appareil').value;
   const appareilAutre=fv('appareilAutre');
   const appareil = (appareilSelect==='Autre') ? appareilAutre : appareilSelect;
-  const panne=fv('panne');
+  let panne=fv('panne');
   const rdvDate=fv('rdvDate'), rdvSlot=fv('rdvSlot');
 
   if(!prenom||!nom||!tel||!adresse||!codePostal||!ville||!appareil||!panne){
@@ -644,8 +677,13 @@ function handleSubmit(e){
   // Envoi silencieux vers l'appli de gestion interne (en plus de l'email ci-dessous,
   // jamais à la place). Si la passerelle est indisponible, l'email part quand même :
   // le formulaire ne dépend jamais de cet appel.
+  const adresseComplete = complementAdresse ? (adresse+' — '+complementAdresse) : adresse;
+  let panneEnrichie = panne;
+  if(autreNumero) panneEnrichie += '\n\nAutre numéro pour le jour du RDV : '+autreNumero;
+  if(notePourTechnicien) panneEnrichie += '\n\nNote du client : '+notePourTechnicien;
+
   sendToGestionApp({
-    prenom: prenom, nom: nom, tel: tel, adresse: adresse, codePostal: codePostal, ville: ville, appareil: appareil, panne: panne,
+    prenom: prenom, nom: nom, tel: tel, adresse: adresseComplete, codePostal: codePostal, ville: ville, appareil: appareil, panne: panneEnrichie,
     marque: fv('marque'), modele: fv('modele'), email: fv('email'), source: fv('source'), rdvDate: rdvDate, rdvSlot: rdvSlot
   });
 
