@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AC SERVICE – Réparateur Électroménager à Domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck (59 & 62)</title>
+<meta name="description" content="AC SERVICE – Réparateur électroménager à domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck, Bailleul et leurs environs (Nord 59 / Pas-de-Calais 62). Intervention rapide, devis gratuit, forfaits à partir de 60€. Lave-linge, four, réfrigérateur, lave-vaisselle. Appelez le 07 44 85 98 95.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.acservicepro.fr/">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" type="image/png" href="/favicon.png">
+<style>
+
+:root{
+  --navy-mid:#010e22;
+  --cyan:#00b4d8; --cyan-glow:#48cae4; --gold:#00b4d8;
+  --white:#f0f4ff; --text-light:#a8c0d6;
+  --card-bg:rgba(255,255,255,0.04); --border:rgba(0,180,216,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(180deg,#011331 0%,#000000 100%);color:var(--white);overflow-x:hidden;min-height:100vh;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;background:rgba(1,19,49,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--text-light);text-decoration:none;text-transform:uppercase;transition:color .25s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;padding:.5rem 1.4rem;border-radius:4px;font-weight:700!important;transition:transform .2s,box-shadow .2s!important;}
+.mode-switch{display:inline-flex;align-items:center;gap:.15rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:.2rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
+.mode-switch-item{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .8rem;border-radius:50px;font-family:'Rajdhani',sans-serif;font-weight:700!important;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--text-light)!important;text-decoration:none;transition:.2s;white-space:nowrap;}
+.mode-switch-item.active{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;}
+.mode-switch-item:not(.active):hover{color:var(--white)!important;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,216,.4)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+
+.nav-logo{display:flex;align-items:center;gap:.7rem;}
+.nav-logo img{height:52px;mix-blend-mode:screen;}
+.nav-brand-name{font-family:'Rajdhani',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:.06em;color:#fff;line-height:1;text-transform:uppercase;white-space:nowrap;}
+
+section{position:relative;z-index:1;}
+
+.btn-primary{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff;padding:.85rem 2.2rem;border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,180,216,.3);display:inline-block;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
+
+/* ── Footer ── */
+footer{background:#000;border-top:1px solid rgba(0,180,216,.15);padding:2.5rem 1.5rem 1.5rem;text-align:center;}
+footer span{color:var(--cyan);}
+.footer-legal-links{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.5rem;margin-bottom:1rem;}
+.footer-legal-links a{font-size:.78rem;color:rgba(240,244,255,.45);text-decoration:underline;transition:color .2s;}
+.footer-legal-links a:hover{color:var(--cyan);}
+.footer-copy{font-size:.78rem;color:rgba(240,244,255,.35);line-height:1.6;}
+.footer-copy span{color:var(--cyan);}
+
+/* ── Bouton WhatsApp flottant ── */
+.btn-whatsapp-float{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:.75rem 1.2rem .75rem .95rem;border-radius:50px;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
+.btn-whatsapp-float:hover{background:#1ebe5d;transform:translateY(-3px) scale(1.04);box-shadow:0 8px 28px rgba(37,211,102,.55);}
+.btn-whatsapp-float svg{width:1.5rem;height:1.5rem;flex-shrink:0;}
+@media(max-width:520px){
+  .btn-whatsapp-float .wa-label{display:none;}
+  .btn-whatsapp-float{padding:.8rem;border-radius:50%;box-shadow:0 4px 18px rgba(37,211,102,.5);}
+}
+
+/* ══ MOBILE (≤ 680px) ══ */
+@media(max-width:680px){
+  nav{padding:.8rem 1.2rem;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(1,13,33,.98);flex-direction:column;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);}
+  .nav-links.open{display:flex;}
+  .mode-switch{position:static;transform:none;margin:0 auto;}
+}
+
+
+.section-title{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;text-align:center;letter-spacing:.04em;margin-bottom:.5rem;}
+.section-title span{color:var(--cyan);}
+.section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));margin:0 auto 3rem;border-radius:2px;}
+
+#particles{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
+.particle{position:absolute;border-radius:50%;opacity:.7;animation:float linear infinite;}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);opacity:0;}
+  10%{opacity:.45;} 90%{opacity:.45;}
+  100%{transform:translateY(-10vh) scale(1);opacity:0;}
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(0,119,182,.18) 0%,transparent 70%),linear-gradient(180deg,#011331 0%,#000000 100%);}
+.hero-inner{position:relative;z-index:1;max-width:820px;}
+.hero-tagline{font-family:'Rajdhani',sans-serif;font-size:clamp(3rem,7vw,6rem);font-weight:700;line-height:1.0;letter-spacing:.02em;animation:fadeDown .9s .1s ease both;text-shadow:0 2px 30px rgba(0,0,0,.6);}
+.hero-tagline span{color:var(--cyan);}
+.hero-slogan-img{display:block;margin:0 auto;width:min(900px,90vw);height:auto;filter:drop-shadow(0 2px 20px rgba(0,0,0,.5));animation:fadeDown .9s .1s ease both;}
+.hero-btns{margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeDown .9s .3s ease both;}
+.hero-badges{margin-top:3rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;animation:fadeDown .9s .4s ease both;}
+.badge{display:flex;align-items:center;gap:.6rem;font-size:.9rem;color:var(--text-light);font-weight:600;}
+.badge-icon{font-size:1.3rem;}
+
+.hero-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(1000px,110vw);height:min(1000px,110vw);pointer-events:none;z-index:0;opacity:0.15;}
+.hero-watermark img{width:100%;height:100%;object-fit:contain;}
+@media(max-width:680px){
+  .hero-watermark{top:47%;width:min(680px,150vw);height:min(680px,150vw);}
+}
+@media(max-width:400px){
+  .hero-watermark{top:46%;width:min(560px,165vw);height:min(560px,165vw);}
+}
+
+/* ── Section Interventions ── */
+#interventions{padding:5rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
+.interventions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto;}
+.interv-card{background:rgba(255,255,255,0.04);border:1px solid rgba(0,180,216,.15);border-top:3px solid var(--cyan);border-radius:14px;padding:2.2rem 2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.interv-card:hover{border-color:var(--cyan);transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,180,216,.15);}
+.interv-card-num{position:absolute;top:1.2rem;right:1.5rem;font-family:'Rajdhani',sans-serif;font-size:3.5rem;font-weight:700;color:rgba(0,180,216,.07);line-height:1;}
+.interv-card-icon{font-size:2.8rem;margin-bottom:1rem;display:block;}
+.interv-card h4{font-family:'Rajdhani',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#f0f4ff;margin-bottom:1.1rem;border-bottom:1px solid rgba(0,180,216,.15);padding-bottom:.6rem;}
+.interv-card ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:.55rem;}
+.interv-card ul li{font-size:.92rem;color:rgba(240,244,255,.75);line-height:1.5;padding-left:1.2rem;position:relative;}
+.interv-card ul li::before{content:'›';position:absolute;left:0;color:var(--cyan);font-weight:700;font-size:1.1rem;}
+
+/* ── Forfaits ── */
+#forfaits{padding:5rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
+.forfaits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1100px;margin:0 auto;}
+.forfait-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.forfait-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));}
+.forfait-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,180,216,.2);}
+.forfait-card.card-autres{border-color:rgba(0,180,216,.18);}
+.forfait-price{font-family:'Rajdhani',sans-serif;font-size:3rem;font-weight:700;color:var(--cyan);line-height:1;}
+.forfait-price sup{font-size:1.4rem;vertical-align:top;margin-top:.5rem;display:inline-block;}
+.forfait-price span{font-size:1rem;color:var(--text-light);font-weight:400;}
+.forfait-name{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:.8rem 0 1.5rem;color:var(--white);}
+.forfait-appareils{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
+.tag{background:rgba(0,180,216,.15);border:1px solid rgba(0,180,216,.3);color:var(--cyan-glow);padding:.3rem .8rem;border-radius:20px;font-size:.82rem;font-weight:600;}
+.forfait-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.forfait-features li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:var(--text-light);}
+.forfait-features li::before{content:'✓';color:var(--cyan);font-weight:700;flex-shrink:0;}
+.forfaits-note{max-width:780px;margin:2rem auto 0;background:rgba(0,180,216,.07);border:1px solid rgba(0,180,216,.25);border-radius:12px;padding:1.2rem 1.6rem;display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem;align-items:start;font-size:.9rem;color:rgba(240,244,255,.82);line-height:1.55;}
+.forfaits-note-row{display:contents;}
+.forfaits-note-icon{font-size:1.15rem;padding-top:.05rem;}
+.forfaits-note strong{color:#f0f4ff;}
+.forfaits-note .fn-sep{grid-column:1/-1;height:1px;background:rgba(0,180,216,.18);margin:.3rem 0;}
+
+/* ── Conditions ── */
+#conditions{padding:4rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
+.conditions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1100px;margin:0 auto;}
+.cond-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;transition:border-color .3s;}
+.cond-card:hover{border-color:var(--cyan);}
+.cond-icon{font-size:1.8rem;flex-shrink:0;}
+.cond-text h4{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.8rem;}
+.cond-text p{font-size:.88rem;color:var(--text-light);line-height:1.5;}
+
+/* ── Zone ── */
+#zone{padding:5rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);text-align:center;}
+.zone-inner{max-width:700px;margin:0 auto;}
+.zone-radius{font-family:'Rajdhani',sans-serif;font-size:4rem;font-weight:700;color:var(--cyan);line-height:1;margin-bottom:.5rem;}
+.zone-desc{color:var(--text-light);font-size:1rem;line-height:1.7;margin-bottom:2rem;}
+.zone-surcharge{display:inline-flex;align-items:center;gap:.7rem;background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);color:var(--gold);padding:.8rem 1.6rem;border-radius:8px;font-weight:700;font-size:.95rem;}
+
+/* ── Garantie / Engagements ── */
+#garantie,#engagements{padding:4rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
+#avis{padding:5rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
+.garantie-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:800px;margin:0 auto;}
+.gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;transition:transform .3s;flex:1 1 220px;max-width:260px;}
+.gar-card:hover{transform:translateY(-4px);}
+.gar-icon{font-size:2.5rem;margin-bottom:1rem;}
+.gar-card h4{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem;}
+.gar-card p{font-size:.88rem;color:var(--text-light);line-height:1.5;}
+
+/* ══ DESKTOP (> 900px) : les 5 cartes restent alignées sur une seule ligne ══ */
+@media(min-width:901px){
+  .garantie-grid{flex-wrap:nowrap;}
+  .garantie-grid .gar-card{flex:0 1 250px;max-width:260px;}
+}
+
+/* ── Contact ── */
+#contact{padding:3rem 2rem;background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.contact-inner{max-width:800px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;align-items:center;}
+.contact-item{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--white);font-weight:600;font-size:1.05rem;transition:color .2s;}
+.contact-item:hover{color:var(--cyan);}
+.contact-item-icon{width:44px;height:44px;border-radius:50%;background:rgba(0,180,216,.15);border:1px solid rgba(0,180,216,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:background .2s;}
+.contact-item:hover .contact-item-icon{background:rgba(0,180,216,.3);}
+
+/* ══ TABLETTE (≤ 900px) ══ */
+@media(max-width:900px){
+  .conditions-grid{grid-template-columns:repeat(2,1fr);}
+  .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+  .forfaits-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .garantie-grid .gar-card{flex-basis:180px;}
+  .contact-inner{gap:1.2rem;}
+}
+
+/* ══ MOBILE (≤ 680px) ══ */
+@media(max-width:680px){
+  .section-title{font-size:1.6rem;}
+  .section-line{margin-bottom:2rem;}
+  #hero{padding:5rem 1.2rem 3rem;}
+  .hero-inner{max-width:100%;}
+  .hero-btns{flex-direction:column;align-items:center;gap:.8rem;}
+  .btn-primary{width:100%;max-width:320px;text-align:center;padding:.8rem 1.5rem;}
+  .hero-badges{gap:1rem;margin-top:2rem;}
+  .badge{font-size:.82rem;}
+  #interventions,#engagements,#forfaits,#conditions,#zone{padding:3rem 1.2rem;}
+  .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
+  .conditions-grid{grid-template-columns:1fr 1fr;}
+  .forfaits-grid{grid-template-columns:1fr;}
+  .garantie-grid .gar-card{flex-basis:160px;}
+  .forfait-card{padding:2rem 1.5rem;}
+  .zone-radius{font-size:3rem;}
+  .contact-inner{flex-direction:column;align-items:flex-start;gap:1rem;}
+  .forfaits-note{padding:1rem 1.2rem;font-size:.85rem;}
+}
+
+/* ══ PETIT MOBILE (≤ 400px) ══ */
+@media(max-width:400px){
+  .interventions-grid{grid-template-columns:1fr;}
+  .conditions-grid{grid-template-columns:1fr;}
+  .garantie-grid .gar-card{flex-basis:100%;max-width:320px;}
+  .section-title{font-size:1.4rem;}
+}
+
+/* ══ GRAND ÉCRAN (≥ 1200px) : on utilise mieux l'espace, texte plus lisible ══ */
+@media(min-width:1200px){
+  html{font-size:18px;}
+  nav{padding:1rem 3.5rem;}
+  .hero-inner{max-width:1000px;}
+  #interventions,#engagements,#forfaits,#conditions,#zone,#contact{padding-left:3rem;padding-right:3rem;}
+  .interventions-grid{max-width:1400px;gap:2.4rem;}
+  .forfaits-grid{max-width:1300px;gap:2.4rem;}
+  .conditions-grid{max-width:1300px;}
+  .garantie-grid{max-width:1150px;}
+  .zone-inner{max-width:840px;}
+  .contact-inner{max-width:950px;}
+  .forfaits-note{max-width:920px;}
+  .interv-card,.forfait-card,.cond-card,.gar-card{padding:2.6rem 2.2rem;}
+  .zone-desc{font-size:1.08rem;}
+}
+
+/* ══ TRÈS GRAND ÉCRAN (≥ 1600px) ══ */
+@media(min-width:1600px){
+  html{font-size:19px;}
+  .interventions-grid{max-width:1600px;}
+  .forfaits-grid{max-width:1500px;}
+  .conditions-grid{max-width:1500px;}
+  .garantie-grid{max-width:1300px;}
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" aria-label="Retour à l'accueil AC SERVICE" style="text-decoration:none;"><div class="nav-logo">
+    <img src="assets/logo.svg" alt="AC SERVICE Logo">
+    <span class="nav-brand-name">AC <span style="color:var(--cyan)">Service</span></span>
+  </div></a>
+  <ul class="nav-links" id="navLinks">
+    <li>
+      <div class="mode-switch">
+        <a href="index.html" class="mode-switch-item active">🏠 À domicile</a>
+        <a href="depot.html" class="mode-switch-item">📥 Dépôt</a>
+      </div>
+    </li>
+    <li><a href="rdv.html" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<section id="hero" style="position:relative;overflow:hidden;">
+  <div id="particles"></div>
+  <div class="hero-watermark"><img src="assets/logo.svg" alt=""></div>
+  <div class="hero-inner">
+    <div class="hero-tagline"><img class="hero-slogan-img" src="assets/slogan.svg" alt="Satisfait &amp; Réparé"></div>
+    <div class="hero-btns">
+      <a href="rdv.html" class="btn-primary">📅 Prendre rendez-vous</a>
+      <a href="tel:+33744859895" class="btn-primary" aria-label="Appeler AC SERVICE au 07 44 85 98 95">📞 07 44 85 98 95</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><span class="badge-icon">✅</span> Devis gratuit</div>
+      <div class="badge"><span class="badge-icon">⚡</span> RDV sous 48h</div>
+      <div class="badge"><span class="badge-icon">🛡️</span> Garantie 15 jours</div>
+      <div class="badge"><span class="badge-icon">📍</span> Déplacement inclus</div>
+    </div>
+  </div>
+</section>
+
+<section id="interventions">
+  <h2 class="section-title reveal">Appareils <span>réparés</span></h2>
+  <div class="section-line reveal"></div>
+  <p class="reveal" style="text-align:center;color:var(--text-light);font-size:.95rem;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto;">Nous intervenons sur les principales pannes de vos électroménagers. Voici les types de problèmes que nous traitons.</p>
+  <div class="interventions-grid">
+
+    <div class="interv-card reveal">
+      <span class="interv-card-num">01</span>
+      <span class="interv-card-icon">🧺</span>
+      <h4>Lave-linge</h4>
+      <ul>
+        <li>La machine ne démarre pas</li>
+        <li>L'eau fuit sous la machine</li>
+        <li>Le tambour ne tourne plus</li>
+        <li>La machine ne vidange plus</li>
+        <li>Bruit fort ou vibrations anormales</li>
+        <li>La porte ne s'ouvre ou ne ferme plus</li>
+      </ul>
+    </div>
+
+    <div class="interv-card reveal">
+      <span class="interv-card-num">02</span>
+      <span class="interv-card-icon">🍽️</span>
+      <h4>Lave-vaisselle</h4>
+      <ul>
+        <li>La vaisselle ressort sale ou mouillée</li>
+        <li>De l'eau coule sous l'appareil</li>
+        <li>L'eau ne s'évacue plus</li>
+        <li>Un voyant d'erreur s'allume</li>
+        <li>L'appareil ne démarre plus</li>
+        <li>La porte ne ferme plus bien</li>
+      </ul>
+    </div>
+
+    <div class="interv-card reveal">
+      <span class="interv-card-num">03</span>
+      <span class="interv-card-icon">🌀</span>
+      <h4>Sèche-linge</h4>
+      <ul>
+        <li>Le linge ressort encore humide</li>
+        <li>L'appareil chauffe mais ne sèche pas</li>
+        <li>Le tambour ne tourne plus</li>
+        <li>L'appareil s'arrête en cours de cycle</li>
+        <li>Bruit inhabituel pendant le séchage</li>
+        <li>L'appareil ne démarre plus</li>
+      </ul>
+    </div>
+
+    <div class="interv-card reveal">
+      <span class="interv-card-num">04</span>
+      <span class="interv-card-icon">🔥</span>
+      <h4>Four & Micro-onde</h4>
+      <ul>
+        <li>L'appareil ne chauffe plus ou mal</li>
+        <li>La température n'est pas respectée</li>
+        <li>La porte ne ferme plus hermétiquement</li>
+        <li>L'affichage ou les touches ne répondent plus</li>
+        <li>L'appareil s'éteint tout seul</li>
+        <li>Le plateau du micro-onde ne tourne plus</li>
+        <li>Des étincelles apparaissent à l'intérieur</li>
+        <li>L'appareil ne s'allume plus du tout</li>
+      </ul>
+    </div>
+
+    <div class="interv-card reveal">
+      <span class="interv-card-num">05</span>
+      <span class="interv-card-icon">🍳</span>
+      <h4>Plaque de cuisson</h4>
+      <ul>
+        <li>Un ou plusieurs foyers ne chauffent plus</li>
+        <li>La plaque ne détecte plus les casseroles</li>
+        <li>L'affichage est bloqué ou éteint</li>
+        <li>Un message d'erreur s'affiche</li>
+        <li>La plaque disjoncte au démarrage</li>
+        <li>Les touches tactiles ne répondent plus</li>
+      </ul>
+    </div>
+
+    <div class="interv-card reveal">
+      <span class="interv-card-num">06</span>
+      <span class="interv-card-icon">❄️</span>
+      <h4>Froid — Réfrigérateur, Congélateur & Combiné</h4>
+      <ul>
+        <li>L'appareil ne refroidit ou ne congèle plus</li>
+        <li>Du givre s'accumule à l'intérieur</li>
+        <li>L'appareil fait un bruit fort ou inhabituel</li>
+        <li>La température n'est plus respectée</li>
+        <li>La porte ne ferme plus correctement</li>
+        <li>De l'eau coule sous ou dans l'appareil</li>
+        <li>Une alarme ou un voyant s'allume</li>
+        <li>Le congélateur fonctionne mais pas le frigo (ou inversement)</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="engagements">
+  <h2 class="section-title reveal">Pourquoi choisir <span>AC Service</span> ?</h2>
+  <div class="section-line reveal"></div>
+  <div class="garantie-grid" style="max-width:1450px;">
+    <div class="gar-card reveal">
+      <div class="gar-icon">⏱️</div>
+      <h4>Prise en charge rapide</h4>
+      <p>Rendez-vous disponible sous 48h. Votre panne n'attend pas, nous non plus.</p>
+    </div>
+    <div class="gar-card reveal">
+      <div class="gar-icon">🏠</div>
+      <h4>Intervention à domicile</h4>
+      <p>Pas besoin de vous déplacer. Nous venons chez vous avec notre matériel professionnel.</p>
+    </div>
+    <div class="gar-card reveal">
+      <div class="gar-icon">🛡️</div>
+      <h4>Garantie main d'œuvre</h4>
+      <p>Toute intervention est garantie 15 jours sur la main d'œuvre. Pièces garanties selon fournisseur.</p>
+    </div>
+    <div class="gar-card reveal">
+      <div class="gar-icon">🔧</div>
+      <h4>Toutes marques</h4>
+      <p>Whirlpool, Bosch, Samsung, LG, Electrolux, Indesit… Nous réparons toutes les marques du marché.</p>
+    </div>
+    <div class="gar-card reveal">
+      <div class="gar-icon">✅</div>
+      <h4>Contrôle de sécurité</h4>
+      <p>Chaque réparation inclut un contrôle de sécurité complet et un essai de fonctionnement sur place.</p>
+    </div>
+  </div>
+</section>
+
+<section id="avis">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <div style="display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--cyan);border-radius:50px;padding:.5rem 1.4rem;">
+      <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.3rem;">5,0</span>
+      <span style="color:var(--cyan);letter-spacing:.1em;">★★★★★</span>
+      <span style="font-size:.85rem;color:var(--text-light);">Avis Google</span>
+    </div>
+  </div>
+  <h2 class="section-title reveal">La satisfaction de nos <span>clients</span></h2>
+  <div class="section-line reveal"></div>
+  <p style="text-align:center;color:var(--text-light);font-size:.95rem;margin-bottom:2.5rem;">
+    Des interventions sérieuses, honnêtes, et sans mauvaise surprise.
+  </p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1300px;margin:0 auto;align-items:stretch;">
+    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">E</div>
+        <div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.02em;font-size:.95rem;">Elodie L.</div>
+          <div class="avis-date" data-date="2026-07-07" style="font-size:.72rem;color:var(--text-light);"></div>
+        </div>
+      </div>
+      <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
+      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très satisfaite de l'intervention. Réparateur sérieux, professionnel et efficace. La panne a été rapidement identifiée et réparée avec des explications claires. Travail soigné et tarifs corrects. Je recommande sans hésitation.</p>
+    </div>
+    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">J</div>
+        <div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.02em;font-size:.95rem;">Jonathan</div>
+          <div class="avis-date" data-date="2026-07-08" style="font-size:.72rem;color:var(--text-light);"></div>
+        </div>
+      </div>
+      <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
+      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Travail de qualité, prend le temps pour tester les éléments de mon appareil et le prix est très abordable. Vive les petits artisans qui aiment encore leur travail. Bravo Augustin et merci pour votre gentillesse.</p>
+    </div>
+    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">F</div>
+        <div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.02em;font-size:.95rem;">Frederic Lavieu</div>
+          <div class="avis-date" data-date="2026-07-27" style="font-size:.72rem;color:var(--text-light);"></div>
+        </div>
+      </div>
+      <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
+      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très professionnel et honnête. Au regard du problème que j'avais sur mon appareil, il m'a indiqué clairement que je devais changer mon électroménager. Il m'a très bien expliqué l'origine de ma panne. Bon nombre de professionnels m'auraient certainement dit qu'il fallait se déplacer pour voir. Je tiens à souligner ce point fort qui est cette honnêteté. En cas de besoin je recontacterais sans hésitation. Et encore merci à lui.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;">
+    <a href="https://g.page/r/CcRhyELC216hEBM" target="_blank" rel="noopener" class="btn-primary" style="font-size:.9rem;padding:.7rem 1.8rem;">Voir notre fiche Google ↗</a>
+  </div>
+</section>
+
+<section id="forfaits">
+  <h2 class="section-title reveal">Nos <span>Forfaits</span></h2>
+  <div class="section-line reveal"></div>
+  <div class="forfaits-grid">
+    <div class="forfait-card reveal">
+      <div class="forfait-price"><sup>€</sup>60 <span>TTC</span></div>
+      <div class="forfait-name">🍳 Appareils de cuisson</div>
+      <div class="forfait-appareils">
+        <span class="tag">Micro-onde</span>
+        <span class="tag">Four</span>
+        <span class="tag">Plaque de cuisson</span>
+      </div>
+      <ul class="forfait-features">
+        <li>Devis gratuit</li>
+        <li>Rendez-vous sous 48h</li>
+        <li>Déplacement &amp; diagnostic inclus</li>
+        <li>Contrôle de sécurité</li>
+        <li>Essai de fonctionnement</li>
+        <li>Réparation garantie 15 jours</li>
+      </ul>
+    </div>
+    <div class="forfait-card card-autres reveal">
+      <div class="forfait-price"><sup>€</sup>65 <span>TTC</span></div>
+      <div class="forfait-name">🧺 Lavage &amp; séchage</div>
+      <div class="forfait-appareils">
+        <span class="tag">Lave-linge</span>
+        <span class="tag">Lave-vaisselle</span>
+        <span class="tag">Sèche-linge</span>
+      </div>
+      <ul class="forfait-features">
+        <li>Devis gratuit</li>
+        <li>Rendez-vous sous 48h</li>
+        <li>Déplacement &amp; diagnostic inclus</li>
+        <li>Contrôle de sécurité</li>
+        <li>Essai de fonctionnement</li>
+        <li>Réparation garantie 15 jours</li>
+      </ul>
+    </div>
+    <div class="forfait-card reveal">
+      <div class="forfait-price"><sup>€</sup>70 <span>TTC</span></div>
+      <div class="forfait-name">❄️ Froid</div>
+      <div class="forfait-appareils">
+        <span class="tag">Réfrigérateur</span>
+        <span class="tag">Congélateur</span>
+        <span class="tag">Combiné frigo-congélo</span>
+      </div>
+      <ul class="forfait-features">
+        <li>Devis gratuit</li>
+        <li>Rendez-vous sous 48h</li>
+        <li>Déplacement &amp; diagnostic inclus</li>
+        <li>Contrôle de sécurité</li>
+        <li>Essai de fonctionnement</li>
+        <li>Réparation garantie 15 jours</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Note tarifaire 1er / 2ème passage -->
+  <div class="forfaits-note reveal">
+    <div class="forfaits-note-row">
+      <span class="forfaits-note-icon">1️⃣</span>
+      <span><strong>1er passage (diagnostic + réparation) :</strong> forfait 60 €, 65 € ou 70 € TTC tout compris — déplacement, diagnostic, main-d'œuvre et essai de fonctionnement inclus. Les pièces détachées éventuelles sont en supplément et indiquées sur devis.</span>
+    </div>
+    <div class="fn-sep"></div>
+    <div class="forfaits-note-row">
+      <span class="forfaits-note-icon">2️⃣</span>
+      <span><strong>2ème passage (pose de la pièce commandée) :</strong> forfait déplacement de <strong>30 €</strong> uniquement + prix de la pièce — le forfait d'intervention complet n'est plus refacturé.</span>
+    </div>
+    <div class="fn-sep"></div>
+    <div class="forfaits-note-row">
+      <span class="forfaits-note-icon">📥</span>
+      <span><strong>Dépôt à l'atelier :</strong> pour les appareils transportables, un forfait <strong>Dépôt &amp; Diagnostic à 50 €</strong> couvre l'examen technique complet à l'atelier. Un devis de réparation est ensuite établi et soumis à votre accord avant toute intervention. <a href="depot.html" style="color:var(--cyan);">Voir l'offre dépôt →</a></span>
+    </div>
+  </div>
+</section>
+
+<section id="conditions">
+  <h2 class="section-title reveal">Conditions <span>applicables</span></h2>
+  <div class="section-line reveal"></div>
+  <div class="conditions-grid">
+    <div class="cond-card reveal">
+      <div class="cond-icon">📋</div>
+      <div class="cond-text">
+        <h4>Devis avant travaux</h4>
+        <p>Un devis est établi et signé avant chaque réparation. Aucune intervention sans votre accord.</p>
+      </div>
+    </div>
+    <div class="cond-card reveal">
+      <div class="cond-icon">🔩</div>
+      <div class="cond-text">
+        <h4>Pièces en supplément</h4>
+        <p>Le prix des pièces détachées n'est pas inclus dans le forfait et est indiqué sur le devis.</p>
+      </div>
+    </div>
+    <div class="cond-card reveal">
+      <div class="cond-icon">🔁</div>
+      <div class="cond-text">
+        <h4>2ème passage</h4>
+        <p>Au 2ᵉ passage, seul un forfait déplacement de <strong>30 €</strong> + prix de la pièce commandée sera facturé — le forfait d'intervention n'est pas refacturé.</p>
+      </div>
+    </div>
+    <div class="cond-card reveal">
+      <div class="cond-icon">📍</div>
+      <div class="cond-text">
+        <h4>Hors zone (+30 km)</h4>
+        <p>Un supplément de 1 €/km est appliqué au-delà de 30 km autour d'Esquelbecq.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zone">
+  <div class="zone-inner">
+    <h2 class="section-title reveal">Zone d'<span>intervention</span></h2>
+    <div class="section-line reveal"></div>
+    <div class="zone-radius reveal">30 km</div>
+    <p class="zone-desc reveal">
+      AC SERVICE, réparateur électroménager à domicile, intervient dans un rayon de <strong>30 km autour d'Esquelbecq (59470)</strong>, couvrant le Nord (59) et le Pas-de-Calais (62).
+    </p>
+    <div class="zone-cities reveal" style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.5rem 0;">
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Esquelbecq</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Dunkerque</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Saint-Omer</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Bergues</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Cassel</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Hazebrouck</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Bailleul</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Steenvoorde</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Gravelines</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Watten</span>
+      <span style="background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);border-radius:20px;padding:.4rem 1rem;font-size:.9rem;">Bourbourg</span>
+    </div>
+    <p class="zone-desc reveal" style="font-size:.9rem;opacity:.75;">
+      Et toutes les communes environnantes — nous venons chez vous !
+    </p>
+    <div class="zone-surcharge reveal">⚠️ Au-delà de 30 km : supplément de 1 €/km</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <a href="tel:+33744859895" class="contact-item" aria-label="Appeler AC SERVICE au 07 44 85 98 95">
+      <div class="contact-item-icon">📞</div>
+      <span>07 44 85 98 95</span>
+    </a>
+    <a href="mailto:ac.service59.pro@gmail.com" class="contact-item">
+      <div class="contact-item-icon">✉️</div>
+      <span>ac.service59.pro@gmail.com</span>
+    </a>
+    <a href="https://wa.me/33744859895" target="_blank" class="contact-item">
+      <div class="contact-item-icon">💬</div>
+      <span>WhatsApp</span>
+    </a>
+    <div class="contact-item">
+      <div class="contact-item-icon">📍</div>
+      <span>Esquelbecq (59470)</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-legal-links">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgv.html">Conditions Générales de Vente</a>
+    <a href="rgpd.html">Données personnelles (RGPD)</a>
+  </div>
+  <p class="footer-copy">
+    © 2026 <span>AC SERVICE</span> — Réparateur électroménager à domicile — Nord &amp; Pas-de-Calais<br>
+    Non assujetti à la TVA — Art. 293 B du CGI — Assurance RC Professionnelle
+  </p>
+</footer>
+
+<!-- ── Bouton WhatsApp flottant ── -->
+<a class="btn-whatsapp-float"
+   href="https://wa.me/33744859895?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20avec%20AC%20SERVICE."
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Envoyer un message WhatsApp à AC SERVICE">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="16" cy="16" r="16" fill="#25D366"/>
+    <path d="M23.472 8.516A10.176 10.176 0 0 0 16.02 5.5C10.745 5.5 6.46 9.782 6.457 15.057c-.001 1.865.487 3.684 1.415 5.29L6.37 26.5l6.296-1.652a10.224 10.224 0 0 0 4.35.985h.004c5.272 0 9.558-4.282 9.56-9.558a9.504 9.504 0 0 0-2.808-6.759Zm-7.452 14.7h-.003a8.49 8.49 0 0 1-4.327-1.185l-.31-.184-3.22.844.86-3.14-.202-.322a8.47 8.47 0 0 1-1.3-4.515c.002-4.683 3.812-8.49 8.503-8.49a8.44 8.44 0 0 1 5.994 2.485 8.433 8.433 0 0 1 2.48 5.999c-.002 4.684-3.812 8.49-8.475 8.508Zm4.655-6.354c-.255-.128-1.508-.744-1.742-.828-.234-.085-.404-.128-.574.128-.17.255-.657.828-.806 1-.148.17-.297.19-.552.064-.254-.128-1.075-.396-2.048-1.264-.758-.675-1.269-1.509-1.418-1.763-.148-.255-.016-.393.112-.52.115-.115.255-.298.383-.447.127-.149.17-.255.255-.425.085-.17.042-.32-.021-.447-.064-.128-.574-1.383-.786-1.894-.207-.497-.418-.43-.574-.438-.149-.007-.32-.009-.49-.009-.17 0-.447.064-.682.32-.234.255-.893.873-.893 2.129s.914 2.468 1.042 2.638c.127.17 1.799 2.747 4.36 3.852.61.263 1.085.42 1.455.537.61.194 1.167.167 1.607.101.49-.073 1.508-.616 1.72-1.211.213-.595.213-1.105.15-1.211-.063-.106-.234-.17-.49-.298Z" fill="#fff"/>
+  </svg>
+  <span class="wa-label">Une question ? Écrivez-nous</span>
+</a>
+
+
+<script>
+
+/* ── Scroll en haut au chargement ── */
+if(history.scrollRestoration){history.scrollRestoration='manual';}
+window.scrollTo(0,0);
+
+/* ── Menu hamburger ── */
+const ham=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
+
+/* ── Particules hero ── */
+(function(){
+  const container=document.getElementById('particles');
+  for(let i=0;i<55;i++){
+    const p=document.createElement('div');p.className='particle';
+    const s=Math.random()*22+6;
+    const color='#00b4d8';
+    p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+color+';animation-duration:'+(Math.random()*16+8)+'s;animation-delay:'+Math.random()*14+'s;opacity:'+(Math.random()*.5+.2);
+    container.appendChild(p);
+  }
+})();
+
+/* ── Animations scroll ── */
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── Ancienneté des avis, recalculée à chaque chargement (jamais figée) ── */
+function relativeTimeFr(dateStr){
+  const then = new Date(dateStr+'T00:00:00');
+  const now = new Date();
+  const diffDays = Math.floor((now - then) / (1000*60*60*24));
+  if(diffDays <= 0) return "Aujourd'hui";
+  if(diffDays === 1) return 'Il y a 1 jour';
+  if(diffDays < 7) return 'Il y a '+diffDays+' jours';
+  const diffWeeks = Math.floor(diffDays/7);
+  if(diffWeeks === 1) return 'Il y a 1 semaine';
+  if(diffWeeks < 5) return 'Il y a '+diffWeeks+' semaines';
+  const diffMonths = Math.floor(diffDays/30);
+  if(diffMonths <= 1) return 'Il y a 1 mois';
+  if(diffMonths < 12) return 'Il y a '+diffMonths+' mois';
+  const diffYears = Math.floor(diffDays/365);
+  return 'Il y a '+diffYears+(diffYears>1?' ans':' an');
+}
+document.querySelectorAll('.avis-date').forEach(el=>{
+  el.textContent = relativeTimeFr(el.dataset.date);
+});
+</script>
+</body>
+</html>

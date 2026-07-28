@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prendre Rendez-vous – AC SERVICE</title>
+<meta name="description" content="Prenez rendez-vous avec AC SERVICE pour la réparation de votre électroménager à domicile. Devis gratuit, RDV sous 48h.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.acservicepro.fr/rdv.html">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" type="image/png" href="/favicon.png">
+<style>
+
+:root{
+  --navy-mid:#010e22;
+  --cyan:#00b4d8; --cyan-glow:#48cae4; --gold:#00b4d8;
+  --white:#f0f4ff; --text-light:#a8c0d6;
+  --card-bg:rgba(255,255,255,0.04); --border:rgba(0,180,216,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(180deg,#011331 0%,#000000 100%);color:var(--white);overflow-x:hidden;min-height:100vh;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;background:rgba(1,19,49,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--text-light);text-decoration:none;text-transform:uppercase;transition:color .25s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;padding:.5rem 1.4rem;border-radius:4px;font-weight:700!important;transition:transform .2s,box-shadow .2s!important;}
+.mode-switch{display:inline-flex;align-items:center;gap:.15rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:.2rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
+.mode-switch-item{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .8rem;border-radius:50px;font-family:'Rajdhani',sans-serif;font-weight:700!important;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--text-light)!important;text-decoration:none;transition:.2s;white-space:nowrap;}
+.mode-switch-item.active{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;}
+.mode-switch-item:not(.active):hover{color:var(--white)!important;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,216,.4)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+.nav-logo{display:flex;align-items:center;gap:.7rem;}
+.nav-logo img{height:52px;mix-blend-mode:screen;}
+.nav-brand-name{font-family:'Rajdhani',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:.06em;color:#fff;line-height:1;text-transform:uppercase;white-space:nowrap;}
+
+section{position:relative;z-index:1;}
+
+.btn-primary{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff;padding:.85rem 2.2rem;border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,180,216,.3);display:inline-block;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
+
+/* ── Footer ── */
+footer{background:#000;border-top:1px solid rgba(0,180,216,.15);padding:2.5rem 1.5rem 1.5rem;text-align:center;}
+footer span{color:var(--cyan);}
+.footer-legal-links{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.5rem;margin-bottom:1rem;}
+.footer-legal-links a{font-size:.78rem;color:rgba(240,244,255,.45);text-decoration:underline;transition:color .2s;}
+.footer-legal-links a:hover{color:var(--cyan);}
+.footer-copy{font-size:.78rem;color:rgba(240,244,255,.35);line-height:1.6;}
+.footer-copy span{color:var(--cyan);}
+
+/* ── Bouton WhatsApp flottant ── */
+.btn-whatsapp-float{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:.75rem 1.2rem .75rem .95rem;border-radius:50px;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
+.btn-whatsapp-float:hover{background:#1ebe5d;transform:translateY(-3px) scale(1.04);box-shadow:0 8px 28px rgba(37,211,102,.55);}
+.btn-whatsapp-float svg{width:1.5rem;height:1.5rem;flex-shrink:0;}
+@media(max-width:520px){
+  .btn-whatsapp-float .wa-label{display:none;}
+  .btn-whatsapp-float{padding:.8rem;border-radius:50%;box-shadow:0 4px 18px rgba(37,211,102,.5);}
+}
+
+/* ══ MOBILE (≤ 680px) ══ */
+@media(max-width:680px){
+  nav{padding:.8rem 1.2rem;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(1,13,33,.98);flex-direction:column;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);}
+  .nav-links.open{display:flex;}
+  .mode-switch{position:static;transform:none;margin:0 auto;}
+}
+
+
+/* ── En-tête de page ── */
+.page-hero{padding:7.5rem 2rem 3rem;text-align:center;background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(0,119,182,.18) 0%,transparent 70%),linear-gradient(180deg,#011331 0%,#000000 100%);border-bottom:1px solid var(--border);}
+.page-hero h1{font-family:'Rajdhani',sans-serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;letter-spacing:.04em;}
+.page-hero h1 span{color:var(--cyan);}
+.page-hero p{color:var(--text-light);margin-top:.7rem;font-size:1rem;max-width:560px;margin-left:auto;margin-right:auto;}
+
+/* ── Formulaire RDV ── */
+#rdv{padding:3.5rem 2rem 5rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
+.form-container{max-width:680px;width:100%;margin:0 auto;background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:3rem 2.5rem;backdrop-filter:blur(8px);box-sizing:border-box;overflow:hidden;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.form-section{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:1.6rem;margin-bottom:1.5rem;}
+.form-section-title{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--cyan);font-size:.9rem;margin-bottom:1.3rem;}
+.form-grid>div{min-width:0;}
+.form-full{grid-column:1 / -1;}
+label{display:block;font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:.4rem;}
+input:not([type="checkbox"]):not([type="radio"]),select,textarea{width:100%;max-width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1px solid rgba(0,180,216,.25);border-radius:8px;color:var(--white);font-family:'Nunito',sans-serif;font-size:16px;padding:.75rem 1rem;transition:border-color .25s,box-shadow .25s;outline:none;-webkit-appearance:none;}
+input:not([type="checkbox"]):not([type="radio"]):focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,180,216,.15);}
+select option{background:var(--navy-mid);color:var(--white);}
+textarea{resize:vertical;min-height:110px;}
+.form-submit{margin-top:1.5rem;width:100%;background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff;border:none;border-radius:8px;padding:1rem;font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,180,216,.3);}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
+.form-note{margin-top:1rem;text-align:center;font-size:.82rem;color:var(--text-light);}
+.photo-modal-btn{width:100%;box-sizing:border-box;background:linear-gradient(135deg,var(--cyan),#0077b6);border:none;border-radius:8px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.75rem 1rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,180,216,.3);transition:transform .2s,box-shadow .2s;}
+.photo-modal-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
+#form-success{display:none;text-align:center;padding:2rem;}
+#form-success .check{font-size:3.5rem;}
+#form-success h3{font-family:'Rajdhani',sans-serif;font-size:1.6rem;margin:.8rem 0 .5rem;color:var(--cyan);}
+#form-success p{color:var(--text-light);font-size:.95rem;}
+
+/* ── Bandeau rassurant ── */
+.form-reassurance{max-width:700px;width:100%;box-sizing:border-box;margin:0 auto 2rem;background:rgba(0,180,216,.06);border:1px solid rgba(0,180,216,.2);border-radius:14px;padding:1.3rem 1.6rem;display:flex;flex-direction:column;gap:.85rem;overflow:hidden;}
+.form-reassurance-title{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;text-align:center;margin-bottom:.1rem;}
+.form-reassurance-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.65rem;}
+.fr-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.84rem;color:rgba(240,244,255,.78);line-height:1.45;}
+.fr-icon{font-size:1.1rem;flex-shrink:0;margin-top:.05rem;}
+.fr-item strong{color:#f0f4ff;display:block;font-size:.86rem;}
+.form-reassurance-legal{text-align:center;font-size:.78rem;color:rgba(240,244,255,.45);border-top:1px solid rgba(0,180,216,.12);padding-top:.75rem;line-height:1.55;}
+.form-reassurance-legal strong{color:rgba(240,244,255,.6);}
+
+/* ── Calendrier disponibilités ── */
+.cal-wrapper{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1rem;box-sizing:border-box;max-width:100%;overflow:hidden;}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;}
+.cal-strip-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;}
+.cal-strip-wrapper::-webkit-scrollbar{height:6px;}
+.cal-strip-wrapper::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+.cal-strip{display:flex;gap:.6rem;min-width:min-content;}
+.day-card{flex:0 0 auto;width:62px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:.6rem .2rem;text-align:center;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;}
+.day-card:hover:not(.day-disabled){border-color:var(--cyan);}
+.day-card .dow{font-size:.66rem;text-transform:uppercase;color:rgba(255,255,255,.55);letter-spacing:.03em;}
+.day-card .num{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1.15;margin:.15rem 0;}
+.day-card .mon{font-size:.66rem;color:rgba(255,255,255,.55);text-transform:uppercase;}
+.day-card.day-disabled{opacity:.3;cursor:not-allowed;}
+.day-card.day-active{background:rgba(0,180,216,.25);border-color:var(--cyan);}
+.day-card.day-active .num,.day-card.day-active .dow,.day-card.day-active .mon{color:var(--cyan);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.cal-cell{background:transparent;border:1px solid transparent;color:#fff;font-size:.78rem;padding:.35rem 0;border-radius:6px;cursor:pointer;transition:all .15s;}
+.cal-cell:hover:not(:disabled){border-color:var(--cyan);color:var(--cyan);}
+.cal-cell.cal-empty{visibility:hidden;}
+.cal-cell.cal-disabled{color:rgba(255,255,255,.2);cursor:default;}
+.cal-cell.cal-selected{background:rgba(0,180,216,.25);border-color:var(--cyan);color:var(--cyan);}
+.cal-cell.cal-active{background:var(--cyan);color:#011331;font-weight:700;}
+.cal-slots-panel{margin-top:1rem;padding:1rem;background:rgba(0,180,216,.08);border-radius:10px;border:1px solid rgba(0,180,216,.25);}
+.cal-slots-title{font-size:.85rem;color:rgba(255,255,255,.8);margin:0 0 .7rem;}
+.cal-slots-btns{display:flex;gap:.7rem;flex-wrap:wrap;}
+.slot-btn{background:rgba(255,255,255,.06);border:1px solid var(--border);color:#fff;padding:.5rem 1rem;border-radius:8px;font-size:.83rem;cursor:pointer;transition:all .2s;}
+.slot-btn:hover{border-color:var(--cyan);}
+.slot-btn.slot-active{background:rgba(0,180,216,.3);border-color:var(--cyan);color:var(--cyan);font-weight:600;}
+.slot-btn:disabled{opacity:.35;cursor:not-allowed;}
+.slot-btn small{display:block;font-size:.72rem;color:rgba(255,255,255,.6);margin-top:.2rem;}
+.cal-summary{margin-top:.8rem;font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.7;padding:.7rem 1rem;background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.25);border-radius:8px;}
+
+/* ── Autocomplétion adresse (Géoplateforme IGN) ── */
+.adresse-wrap{position:relative;}
+.adresse-suggestions{position:absolute;top:100%;left:0;right:0;background:#0b1e3d;border:1px solid rgba(0,180,216,.35);border-top:none;border-radius:0 0 8px 8px;z-index:1000;max-height:220px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+.adresse-suggestions.open{display:block;}
+.adresse-suggestion-item{padding:.65rem 1rem;font-size:.88rem;color:rgba(240,244,255,.82);cursor:pointer;border-bottom:1px solid rgba(0,180,216,.08);transition:background .15s;line-height:1.3;}
+.adresse-suggestion-item:last-child{border-bottom:none;}
+.adresse-suggestion-item:hover,.adresse-suggestion-item.active{background:rgba(0,180,216,.15);color:#fff;}
+.adresse-suggestion-item .item-label{font-weight:600;}
+.adresse-suggestion-item .item-ctx{font-size:.78rem;color:rgba(168,192,214,.6);margin-top:.1rem;}
+
+@media(max-width:680px){
+  html,body{overflow-x:hidden;max-width:100%;}
+  .page-hero{padding:6rem 1.2rem 2.5rem;}
+  .form-grid{grid-template-columns:1fr;}
+  .form-container{padding:1.8rem 1.2rem;}
+  .form-reassurance{padding:1rem 1.2rem;}
+  .form-reassurance-items{grid-template-columns:1fr;}
+  #rdv{padding:2.5rem 1.2rem 3.5rem;}
+}
+
+@media(max-width:420px){
+  #rdv{padding:2rem .8rem 3rem;}
+  .form-container{padding:1.4rem .9rem;border-radius:14px;}
+  .form-reassurance{padding:.9rem .9rem;}
+  .form-section{padding:1rem .9rem;}
+  .fr-item{font-size:.8rem;}
+  .cal-wrapper{padding:.9rem .6rem;}
+  .day-card{width:52px;padding:.5rem .1rem;}
+  .cal-strip{gap:.4rem;}
+  .cal-slots-btns{gap:.5rem;}
+  .slot-btn{padding:.45rem .8rem;font-size:.8rem;}
+  input:not([type="checkbox"]):not([type="radio"]),select,textarea{padding:.7rem .8rem;}
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" aria-label="Retour à l'accueil AC SERVICE" style="text-decoration:none;"><div class="nav-logo">
+    <img src="assets/logo.svg" alt="AC SERVICE Logo">
+    <span class="nav-brand-name">AC <span style="color:var(--cyan)">Service</span></span>
+  </div></a>
+  <ul class="nav-links" id="navLinks">
+    <li>
+      <div class="mode-switch">
+        <a href="index.html" class="mode-switch-item active">🏠 À domicile</a>
+        <a href="depot.html" class="mode-switch-item">📥 Dépôt</a>
+      </div>
+    </li>
+    <li><a href="rdv.html" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<section class="page-hero">
+  <h1>Prendre <span>Rendez-vous</span></h1>
+  <p>Réservez votre créneau dés maintenant.</p>
+</section>
+
+<section id="rdv">
+  <div class="form-container reveal">
+    <!-- Bandeau rassurant -->
+    <div class="form-reassurance">
+      <p class="form-reassurance-title">📅 Réservez votre créneau en direct</p>
+      <div class="form-reassurance-items">
+        <div class="fr-item">
+          <span class="fr-icon">🆓</span>
+          <span><strong>Aucun engagement</strong>Ce formulaire est une réservation de créneau. Il ne vous engage absolument à rien.</span>
+        </div>
+        <div class="fr-item">
+          <span class="fr-icon">📋</span>
+          <span><strong>Devis avant tout</strong>Nous établissons un devis écrit et gratuit lors du 1er passage. Vous restez libre d'accepter ou de refuser.</span>
+        </div>
+        <div class="fr-item">
+          <span class="fr-icon">✍️</span>
+          <span><strong>Signature = engagement</strong>Seule la <em>signature du devis</em> vous engage contractuellement et implique votre présence lors du rendez-vous ainsi que le paiement à la fin de l'intervention.</span>
+        </div>
+        <div class="fr-item">
+          <span class="fr-icon">🔒</span>
+          <span><strong>Vos données protégées</strong>Vos informations sont utilisées uniquement pour vous recontacter. Aucune transmission à des tiers.</span>
+        </div>
+      </div>
+      <p class="form-reassurance-legal">
+        <strong>Rappel :</strong> Conformément à nos <a href="cgv.html" style="color:var(--cyan);">CGV</a>, seule l'acceptation et la <strong>signature du devis</strong> vous lie contractuellement avec AC SERVICE
+        et entraîne l'obligation de paiement à la fin de l'intervention. L'envoi de ce formulaire ne constitue pas un contrat.
+      </p>
+    </div>
+
+    <div id="form-success">
+      <div class="check">✅</div>
+      <h3>Demande reçue !</h3>
+      <p>Nous vous recontactons dans les plus brefs délais pour convenir d'un rendez-vous.</p>
+      <p style="margin-top:.8rem;font-size:.83rem;color:rgba(240,244,255,.5);max-width:460px;margin-left:auto;margin-right:auto;line-height:1.6;">
+        <strong style="color:rgba(240,244,255,.7);">Pour rappel :</strong> cette demande ne vous engage pas.
+        Un devis écrit gratuit vous sera remis lors du 1er passage.
+        Seule votre signature sur ce devis vous engagera contractuellement.
+      </p>
+      <a href="index.html" class="btn-primary" style="margin-top:1.5rem;">← Retour à l'accueil</a>
+    </div>
+    <form id="rdvForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+      <div class="form-section">
+        <div class="form-section-title">Vos coordonnées</div>
+        <div class="form-grid">
+          <div>
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
+          </div>
+          <div>
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+          </div>
+          <div class="form-full">
+            <label for="adresse">Adresse d'intervention *</label>
+            <div class="adresse-wrap">
+              <input type="text" id="adresse" name="adresse" placeholder="12 rue de la Paix" required autocomplete="off">
+              <div class="adresse-suggestions" id="adresseSuggestions"></div>
+            </div>
+          </div>
+          <div class="form-full">
+            <label for="complementAdresse">Complément d'adresse (optionnel)</label>
+            <input type="text" id="complementAdresse" name="complement_adresse" placeholder="Appartement, bâtiment, étage…">
+          </div>
+          <div>
+            <label for="codePostal">Code postal *</label>
+            <input type="text" id="codePostal" name="code_postal" placeholder="59000" inputmode="numeric" maxlength="5" required>
+          </div>
+          <div>
+            <label for="ville">Ville *</label>
+            <input type="text" id="ville" name="ville" placeholder="Lille" required>
+          </div>
+          <div>
+            <label for="tel">Téléphone *</label>
+            <input type="tel" id="tel" name="telephone" placeholder="06 XX XX XX XX" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.fr">
+          </div>
+          <div class="form-full">
+            <label for="autreNumero">Autre numéro pour le jour du RDV (optionnel — si ce n'est pas vous qui accueillerez le technicien)</label>
+            <input type="tel" id="autreNumero" name="autre_numero" placeholder="Ex : numéro d'un proche présent sur place">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">Votre panne</div>
+        <div class="form-grid">
+          <div class="form-full">
+            <label for="appareil">Type d'appareil *</label>
+            <select id="appareil" name="appareil" required>
+              <option value="" disabled selected>Choisir…</option>
+              <option>Lave-linge</option>
+              <option>Sèche-linge</option>
+              <option>Lave-vaisselle</option>
+              <option>Four</option>
+              <option>Micro-onde</option>
+              <option>Plaque de cuisson (hors gaz)</option>
+              <option>Réfrigérateur</option>
+              <option>Congélateur</option>
+              <option>Combiné frigo-congélo</option>
+              <option value="Autre">Autre (précisez)</option>
+            </select>
+            <input type="text" id="appareilAutre" name="appareil_autre" placeholder="Précisez le type d'appareil" style="display:none;margin-top:.6rem;">
+            <a href="#" id="appareilBackToList" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:.4rem;">↩ Choisir dans la liste</a>
+          </div>
+          <div>
+            <label for="marque">Marque (facultatif)</label>
+            <input type="text" id="marque" name="marque" placeholder="ex : Bosch, Samsung, Whirlpool…">
+          </div>
+          <div>
+            <label for="modele">Modèle (facultatif)</label>
+            <input type="text" id="modele" name="modele" placeholder="ex : WAT28440FF (visible sur la plaque signalétique)">
+          </div>
+          <div class="form-full">
+            <label for="panne">Description de la panne *</label>
+            <textarea id="panne" name="panne" placeholder="Décrivez le problème rencontré…" required></textarea>
+          </div>
+          <div class="form-full">
+            <label>&nbsp;</label>
+            <button type="button" id="openPhotoModalBtn" class="photo-modal-btn">📷 <span id="photoModalBtnLabel">Ajouter des photos</span></button>
+            <p style="font-size:.78rem;color:rgba(240,244,255,.5);margin-top:.5rem;">Nous aide à préparer la bonne pièce avant notre passage.</p>
+          </div>
+          <div class="form-full">
+            <label for="notePourTechnicien">Note pour le technicien (optionnel)</label>
+            <textarea id="notePourTechnicien" name="note_technicien" placeholder="Ex : ne pas sonner, maison bleue, code portail 1234…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">Choisissez une date</div>
+        <div class="form-grid">
+          <!-- ── Calendrier de disponibilités ── -->
+          <div class="form-full">
+            <label>Choisir un créneau pour votre rendez-vous !</label>
+            <div class="cal-wrapper">
+              <div class="cal-strip-wrapper">
+                <div class="cal-strip" id="calStrip"></div>
+              </div>
+              <div id="calSlots" class="cal-slots-panel" style="display:none">
+                <p class="cal-slots-title">Créneaux pour <strong id="calSlotDate"></strong></p>
+                <div class="cal-slots-btns" id="calSlotsBtns">
+                  <button type="button" class="slot-btn" data-slot="morning" onclick="selectSlot(this)">🌅 Matin</button>
+                  <button type="button" class="slot-btn" data-slot="afternoon" onclick="selectSlot(this)">🌇 Après-midi</button>
+                </div>
+              </div>
+              <div id="calSummary" class="cal-summary" style="display:none"></div>
+              <input type="hidden" id="dispos" name="disponibilites">
+              <input type="hidden" id="rdvDate" name="rdv_date">
+              <input type="hidden" id="rdvSlot" name="rdv_slot">
+            </div>
+          </div>
+          <div class="form-full">
+            <label for="source">Comment nous avez-vous trouvés ?</label>
+            <input type="text" id="source" name="source" placeholder="Bouche à oreille, Google…">
+          </div>
+        </div>
+      </div>
+      <!-- Champs Web3Forms cachés -->
+      <input type="hidden" name="access_key" value="79340f2d-260c-42ae-9919-f6ea35cb70d4">
+      <input type="hidden" name="subject" id="hidden_subject" value="">
+      <input type="hidden" name="from_name" value="AC SERVICE – Site web">
+      <input type="hidden" name="redirect" value="false">
+      <input type="hidden" name="botcheck" value="" style="display:none">
+
+      <button type="submit" class="form-submit" id="submitBtn">
+        <span id="submitText">📨 Envoyer ma demande de RDV</span>
+        <span id="submitLoader" style="display:none">⏳ Envoi en cours…</span>
+      </button>
+      <p class="form-note">
+  🔒 Envoi sécurisé directement dans notre boîte mail — nous vous rappelons sous 48h.<br>
+  <span style="font-size:.78rem;opacity:.6;">Ce formulaire ne constitue pas un contrat. Seule la signature du devis vous engage.</span>
+</p>
+    </form>
+  </div>
+</section>
+
+<!-- ── Fenêtre d'ajout de photos (appareil + plaque signalétique) ── -->
+<div id="photoModalOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:center;justify-content:center;padding:1.2rem;">
+  <div style="background:#010e22;border:1px solid var(--border);border-top:3px solid var(--cyan);border-radius:14px;max-width:480px;width:100%;padding:1.8rem;max-height:90vh;overflow-y:auto;">
+    <h3 style="font-family:'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">📷 Ajouter des photos</h3>
+    <p style="font-size:.82rem;opacity:.65;margin-bottom:1.4rem;">Facultatif, mais ça nous aide à préparer l'intervention. Vous pouvez choisir une photo depuis votre galerie ou en prendre une directement.</p>
+
+    <div style="background:rgba(0,180,216,.05);border:1px solid rgba(0,180,216,.2);border-radius:14px;padding:1.2rem;margin-bottom:1.2rem;text-align:center;">
+      <div style="font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.9rem;">Photo de l'appareil</div>
+      <div id="photoAppareilPreview" style="width:100%;height:110px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin-bottom:.7rem;overflow:hidden;">📱</div>
+      <div id="photoAppareilLabel" style="font-size:.8rem;color:var(--text-light);margin-bottom:.3rem;word-break:break-word;">Aucune photo choisie</div>
+      <button type="button" id="removePhotoAppareilBtn" style="display:none;background:none;border:none;color:#ff8080;font-size:.76rem;font-weight:700;cursor:pointer;margin-bottom:.8rem;padding:0;">🗑️ Retirer la photo</button>
+      <div style="display:flex;gap:.6rem;">
+        <label style="flex:1;background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);color:var(--cyan);border-radius:8px;padding:.65rem .5rem;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;">📷 Prendre une photo
+          <input type="file" id="photoAppareilCamera" accept="image/*" capture="environment" style="display:none;">
+        </label>
+        <label style="flex:1;background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);color:var(--cyan);border-radius:8px;padding:.65rem .5rem;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;">🖼️ Galerie
+          <input type="file" id="photoAppareilGallery" accept="image/*" style="display:none;">
+        </label>
+      </div>
+    </div>
+
+    <div style="background:rgba(0,180,216,.05);border:1px solid rgba(0,180,216,.2);border-radius:14px;padding:1.2rem;margin-bottom:1.6rem;text-align:center;">
+      <div style="font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.9rem;">Photo de la plaque signalétique</div>
+      <div id="photoPlaquePreview" style="width:100%;height:110px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin-bottom:.7rem;overflow:hidden;">🏷️</div>
+      <div id="photoPlaqueLabel" style="font-size:.8rem;color:var(--text-light);margin-bottom:.3rem;word-break:break-word;">Aucune photo choisie</div>
+      <button type="button" id="removePhotoPlaqueBtn" style="display:none;background:none;border:none;color:#ff8080;font-size:.76rem;font-weight:700;cursor:pointer;margin-bottom:.8rem;padding:0;">🗑️ Retirer la photo</button>
+      <div style="display:flex;gap:.6rem;">
+        <label style="flex:1;background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);color:var(--cyan);border-radius:8px;padding:.65rem .5rem;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;">📷 Prendre une photo
+          <input type="file" id="photoPlaqueCamera" accept="image/*" capture="environment" style="display:none;">
+        </label>
+        <label style="flex:1;background:rgba(0,180,216,.1);border:1px solid rgba(0,180,216,.3);color:var(--cyan);border-radius:8px;padding:.65rem .5rem;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;">🖼️ Galerie
+          <input type="file" id="photoPlaqueGallery" accept="image/*" style="display:none;">
+        </label>
+      </div>
+    </div>
+
+    <button type="button" id="closePhotoModalBtn" class="btn-primary" style="width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:.6rem;">
+      <span style="font-size:1.2rem;line-height:1;">✅</span>
+      Valider
+    </button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-legal-links">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgv.html">Conditions Générales de Vente</a>
+    <a href="rgpd.html">Données personnelles (RGPD)</a>
+  </div>
+  <p class="footer-copy">
+    © 2026 <span>AC SERVICE</span> — Réparateur électroménager à domicile — Nord &amp; Pas-de-Calais<br>
+    Non assujetti à la TVA — Art. 293 B du CGI — Assurance RC Professionnelle
+  </p>
+</footer>
+
+<!-- ── Bouton WhatsApp flottant ── -->
+<a class="btn-whatsapp-float"
+   href="https://wa.me/33744859895?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20avec%20AC%20SERVICE."
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Envoyer un message WhatsApp à AC SERVICE">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="16" cy="16" r="16" fill="#25D366"/>
+    <path d="M23.472 8.516A10.176 10.176 0 0 0 16.02 5.5C10.745 5.5 6.46 9.782 6.457 15.057c-.001 1.865.487 3.684 1.415 5.29L6.37 26.5l6.296-1.652a10.224 10.224 0 0 0 4.35.985h.004c5.272 0 9.558-4.282 9.56-9.558a9.504 9.504 0 0 0-2.808-6.759Zm-7.452 14.7h-.003a8.49 8.49 0 0 1-4.327-1.185l-.31-.184-3.22.844.86-3.14-.202-.322a8.47 8.47 0 0 1-1.3-4.515c.002-4.683 3.812-8.49 8.503-8.49a8.44 8.44 0 0 1 5.994 2.485 8.433 8.433 0 0 1 2.48 5.999c-.002 4.684-3.812 8.49-8.475 8.508Zm4.655-6.354c-.255-.128-1.508-.744-1.742-.828-.234-.085-.404-.128-.574.128-.17.255-.657.828-.806 1-.148.17-.297.19-.552.064-.254-.128-1.075-.396-2.048-1.264-.758-.675-1.269-1.509-1.418-1.763-.148-.255-.016-.393.112-.52.115-.115.255-.298.383-.447.127-.149.17-.255.255-.425.085-.17.042-.32-.021-.447-.064-.128-.574-1.383-.786-1.894-.207-.497-.418-.43-.574-.438-.149-.007-.32-.009-.49-.009-.17 0-.447.064-.682.32-.234.255-.893.873-.893 2.129s.914 2.468 1.042 2.638c.127.17 1.799 2.747 4.36 3.852.61.263 1.085.42 1.455.537.61.194 1.167.167 1.607.101.49-.073 1.508-.616 1.72-1.211.213-.595.213-1.105.15-1.211-.063-.106-.234-.17-.49-.298Z" fill="#fff"/>
+  </svg>
+  <span class="wa-label">Une question ? Écrivez-nous</span>
+</a>
+
+
+<script>
+
+/* ── Scroll en haut au chargement ── */
+if(history.scrollRestoration){history.scrollRestoration='manual';}
+window.scrollTo(0,0);
+
+/* ── Menu hamburger ── */
+const ham=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
+
+
+/* ────────── Calendrier de disponibilités (bande défilante, connectée à l'agenda réel) ────────── */
+const GATEWAY_BASE = 'https://ac-service-application.vercel.app';
+const MOIS_LONG=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const MOIS_COURT=['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
+const NOM_JOUR_LONG=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+const NOM_JOUR_COURT=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+
+let calSelDate=null, selectedSlot=null;
+let availabilityDays=[]; // [{date,isOpen,morningRemaining,afternoonRemaining,closureMessage}, ...] triés par date
+let scheduleInfo=null;
+
+function calInit(){
+  document.getElementById('calStrip').innerHTML='<span style="color:rgba(255,255,255,.5);font-size:.82rem;padding:1rem;">Chargement des disponibilités…</span>';
+  loadAvailability().then(function(){
+    renderStrip();
+  }).catch(function(){
+    document.getElementById('calStrip').innerHTML='<span style="color:#ff8080;font-size:.82rem;padding:1rem;">Disponibilités momentanément indisponibles. Contactez-nous par téléphone.</span>';
+  });
+}
+
+function loadAvailability(){
+  return fetch(GATEWAY_BASE+'/api/availability').then(function(res){
+    if(!res.ok) throw new Error('Erreur disponibilité');
+    return res.json();
+  }).then(function(data){
+    scheduleInfo=data.schedule;
+    availabilityDays=(data.days||[]).slice().sort(function(a,b){return a.date.localeCompare(b.date);});
+  });
+}
+
+function fmtHour(hhmm){
+  if(!hhmm) return '';
+  const parts=hhmm.split(':');
+  return parts[1]==='00' ? parts[0]+'h' : parts[0]+'h'+parts[1];
+}
+
+function parseDateStr(dateStr){
+  const p=dateStr.split('-');
+  return new Date(parseInt(p[0]),parseInt(p[1])-1,parseInt(p[2]));
+}
+
+/* La bande se recalcule à chaque chargement de page à partir de la date du jour :
+   un jour passé disparaît automatiquement de lui-même le lendemain, sans rien à faire. */
+function renderStrip(){
+  const strip=document.getElementById('calStrip');
+  strip.innerHTML='';
+  const today=new Date();today.setHours(0,0,0,0);
+
+  availabilityDays.forEach(function(day){
+    const date=parseDateStr(day.date);
+    if(date<today) return;
+    const hasAnyPlace = day.isOpen && ((day.morningRemaining||0)>0 || (day.afternoonRemaining||0)>0);
+    const card=document.createElement('button');
+    card.type='button';
+    card.className='day-card'+(hasAnyPlace?'':' day-disabled')+(calSelDate===day.date?' day-active':'');
+    card.innerHTML='<span class="dow">'+NOM_JOUR_COURT[date.getDay()]+'</span><span class="num">'+date.getDate()+'</span><span class="mon">'+MOIS_COURT[date.getMonth()]+'</span>';
+    if(hasAnyPlace){
+      card.addEventListener('click',function(){ openSlots(day.date); });
+    } else {
+      card.disabled=true;
+    }
+    strip.appendChild(card);
+  });
+
+  if(!strip.children.length){
+    strip.innerHTML='<span style="color:rgba(255,255,255,.5);font-size:.82rem;padding:1rem;">Aucun créneau disponible pour le moment. Contactez-nous directement.</span>';
+  }
+}
+
+function openSlots(dateStr){
+  calSelDate=dateStr;
+  selectedSlot=null;
+  renderStrip();
+  const day=availabilityDays.find(function(x){return x.date===dateStr;})||{};
+  const date=parseDateStr(dateStr);
+  const panel=document.getElementById('calSlots');
+  panel.style.display='block';
+  document.getElementById('calSlotDate').textContent=NOM_JOUR_LONG[date.getDay()]+' '+date.getDate()+' '+MOIS_LONG[date.getMonth()];
+
+  const morningBtn=document.querySelector('.slot-btn[data-slot="morning"]');
+  const afternoonBtn=document.querySelector('.slot-btn[data-slot="afternoon"]');
+  const mRem=day.morningRemaining||0, aRem=day.afternoonRemaining||0;
+
+  morningBtn.innerHTML='🌅 Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')<small>'+(mRem>0?(mRem+' place'+(mRem>1?'s':'')+' restante'+(mRem>1?'s':'')):'Complet')+'</small>';
+  afternoonBtn.innerHTML='🌇 Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')<small>'+(aRem>0?(aRem+' place'+(aRem>1?'s':'')+' restante'+(aRem>1?'s':'')):'Complet')+'</small>';
+  morningBtn.disabled = mRem<=0;
+  afternoonBtn.disabled = aRem<=0;
+  morningBtn.classList.remove('slot-active');
+  afternoonBtn.classList.remove('slot-active');
+}
+
+function selectSlot(btn){
+  if(!calSelDate || btn.disabled) return;
+  const slot=btn.dataset.slot;
+  const wasActive=btn.classList.contains('slot-active');
+  document.querySelectorAll('.slot-btn').forEach(function(b){b.classList.remove('slot-active');});
+  if(wasActive){
+    selectedSlot=null;
+  } else {
+    btn.classList.add('slot-active');
+    selectedSlot=slot;
+  }
+  updateSummary();
+}
+
+function updateSummary(){
+  const summary=document.getElementById('calSummary');
+  if(!calSelDate || !selectedSlot){
+    summary.style.display='none';
+    document.getElementById('dispos').value='';
+    document.getElementById('rdvDate').value='';
+    document.getElementById('rdvSlot').value='';
+    return;
+  }
+  const date=parseDateStr(calSelDate);
+  const nomJour=NOM_JOUR_LONG[date.getDay()];
+  const creneauLabel = selectedSlot==='morning'
+    ? 'Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')'
+    : 'Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')';
+  summary.style.display='block';
+  summary.innerHTML='<strong>✅ Votre créneau :</strong><br>'+nomJour+' '+date.getDate()+' '+MOIS_LONG[date.getMonth()]+' '+date.getFullYear()+' — '+creneauLabel;
+  document.getElementById('dispos').value=nomJour+' '+date.getDate()+' '+MOIS_COURT[date.getMonth()]+' '+date.getFullYear()+' : '+creneauLabel;
+  document.getElementById('rdvDate').value=calSelDate;
+  document.getElementById('rdvSlot').value=selectedSlot;
+}
+
+/* ────────── Passerelle vers l'appli de gestion interne ──────────
+   Envoi indépendant de l'email Web3Forms ci-dessous : en cas d'échec (réseau,
+   clé API absente...), on l'ignore silencieusement pour ne jamais bloquer ou
+   perturber l'envoi de la demande de RDV par email, qui reste le canal principal. */
+// Compresse une image côté navigateur (redimension + JPEG) avant envoi, pour ne
+// jamais pousser une photo de plusieurs Mo directement depuis le téléphone du client.
+function compressImageForUpload(file, maxDim, quality){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        let w = img.width, h = img.height;
+        const scale = Math.min(1, maxDim / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function sendToGestionApp(d){
+  try{
+    const photoAppareilFile = window.selectedPhotoAppareil;
+    const photoPlaqueFile = window.selectedPhotoPlaque;
+    let photoAppareilDataUrl = null, photoPlaqueDataUrl = null;
+    if(photoAppareilFile){
+      try{ photoAppareilDataUrl = await compressImageForUpload(photoAppareilFile, 1400, 0.75); }catch(e){ /* tant pis, on continue sans */ }
+    }
+    if(photoPlaqueFile){
+      try{ photoPlaqueDataUrl = await compressImageForUpload(photoPlaqueFile, 1400, 0.75); }catch(e){ /* idem */ }
+    }
+    fetch('https://ac-service-application.vercel.app/api/rendezvous', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': '7f3a9c1e4b8d2f6a0c5e9b3d7a1f4c8e6b2d9a3f5c7e1b4d8a2f6c9e3b5d7a1f'
+      },
+      body: JSON.stringify({
+        clientName: d.prenom + ' ' + d.nom,
+        firstName: d.prenom,
+        lastName: d.nom,
+        phone: d.tel,
+        email: d.email,
+        address: d.adresse,
+        postalCode: d.codePostal,
+        city: d.ville,
+        applianceType: d.appareil,
+        brand: d.marque,
+        model: d.modele,
+        referral: d.source,
+        issue: d.panne,
+        date: d.rdvDate,
+        slot: d.rdvSlot,
+        photoAppareilDataUrl: photoAppareilDataUrl,
+        photoPlaqueDataUrl: photoPlaqueDataUrl
+      })
+    }).then(async function(res){
+      if(!res.ok){
+        let detail = '';
+        try{ detail = JSON.stringify(await res.json()); }catch(e){}
+        console.error('[AC SERVICE] Échec envoi vers l\'appli de gestion — statut '+res.status+' : '+detail);
+      }
+    }).catch(function(e){ console.error('[AC SERVICE] Échec réseau vers l\'appli de gestion :', e); });
+  }catch(err){ console.error('[AC SERVICE] Erreur avant envoi vers l\'appli de gestion :', err); }
+}
+
+/* ────────── Envoi Web3Forms → Gmail ────────── */
+function handleSubmit(e){
+  e.preventDefault();
+  function fv(id){return document.getElementById(id).value.trim();}
+  const prenom=fv('prenom'),nom=fv('nom'),tel=fv('tel'),adresse=fv('adresse');
+  const codePostal=fv('codePostal'),ville=fv('ville');
+  const complementAdresse=fv('complementAdresse');
+  const autreNumero=fv('autreNumero');
+  const notePourTechnicien=fv('notePourTechnicien');
+  const appareilSelect=document.getElementById('appareil').value;
+  const appareilAutre=fv('appareilAutre');
+  const appareil = (appareilSelect==='Autre') ? appareilAutre : appareilSelect;
+  let panne=fv('panne');
+  const rdvDate=fv('rdvDate'), rdvSlot=fv('rdvSlot');
+
+  if(!prenom||!nom||!tel||!adresse||!codePostal||!ville||!appareil||!panne){
+    alert('Merci de remplir tous les champs obligatoires (*).');
+    return;
+  }
+  if(!rdvDate||!rdvSlot){
+    alert('Merci de choisir un jour et un créneau (matin ou après-midi) dans le calendrier.');
+    return;
+  }
+  document.getElementById('hidden_subject').value='Demande de RDV – AC SERVICE – '+prenom+' '+nom;
+
+  // Envoi silencieux vers l'appli de gestion interne (en plus de l'email ci-dessous,
+  // jamais à la place). Si la passerelle est indisponible, l'email part quand même :
+  // le formulaire ne dépend jamais de cet appel.
+  const adresseComplete = complementAdresse ? (adresse+' — '+complementAdresse) : adresse;
+  let panneEnrichie = panne;
+  if(autreNumero) panneEnrichie += '\n\nAutre numéro pour le jour du RDV : '+autreNumero;
+  if(notePourTechnicien) panneEnrichie += '\n\nNote du client : '+notePourTechnicien;
+
+  sendToGestionApp({
+    prenom: prenom, nom: nom, tel: tel, adresse: adresseComplete, codePostal: codePostal, ville: ville, appareil: appareil, panne: panneEnrichie,
+    marque: fv('marque'), modele: fv('modele'), email: fv('email'), source: fv('source'), rdvDate: rdvDate, rdvSlot: rdvSlot
+  });
+
+  const btn=document.getElementById('submitBtn');
+  const txtSpan=document.getElementById('submitText');
+  const loadSpan=document.getElementById('submitLoader');
+  btn.disabled=true;
+  txtSpan.style.display='none';
+  loadSpan.style.display='inline';
+
+  const form=document.getElementById('rdvForm');
+  const data=new FormData(form);
+  // Les photos ne sont volontairement PAS jointes ici : les pièces jointes sont une
+  // fonctionnalité payante (PRO) de Web3Forms. Elles continuent d'arriver dans
+  // l'appli de gestion via sendToGestionApp ci-dessus (passerelle Supabase),
+  // indépendamment de cet envoi par email.
+
+  fetch('https://api.web3forms.com/submit',{method:'POST',body:data})
+    .then(function(res){return res.json();})
+    .then(function(json){
+      if(json.success){
+        form.style.display='none';
+        document.getElementById('form-success').style.display='block';
+      } else {
+        alert('Une erreur est survenue. Veuillez nous contacter par téléphone ou WhatsApp.');
+        btn.disabled=false;
+        txtSpan.style.display='inline';
+        loadSpan.style.display='none';
+      }
+    })
+    .catch(function(){
+      alert("Impossible d'envoyer le formulaire (vérifiez votre connexion). Veuillez nous contacter par téléphone.");
+      btn.disabled=false;
+      txtSpan.style.display='inline';
+      loadSpan.style.display='none';
+    });
+}
+
+/* ────────── Fenêtre d'ajout de photos ────────── */
+window.selectedPhotoAppareil = null;
+window.selectedPhotoPlaque = null;
+
+(function(){
+  const overlay = document.getElementById('photoModalOverlay');
+  const openBtn = document.getElementById('openPhotoModalBtn');
+  const closeBtn = document.getElementById('closePhotoModalBtn');
+  const btnLabel = document.getElementById('photoModalBtnLabel');
+  if(!overlay || !openBtn) return;
+
+  function updateBtnLabel(){
+    const count = (window.selectedPhotoAppareil ? 1 : 0) + (window.selectedPhotoPlaque ? 1 : 0);
+    btnLabel.textContent = count ? count + ' photo' + (count>1?'s':'') + ' ajoutée' + (count>1?'s':'') : 'Ajouter des photos';
+  }
+
+  // Deux entrées possibles par photo (caméra forcée / galerie) : quelle que soit
+  // celle utilisée, le fichier choisi est stocké dans la même variable partagée,
+  // relue à l'envoi du formulaire (handleSubmit) et vers l'appli de gestion.
+  function wireSource(inputId, previewId, labelId, fallbackIcon, varName){
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    const label = document.getElementById(labelId);
+    input.addEventListener('change', function(){
+      const file = input.files[0];
+      if(!file) return;
+      window[varName] = file;
+      const reader = new FileReader();
+      reader.onload = function(e){
+        preview.innerHTML = '<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">';
+      };
+      reader.readAsDataURL(file);
+      label.textContent = file.name;
+      updateBtnLabel();
+      const removeBtn = document.getElementById(varName==='selectedPhotoAppareil' ? 'removePhotoAppareilBtn' : 'removePhotoPlaqueBtn');
+      if(removeBtn) removeBtn.style.display = 'inline-block';
+    });
+  }
+  wireSource('photoAppareilCamera', 'photoAppareilPreview', 'photoAppareilLabel', '📱', 'selectedPhotoAppareil');
+  wireSource('photoAppareilGallery', 'photoAppareilPreview', 'photoAppareilLabel', '📱', 'selectedPhotoAppareil');
+  wireSource('photoPlaqueCamera', 'photoPlaquePreview', 'photoPlaqueLabel', '🏷️', 'selectedPhotoPlaque');
+  wireSource('photoPlaqueGallery', 'photoPlaquePreview', 'photoPlaqueLabel', '🏷️', 'selectedPhotoPlaque');
+
+  // Retirer une photo déjà choisie : vide la variable partagée, réinitialise
+  // l'aperçu et les deux champs (caméra/galerie) pour permettre de re-choisir
+  // la même photo ensuite si besoin (sans quoi le navigateur ignore un choix
+  // identique au précédent).
+  function wireRemove(btnId, previewId, labelId, fallbackIcon, varName, cameraId, galleryId){
+    const btn = document.getElementById(btnId);
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      window[varName] = null;
+      document.getElementById(previewId).innerHTML = fallbackIcon;
+      document.getElementById(labelId).textContent = 'Aucune photo choisie';
+      document.getElementById(cameraId).value = '';
+      document.getElementById(galleryId).value = '';
+      btn.style.display = 'none';
+      updateBtnLabel();
+    });
+  }
+  wireRemove('removePhotoAppareilBtn', 'photoAppareilPreview', 'photoAppareilLabel', '📱', 'selectedPhotoAppareil', 'photoAppareilCamera', 'photoAppareilGallery');
+  wireRemove('removePhotoPlaqueBtn', 'photoPlaquePreview', 'photoPlaqueLabel', '🏷️', 'selectedPhotoPlaque', 'photoPlaqueCamera', 'photoPlaqueGallery');
+
+  openBtn.addEventListener('click', function(){
+    overlay.style.display = 'flex';
+  });
+  closeBtn.addEventListener('click', function(){
+    overlay.style.display = 'none';
+  });
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) overlay.style.display = 'none';
+  });
+})();
+
+document.addEventListener('DOMContentLoaded', calInit);
+
+/* ────────── Champ "Autre" pour le type d'appareil ────────── */
+(function(){
+  const sel = document.getElementById('appareil');
+  const input = document.getElementById('appareilAutre');
+  const backLink = document.getElementById('appareilBackToList');
+  if(!sel || !input || !backLink) return;
+  sel.addEventListener('change', function(){
+    if(sel.value === 'Autre'){
+      sel.style.display = 'none';
+      input.style.display = 'block';
+      backLink.style.display = 'inline-block';
+      input.required = true;
+      input.value = '';
+      input.focus();
+    }
+  });
+  backLink.addEventListener('click', function(e){
+    e.preventDefault();
+    input.style.display = 'none';
+    backLink.style.display = 'none';
+    input.required = false;
+    input.value = '';
+    sel.style.display = 'block';
+    sel.value = '';
+  });
+})();
+
+/* ────────── Autocomplétion adresse (Géoplateforme IGN) ────────── */
+(function(){
+  const input = document.getElementById('adresse');
+  const box   = document.getElementById('adresseSuggestions');
+  if(!input || !box) return;
+
+  let timer = null;
+  let activeIdx = -1;
+  let items = [];
+
+  input.addEventListener('input', function(){
+    clearTimeout(timer);
+    const q = input.value.trim();
+    if(q.length < 3){ closeBox(); return; }
+    timer = setTimeout(function(){ fetchSuggestions(q); }, 280);
+  });
+
+  input.addEventListener('keydown', function(e){
+    if(!box.classList.contains('open')) return;
+    if(e.key === 'ArrowDown'){ e.preventDefault(); setActive(activeIdx + 1); }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); setActive(activeIdx - 1); }
+    else if(e.key === 'Enter' && activeIdx >= 0){ e.preventDefault(); selectItem(activeIdx); }
+    else if(e.key === 'Escape'){ closeBox(); }
+  });
+
+  document.addEventListener('click', function(e){
+    if(!input.contains(e.target) && !box.contains(e.target)) closeBox();
+  });
+
+  function fetchSuggestions(q){
+    const url = 'https://data.geopf.fr/geocodage/search?q=' + encodeURIComponent(q) + '&limit=6&returntruegeometry=false';
+    fetch(url)
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        items = (data.features || []).map(function(f){
+          return {
+            label: f.properties.name || f.properties.label || '',
+            city:  f.properties.city || '',
+            postcode: f.properties.postcode || '',
+            full:  f.properties.label || f.properties.name || ''
+          };
+        });
+        renderItems();
+      })
+      .catch(function(){ closeBox(); });
+  }
+
+  function renderItems(){
+    box.innerHTML = '';
+    activeIdx = -1;
+    if(items.length === 0){ closeBox(); return; }
+    items.forEach(function(item, i){
+      const div = document.createElement('div');
+      div.className = 'adresse-suggestion-item';
+      div.innerHTML = '<div class="item-label">' + escHtml(item.label) + '</div>'
+        + (item.city ? '<div class="item-ctx">' + escHtml(item.postcode + ' ' + item.city) + '</div>' : '');
+      div.addEventListener('mousedown', function(e){ e.preventDefault(); selectItem(i); });
+      box.appendChild(div);
+    });
+    box.classList.add('open');
+  }
+
+  function setActive(idx){
+    const els = box.querySelectorAll('.adresse-suggestion-item');
+    if(els.length === 0) return;
+    activeIdx = Math.max(0, Math.min(idx, els.length - 1));
+    els.forEach(function(el, i){ el.classList.toggle('active', i === activeIdx); });
+  }
+
+  function selectItem(idx){
+    if(!items[idx]) return;
+    input.value = items[idx].label || items[idx].full;
+    const cpEl = document.getElementById('codePostal');
+    const villeEl = document.getElementById('ville');
+    if(cpEl && items[idx].postcode) cpEl.value = items[idx].postcode;
+    if(villeEl && items[idx].city) villeEl.value = items[idx].city;
+    closeBox();
+  }
+
+  function closeBox(){
+    box.classList.remove('open');
+    box.innerHTML = '';
+    items = [];
+    activeIdx = -1;
+  }
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+})();
+
+</script>
+</body>
+</html>
