@@ -184,6 +184,20 @@ footer span{color:var(--cyan);}
   .garantie-grid .gar-card{flex:0 1 250px;max-width:260px;}
 }
 
+/* ── Comment ça marche ── */
+.howitworks-grid{max-width:1450px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:1rem;}
+.how-card{position:relative;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2.2rem 1.3rem 1.5rem;text-align:center;flex:1 1 200px;max-width:230px;transition:transform .3s;}
+.how-card:hover{transform:translateY(-4px);}
+.how-num{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+.how-card h4{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:.7rem 0 .5rem;}
+.how-card p{font-size:.85rem;color:var(--text-light);line-height:1.5;}
+.how-arrow{align-self:center;color:var(--cyan);font-size:1.6rem;font-weight:700;flex:0 0 auto;}
+@media(max-width:900px){
+  .how-arrow{display:none;}
+  .howitworks-grid{gap:1.3rem;}
+  .how-card{flex:1 1 260px;max-width:320px;}
+}
+
 /* ── Contact ── */
 #contact{padding:3rem 2rem;background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .contact-inner{max-width:800px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;align-items:center;}
@@ -265,19 +279,6 @@ footer span{color:var(--cyan);}
     <span class="nav-brand-name">AC <span style="color:var(--cyan)">Service</span></span>
   </div></a>
   <ul class="nav-links" id="navLinks">
-    <li class="nav-menu-item">
-      <button class="nav-menu-btn" id="sectionMenuBtn" type="button" aria-label="Ouvrir le menu des sections" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-menu-panel" id="sectionMenuPanel">
-        <a href="#interventions">Pannes traitées</a>
-        <a href="#engagements">Pourquoi nous ?</a>
-        <a href="#avis">Avis clients</a>
-        <a href="#forfaits">Nos forfaits</a>
-        <a href="#conditions">Nos conditions applicables</a>
-        <a href="#zone">Comment ça marche</a>
-      </div>
-    </li>
     <li>
       <div class="mode-switch">
         <a href="index.html" class="mode-switch-item">🏠 À domicile</a>
@@ -304,135 +305,6 @@ footer span{color:var(--cyan);}
       <div class="badge"><span class="badge-icon">🔍</span> Diagnostic complet</div>
       <div class="badge"><span class="badge-icon">🛡️</span> Garantie 15 jours</div>
       <div class="badge"><span class="badge-icon">📍</span> Esquelbecq (59470)</div>
-    </div>
-  </div>
-</section>
-
-<section id="interventions">
-  <h2 class="section-title reveal">Appareils <span>réparés</span></h2>
-  <div class="section-line reveal"></div>
-  <p class="reveal" style="text-align:center;color:var(--text-light);font-size:.95rem;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto;">Déposez votre appareil à l'atelier pour un diagnostic complet. Voici les types de pannes que nous traitons.</p>
-  <div class="interventions-grid">
-
-    <div class="interv-card reveal">
-      <span class="interv-card-num">01</span>
-      <span class="interv-card-icon">🧺</span>
-      <h4>Lave-linge</h4>
-      <ul>
-        <li>La machine ne démarre pas</li>
-        <li>L'eau fuit sous la machine</li>
-        <li>Le tambour ne tourne plus</li>
-        <li>La machine ne vidange plus</li>
-        <li>Bruit fort ou vibrations anormales</li>
-        <li>La porte ne s'ouvre ou ne ferme plus</li>
-      </ul>
-    </div>
-
-    <div class="interv-card reveal">
-      <span class="interv-card-num">02</span>
-      <span class="interv-card-icon">🍽️</span>
-      <h4>Lave-vaisselle</h4>
-      <ul>
-        <li>La vaisselle ressort sale ou mouillée</li>
-        <li>De l'eau coule sous l'appareil</li>
-        <li>L'eau ne s'évacue plus</li>
-        <li>Un voyant d'erreur s'allume</li>
-        <li>L'appareil ne démarre plus</li>
-        <li>La porte ne ferme plus bien</li>
-      </ul>
-    </div>
-
-    <div class="interv-card reveal">
-      <span class="interv-card-num">03</span>
-      <span class="interv-card-icon">🌀</span>
-      <h4>Sèche-linge</h4>
-      <ul>
-        <li>Le linge ressort encore humide</li>
-        <li>L'appareil chauffe mais ne sèche pas</li>
-        <li>Le tambour ne tourne plus</li>
-        <li>L'appareil s'arrête en cours de cycle</li>
-        <li>Bruit inhabituel pendant le séchage</li>
-        <li>L'appareil ne démarre plus</li>
-      </ul>
-    </div>
-
-    <div class="interv-card reveal">
-      <span class="interv-card-num">04</span>
-      <span class="interv-card-icon">🔥</span>
-      <h4>Four & Micro-onde</h4>
-      <ul>
-        <li>L'appareil ne chauffe plus ou mal</li>
-        <li>La température n'est pas respectée</li>
-        <li>La porte ne ferme plus hermétiquement</li>
-        <li>L'affichage ou les touches ne répondent plus</li>
-        <li>L'appareil s'éteint tout seul</li>
-        <li>Le plateau du micro-onde ne tourne plus</li>
-        <li>Des étincelles apparaissent à l'intérieur</li>
-        <li>L'appareil ne s'allume plus du tout</li>
-      </ul>
-    </div>
-
-    <div class="interv-card reveal">
-      <span class="interv-card-num">05</span>
-      <span class="interv-card-icon">🍳</span>
-      <h4>Plaque de cuisson</h4>
-      <ul>
-        <li>Un ou plusieurs foyers ne chauffent plus</li>
-        <li>La plaque ne détecte plus les casseroles</li>
-        <li>L'affichage est bloqué ou éteint</li>
-        <li>Un message d'erreur s'affiche</li>
-        <li>La plaque disjoncte au démarrage</li>
-        <li>Les touches tactiles ne répondent plus</li>
-      </ul>
-    </div>
-
-    <div class="interv-card reveal">
-      <span class="interv-card-num">06</span>
-      <span class="interv-card-icon">❄️</span>
-      <h4>Froid — Réfrigérateur, Congélateur & Combiné</h4>
-      <ul>
-        <li>L'appareil ne refroidit ou ne congèle plus</li>
-        <li>Du givre s'accumule à l'intérieur</li>
-        <li>L'appareil fait un bruit fort ou inhabituel</li>
-        <li>La température n'est plus respectée</li>
-        <li>La porte ne ferme plus correctement</li>
-        <li>De l'eau coule sous ou dans l'appareil</li>
-        <li>Une alarme ou un voyant s'allume</li>
-        <li>Le congélateur fonctionne mais pas le frigo (ou inversement)</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<section id="engagements">
-  <h2 class="section-title reveal">Pourquoi choisir <span>AC Service</span> ?</h2>
-  <div class="section-line reveal"></div>
-  <div class="garantie-grid" style="max-width:1450px;">
-    <div class="gar-card reveal">
-      <div class="gar-icon">⏱️</div>
-      <h4>Diagnostic rapide</h4>
-      <p>Déposez votre appareil, on l'examine sans attendre. Votre panne n'attend pas, nous non plus.</p>
-    </div>
-    <div class="gar-card reveal">
-      <div class="gar-icon">🤝</div>
-      <h4>Honnêteté avant tout</h4>
-      <p>Si la réparation n'en vaut pas la peine, on vous le dit clairement — plutôt que de facturer un déplacement inutile.</p>
-    </div>
-    <div class="gar-card reveal">
-      <div class="gar-icon">🛡️</div>
-      <h4>Garantie main d'œuvre</h4>
-      <p>Toute intervention est garantie 15 jours sur la main d'œuvre. Pièces garanties selon fournisseur.</p>
-    </div>
-    <div class="gar-card reveal">
-      <div class="gar-icon">🔧</div>
-      <h4>Toutes marques</h4>
-      <p>Whirlpool, Bosch, Samsung, LG, Electrolux, Indesit… Nous réparons toutes les marques du marché.</p>
-    </div>
-    <div class="gar-card reveal">
-      <div class="gar-icon">✅</div>
-      <h4>Contrôle de sécurité</h4>
-      <p>Chaque réparation inclut un contrôle de sécurité complet et un essai de fonctionnement sur place.</p>
     </div>
   </div>
 </section>
@@ -493,8 +365,8 @@ footer span{color:var(--cyan);}
 <section id="forfaits">
   <h2 class="section-title reveal">Nos <span>Forfaits</span></h2>
   <div class="section-line reveal"></div>
-  <div class="forfaits-grid">
-    <div class="forfait-card card-autres reveal">
+  <div class="forfaits-grid" style="max-width:520px;margin:0 auto;">
+    <div class="forfait-card reveal">
       <div class="forfait-price"><sup>€</sup>50 <span>TTC</span></div>
       <div class="forfait-name">📥 Dépôt &amp; Diagnostic</div>
       <div class="forfait-appareils">
@@ -510,74 +382,18 @@ footer span{color:var(--cyan);}
         <li>Restitution signée à la récupération</li>
       </ul>
     </div>
-    <div class="forfait-card reveal">
-      <div class="forfait-price"><sup>€</sup>60 <span>TTC</span></div>
-      <div class="forfait-name">🍳 Appareils de cuisson</div>
-      <div class="forfait-appareils">
-        <span class="tag">Micro-onde</span>
-        <span class="tag">Four</span>
-        <span class="tag">Plaque de cuisson</span>
-      </div>
-      <ul class="forfait-features">
-        <li>Devis gratuit</li>
-        <li>Rendez-vous sous 48h</li>
-        <li>Déplacement &amp; diagnostic inclus</li>
-        <li>Contrôle de sécurité</li>
-        <li>Essai de fonctionnement</li>
-        <li>Réparation garantie 15 jours</li>
-      </ul>
-    </div>
-    <div class="forfait-card card-autres reveal">
-      <div class="forfait-price"><sup>€</sup>65 <span>TTC</span></div>
-      <div class="forfait-name">🧺 Lavage &amp; séchage</div>
-      <div class="forfait-appareils">
-        <span class="tag">Lave-linge</span>
-        <span class="tag">Lave-vaisselle</span>
-        <span class="tag">Sèche-linge</span>
-      </div>
-      <ul class="forfait-features">
-        <li>Devis gratuit</li>
-        <li>Rendez-vous sous 48h</li>
-        <li>Déplacement &amp; diagnostic inclus</li>
-        <li>Contrôle de sécurité</li>
-        <li>Essai de fonctionnement</li>
-        <li>Réparation garantie 15 jours</li>
-      </ul>
-    </div>
-    <div class="forfait-card reveal">
-      <div class="forfait-price"><sup>€</sup>70 <span>TTC</span></div>
-      <div class="forfait-name">❄️ Froid</div>
-      <div class="forfait-appareils">
-        <span class="tag">Réfrigérateur</span>
-        <span class="tag">Congélateur</span>
-        <span class="tag">Combiné frigo-congélo</span>
-      </div>
-      <ul class="forfait-features">
-        <li>Devis gratuit</li>
-        <li>Rendez-vous sous 48h</li>
-        <li>Déplacement &amp; diagnostic inclus</li>
-        <li>Contrôle de sécurité</li>
-        <li>Essai de fonctionnement</li>
-        <li>Réparation garantie 15 jours</li>
-      </ul>
-    </div>
   </div>
 
-  <!-- Note tarifaire 1er / 2ème passage -->
+  <!-- Note tarifaire dépôt -->
   <div class="forfaits-note reveal">
     <div class="forfaits-note-row">
-      <span class="forfaits-note-icon">1️⃣</span>
-      <span><strong>1er passage (diagnostic + réparation) :</strong> forfait 60 €, 65 € ou 70 € TTC tout compris — déplacement, diagnostic, main-d'œuvre et essai de fonctionnement inclus. Les pièces détachées éventuelles sont en supplément et indiquées sur devis.</span>
-    </div>
-    <div class="fn-sep"></div>
-    <div class="forfaits-note-row">
-      <span class="forfaits-note-icon">2️⃣</span>
-      <span><strong>2ème passage (pose de la pièce commandée) :</strong> forfait déplacement de <strong>30 €</strong> uniquement + prix de la pièce — le forfait d'intervention complet n'est plus refacturé.</span>
-    </div>
-    <div class="fn-sep"></div>
-    <div class="forfaits-note-row">
       <span class="forfaits-note-icon">📥</span>
-      <span><strong>Dépôt à l'atelier :</strong> pour les appareils transportables, un forfait <strong>Dépôt &amp; Diagnostic à 50 €</strong> couvre l'examen technique complet à l'atelier. Un devis de réparation est ensuite établi et soumis à votre accord avant toute intervention. <a href="depot-demande.html" style="color:var(--cyan);">Demander un dépôt →</a></span>
+      <span><strong>Dépôt à l'atelier :</strong> le forfait <strong>Dépôt &amp; Diagnostic à 50 €</strong> couvre l'examen technique complet à l'atelier. Un devis de réparation est ensuite établi et soumis à votre accord avant toute intervention.</span>
+    </div>
+    <div class="fn-sep"></div>
+    <div class="forfaits-note-row">
+      <span class="forfaits-note-icon">🔧</span>
+      <span><strong>Réparation acceptée :</strong> le montant de la réparation est indiqué sur le devis détaillé. Les pièces détachées éventuelles sont en supplément et indiquées sur devis.</span>
     </div>
   </div>
 </section>
@@ -589,15 +405,15 @@ footer span{color:var(--cyan);}
     <div class="cond-card reveal">
       <div class="cond-icon">📋</div>
       <div class="cond-text">
-        <h4>Devis avant travaux</h4>
-        <p>Un devis est établi et signé avant chaque réparation. Aucune intervention sans votre accord.</p>
+        <h4>Devis avant réparation</h4>
+        <p>Après le diagnostic, un devis détaillé vous est soumis. Aucune réparation n'est engagée sans votre accord.</p>
       </div>
     </div>
     <div class="cond-card reveal">
       <div class="cond-icon">🔩</div>
       <div class="cond-text">
         <h4>Pièces en supplément</h4>
-        <p>Le prix des pièces détachées n'est pas inclus dans le forfait et est indiqué sur le devis.</p>
+        <p>Le forfait Dépôt &amp; Diagnostic ne couvre pas le prix des pièces détachées, indiqué séparément sur le devis de réparation.</p>
       </div>
     </div>
     <div class="cond-card reveal">
@@ -618,35 +434,42 @@ footer span{color:var(--cyan);}
 </section>
 
 <section id="zone">
-  <div class="zone-inner">
-    <h2 class="section-title reveal">Comment ça <span>marche</span></h2>
-    <div class="section-line reveal"></div>
-    <div class="garantie-grid" style="max-width:1450px;">
-      <div class="gar-card reveal">
-        <div class="gar-icon">📝</div>
-        <h4>1. Le formulaire</h4>
-        <p>Décrivez votre appareil, la panne rencontrée, et joignez une photo si possible.</p>
-      </div>
-      <div class="gar-card reveal">
-        <div class="gar-icon">📞</div>
-        <h4>2. On vous appelle</h4>
-        <p>Pour convenir ensemble d'un jour de dépôt à l'atelier.</p>
-      </div>
-      <div class="gar-card reveal">
-        <div class="gar-icon">📥</div>
-        <h4>3. Vous déposez</h4>
-        <p>Tous les jours ouvrés entre 18h et 20h, à l'atelier d'Esquelbecq.</p>
-      </div>
-      <div class="gar-card reveal">
-        <div class="gar-icon">🔍</div>
-        <h4>4. Diagnostic &amp; devis</h4>
-        <p>Examen technique complet, puis devis gratuit soumis à votre accord avant toute réparation.</p>
-      </div>
-      <div class="gar-card reveal">
-        <div class="gar-icon">✅</div>
-        <h4>5. Récupération</h4>
-        <p>Appareil réparé (ou restitué si non réparable), restitution signée à la remise.</p>
-      </div>
+  <h2 class="section-title reveal">Comment ça <span>marche</span></h2>
+  <div class="section-line reveal"></div>
+  <div class="howitworks-grid">
+    <div class="how-card reveal">
+      <div class="how-num">1</div>
+      <div class="gar-icon">📝</div>
+      <h4>Le formulaire</h4>
+      <p>Décrivez votre appareil, la panne rencontrée, et joignez une photo si possible.</p>
+    </div>
+    <div class="how-arrow reveal">→</div>
+    <div class="how-card reveal">
+      <div class="how-num">2</div>
+      <div class="gar-icon">📞</div>
+      <h4>On vous appelle</h4>
+      <p>Pour convenir ensemble d'un jour de dépôt à l'atelier.</p>
+    </div>
+    <div class="how-arrow reveal">→</div>
+    <div class="how-card reveal">
+      <div class="how-num">3</div>
+      <div class="gar-icon">📥</div>
+      <h4>Vous déposez</h4>
+      <p>Tous les jours ouvrés entre 18h et 20h, à l'atelier d'Esquelbecq.</p>
+    </div>
+    <div class="how-arrow reveal">→</div>
+    <div class="how-card reveal">
+      <div class="how-num">4</div>
+      <div class="gar-icon">🔍</div>
+      <h4>Diagnostic &amp; devis</h4>
+      <p>Examen technique complet, puis devis gratuit soumis à votre accord avant toute réparation.</p>
+    </div>
+    <div class="how-arrow reveal">→</div>
+    <div class="how-card reveal">
+      <div class="how-num">5</div>
+      <div class="gar-icon">✅</div>
+      <h4>Récupération</h4>
+      <p>Appareil réparé (ou restitué si non réparable), restitution signée à la remise.</p>
     </div>
   </div>
 </section>
@@ -713,6 +536,7 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.cl
 /* ── Menu déroulant "sections" (trois barres) ── */
 const sectionMenuBtn=document.getElementById('sectionMenuBtn');
 const sectionMenuPanel=document.getElementById('sectionMenuPanel');
+if(sectionMenuBtn && sectionMenuPanel){
 sectionMenuBtn.addEventListener('click',(e)=>{
   e.stopPropagation();
   const isOpen=sectionMenuPanel.classList.toggle('open');
@@ -728,6 +552,7 @@ sectionMenuPanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=
   sectionMenuPanel.classList.remove('open');
   sectionMenuBtn.setAttribute('aria-expanded','false');
 }));
+}
 
 /* ── Particules hero ── */
 (function(){
