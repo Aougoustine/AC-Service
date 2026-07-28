@@ -3,27 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connexion — AC SERVICE</title>
+<title>Dépôts — AC SERVICE</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div id="loginScreen">
-    <div class="login-card">
-      <div class="login-brand">
-        <div class="mark"><img src="favicon.png" alt="AC SERVICE"></div>
-        <h1>AC SERVICE</h1>
-        <p>Espace de gestion interne — accès restreint</p>
-      </div>
-      <div id="loginError"></div>
-      <div id="loginFormZone"></div>
-    </div>
-  </div>
+  <nav class="topbar" id="navbar"></nav>
+  <main id="pageContent"></main>
+  <footer class="app-footer">AC SERVICE — Outil de gestion interne — données enregistrées automatiquement</footer>
+  <div id="modalRoot"></div>
   <div class="toast" id="toast"></div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="assets/app.js"></script>
-  <script src="assets/page-login.js"></script>
+  <script src="assets/page-depots.js"></script>
 </body>
 </html>

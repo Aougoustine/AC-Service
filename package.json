@@ -1,0 +1,17 @@
+{
+  "name": "acservicepro-gestion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Appli interne de gestion AC SERVICE (RDV, interventions, stock).",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "jspdf": "^2.5.1"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
