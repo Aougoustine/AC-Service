@@ -27,8 +27,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--text-light);text-decoration:none;text-transform:uppercase;transition:color .25s;}
 .nav-links a:hover{color:var(--cyan);}
 .nav-cta{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;padding:.5rem 1.4rem;border-radius:4px;font-weight:700!important;transition:transform .2s,box-shadow .2s!important;}
-.mode-switch{display:inline-flex;align-items:center;gap:.2rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:.3rem;}
-.mode-switch-item{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.1rem;border-radius:50px;font-family:'Rajdhani',sans-serif;font-weight:700!important;font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;color:var(--text-light)!important;text-decoration:none;transition:.2s;white-space:nowrap;}
+.mode-switch{display:inline-flex;align-items:center;gap:.15rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:.2rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
+.mode-switch-item{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .8rem;border-radius:50px;font-family:'Rajdhani',sans-serif;font-weight:700!important;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--text-light)!important;text-decoration:none;transition:.2s;white-space:nowrap;}
 .mode-switch-item.active{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;}
 .mode-switch-item:not(.active):hover{color:var(--white)!important;}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,216,.4)!important;}
@@ -71,6 +71,7 @@ footer span{color:var(--cyan);}
   .hamburger{display:flex;}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(1,13,33,.98);flex-direction:column;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);}
   .nav-links.open{display:flex;}
+  .mode-switch{position:static;transform:none;margin:0 auto;}
 }
 
 
