@@ -479,6 +479,8 @@ async function sendToGestionApp(d){
       },
       body: JSON.stringify({
         clientName: d.prenom + ' ' + d.nom,
+        firstName: d.prenom,
+        lastName: d.nom,
         phone: d.tel,
         email: d.email,
         address: d.adresse,
