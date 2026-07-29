@@ -27,10 +27,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--text-light);text-decoration:none;text-transform:uppercase;transition:color .25s;}
 .nav-links a:hover{color:var(--cyan);}
 .nav-cta{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;padding:.5rem 1.4rem;border-radius:4px;font-weight:700!important;transition:transform .2s,box-shadow .2s!important;}
-.mode-switch{display:inline-flex;align-items:center;gap:.15rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:.2rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
-.mode-switch-item{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .8rem;border-radius:50px;font-family:'Rajdhani',sans-serif;font-weight:700!important;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--text-light)!important;text-decoration:none;transition:.2s;white-space:nowrap;}
-.mode-switch-item.active{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;}
-.mode-switch-item:not(.active):hover{color:var(--white)!important;}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,216,.4)!important;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
 .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
@@ -72,7 +68,6 @@ footer span{color:var(--cyan);}
   .hamburger{display:flex;}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(1,13,33,.98);flex-direction:column;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);}
   .nav-links.open{display:flex;}
-  .mode-switch{position:static;transform:none;margin:0 auto;}
 }
 
 
@@ -257,12 +252,6 @@ footer span{color:var(--cyan);}
     <span class="nav-brand-name">AC <span style="color:var(--cyan)">Service</span></span>
   </div></a>
   <ul class="nav-links" id="navLinks">
-    <li>
-      <div class="mode-switch">
-        <a href="index.html" class="mode-switch-item active">🏠 À domicile</a>
-        <a href="depot.html" class="mode-switch-item">📥 Dépôt</a>
-      </div>
-    </li>
     <li><a href="rdv.html" class="nav-cta">Prendre RDV</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
@@ -524,6 +513,20 @@ footer span{color:var(--cyan);}
         <li>Réparation garantie 15 jours</li>
       </ul>
     </div>
+    <div class="forfait-card card-autres reveal">
+      <div class="forfait-price"><sup>€</sup>50 <span>TTC</span></div>
+      <div class="forfait-name">📥 Dépôt &amp; Diagnostic</div>
+      <div class="forfait-appareils">
+        <span class="tag">Appareils transportables</span>
+      </div>
+      <ul class="forfait-features">
+        <li>Diagnostic complet à l'atelier</li>
+        <li>Bon de dépôt remis à la prise en charge</li>
+        <li>Devis de réparation établi après examen</li>
+        <li>Aucune réparation sans votre accord</li>
+        <li>Idéal si le déplacement n'est pas nécessaire</li>
+      </ul>
+    </div>
   </div>
 
   <!-- Note tarifaire 1er / 2ème passage -->
@@ -540,7 +543,7 @@ footer span{color:var(--cyan);}
     <div class="fn-sep"></div>
     <div class="forfaits-note-row">
       <span class="forfaits-note-icon">📥</span>
-      <span><strong>Dépôt à l'atelier :</strong> pour les appareils transportables, un forfait <strong>Dépôt &amp; Diagnostic à 50 €</strong> couvre l'examen technique complet à l'atelier. Un devis de réparation est ensuite établi et soumis à votre accord avant toute intervention. <a href="depot.html" style="color:var(--cyan);">Voir l'offre dépôt →</a></span>
+      <span><strong>Dépôt à l'atelier :</strong> pour les appareils transportables, un examen technique complet est réalisé à l'atelier. Un devis de réparation est ensuite établi et soumis à votre accord avant toute intervention. Contactez-nous pour organiser un dépôt.</span>
     </div>
   </div>
 </section>
