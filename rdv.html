@@ -100,14 +100,6 @@ textarea{resize:vertical;min-height:110px;}
 #form-success p{color:var(--text-light);font-size:.95rem;}
 
 /* ── Bandeau rassurant ── */
-.form-reassurance{max-width:700px;width:100%;box-sizing:border-box;margin:0 auto 2rem;background:rgba(0,180,216,.06);border:1px solid rgba(0,180,216,.2);border-radius:14px;padding:1.3rem 1.6rem;display:flex;flex-direction:column;gap:.85rem;overflow:hidden;}
-.form-reassurance-title{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;text-align:center;margin-bottom:.1rem;}
-.form-reassurance-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.65rem;}
-.fr-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.84rem;color:rgba(240,244,255,.78);line-height:1.45;}
-.fr-icon{font-size:1.1rem;flex-shrink:0;margin-top:.05rem;}
-.fr-item strong{color:#f0f4ff;display:block;font-size:.86rem;}
-.form-reassurance-legal{text-align:center;font-size:.78rem;color:rgba(240,244,255,.45);border-top:1px solid rgba(0,180,216,.12);padding-top:.75rem;line-height:1.55;}
-.form-reassurance-legal strong{color:rgba(240,244,255,.6);}
 
 /* ── Calendrier disponibilités ── */
 .cal-wrapper{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1rem;box-sizing:border-box;max-width:100%;overflow:hidden;}
@@ -156,17 +148,13 @@ textarea{resize:vertical;min-height:110px;}
   .page-hero{padding:6rem 1.2rem 2.5rem;}
   .form-grid{grid-template-columns:1fr;}
   .form-container{padding:1.8rem 1.2rem;}
-  .form-reassurance{padding:1rem 1.2rem;}
-  .form-reassurance-items{grid-template-columns:1fr;}
   #rdv{padding:2.5rem 1.2rem 3.5rem;}
 }
 
 @media(max-width:420px){
   #rdv{padding:2rem .8rem 3rem;}
   .form-container{padding:1.4rem .9rem;border-radius:14px;}
-  .form-reassurance{padding:.9rem .9rem;}
   .form-section{padding:1rem .9rem;}
-  .fr-item{font-size:.8rem;}
   .cal-wrapper{padding:.9rem .6rem;}
   .day-card{width:52px;padding:.5rem .1rem;}
   .cal-strip{gap:.4rem;}
@@ -197,33 +185,6 @@ textarea{resize:vertical;min-height:110px;}
 
 <section id="rdv">
   <div class="form-container reveal">
-    <!-- Bandeau rassurant -->
-    <div class="form-reassurance">
-      <p class="form-reassurance-title">📅 Réservez votre créneau en direct</p>
-      <div class="form-reassurance-items">
-        <div class="fr-item">
-          <span class="fr-icon">🆓</span>
-          <span><strong>Aucun engagement</strong>Ce formulaire est une réservation de créneau. Il ne vous engage absolument à rien.</span>
-        </div>
-        <div class="fr-item">
-          <span class="fr-icon">📋</span>
-          <span><strong>Devis avant tout</strong>Nous établissons un devis écrit et gratuit lors du 1er passage. Vous restez libre d'accepter ou de refuser.</span>
-        </div>
-        <div class="fr-item">
-          <span class="fr-icon">✍️</span>
-          <span><strong>Signature = engagement</strong>Seule la <em>signature du devis</em> vous engage contractuellement et implique votre présence lors du rendez-vous ainsi que le paiement à la fin de l'intervention.</span>
-        </div>
-        <div class="fr-item">
-          <span class="fr-icon">🔒</span>
-          <span><strong>Vos données protégées</strong>Vos informations sont utilisées uniquement pour vous recontacter. Aucune transmission à des tiers.</span>
-        </div>
-      </div>
-      <p class="form-reassurance-legal">
-        <strong>Rappel :</strong> Conformément à nos <a href="cgv.html" style="color:var(--cyan);">CGV</a>, seule l'acceptation et la <strong>signature du devis</strong> vous lie contractuellement avec AC SERVICE
-        et entraîne l'obligation de paiement à la fin de l'intervention. L'envoi de ce formulaire ne constitue pas un contrat.
-      </p>
-    </div>
-
     <div id="form-success">
       <div class="check">✅</div>
       <h3>Demande reçue !</h3>
@@ -317,7 +278,6 @@ textarea{resize:vertical;min-height:110px;}
           <div class="form-full">
             <label>&nbsp;</label>
             <button type="button" id="openPhotoModalBtn" class="photo-modal-btn">📷 <span id="photoModalBtnLabel">Ajouter des photos</span></button>
-            <p style="font-size:.78rem;color:rgba(240,244,255,.5);margin-top:.5rem;">Nous aide à préparer la bonne pièce avant notre passage.</p>
           </div>
           <div class="form-full">
             <label for="notePourTechnicien">Note pour le technicien (optionnel)</label>
@@ -361,6 +321,13 @@ textarea{resize:vertical;min-height:110px;}
       <input type="hidden" name="from_name" value="AC SERVICE – Site web">
       <input type="hidden" name="redirect" value="false">
       <input type="hidden" name="botcheck" value="" style="display:none">
+
+      <div class="form-full check-row" style="display:flex;align-items:flex-start;gap:.7rem;margin-top:1.2rem;">
+        <input type="checkbox" id="acceptCgv" name="acceptCgv" required style="width:auto;margin-top:.2rem;flex-shrink:0;">
+        <label for="acceptCgv" style="font-size:.88rem;color:var(--text-light);font-weight:400;text-transform:none;letter-spacing:normal;display:inline;">
+          J'ai lu et j'accepte les <a href="cgv.html" style="color:var(--cyan);">CGV</a>. Ce formulaire est une demande de réservation de créneau et ne m'engage à rien ; seule la signature du devis lors du 1er passage vaut engagement contractuel.
+        </label>
+      </div>
 
       <button type="submit" class="form-submit" id="submitBtn">
         <span id="submitText">📨 Envoyer ma demande de RDV</span>
