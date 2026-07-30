@@ -75,7 +75,7 @@ footer span{color:var(--cyan);}
 .section-title span{color:var(--cyan);}
 .section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));margin:0 auto 3rem;border-radius:2px;}
 
-#particles{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
+#particles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .particle{position:absolute;border-radius:50%;opacity:.7;animation:float linear infinite;}
 @keyframes float{
   0%{transform:translateY(100vh) scale(0);opacity:0;}
@@ -657,7 +657,7 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.cl
 /* ── Particules hero ── */
 (function(){
   const container=document.getElementById('particles');
-  for(let i=0;i<55;i++){
+  for(let i=0;i<200;i++){
     const p=document.createElement('div');p.className='particle';
     const s=Math.random()*22+6;
     const color='#00b4d8';
