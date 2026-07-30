@@ -103,10 +103,11 @@ footer span{color:var(--cyan);}
 .hero-watermark{position:absolute;top:62%;left:50%;transform:translate(-50%,-50%);width:min(1000px,110vw);height:min(1000px,110vw);pointer-events:none;z-index:-1;opacity:0.15;}
 .hero-watermark img{width:100%;height:100%;object-fit:contain;}
 @media(max-width:680px){
-  .hero-watermark{top:62%;width:min(480px,120vw);height:min(480px,120vw);}
+  .hero-watermark{top:62%;width:min(340px,110vw);height:min(340px,110vw);}
 }
 @media(max-width:400px){
-  .hero-watermark{width:min(400px,125vw);height:min(400px,125vw);}
+  .hero-watermark{width:min(300px,115vw);height:min(300px,115vw);}
+  .hero-slogan-img{width:min(300px,80vw);}
 }
 
 /* ── Section Interventions ── */
@@ -197,15 +198,16 @@ footer span{color:var(--cyan);}
 @media(max-width:680px){
   .section-title{font-size:1.6rem;}
   .section-line{margin-bottom:2rem;}
-  #hero{padding:3.5rem 1.2rem 2rem;min-height:auto;align-items:center;}
+  #hero{padding:3rem 1.2rem 1.5rem;min-height:auto;align-items:center;}
   .hero-inner{max-width:100%;}
-  .hero-title-group{margin-top:.5rem;margin-bottom:1.4rem;}
-  .hero-slogan-img{width:min(500px,88vw);}
-  .hero-btns{flex-direction:column;align-items:center;gap:.8rem;margin-top:0;}
-  .btn-primary{width:100%;max-width:320px;text-align:center;padding:.8rem 1.5rem;}
-  .hero-badges{gap:1rem;margin-top:1.2rem;}
-  .hero-desc{font-size:.85rem;margin-top:1rem;}
-  .badge{font-size:.82rem;}
+  .hero-title-group{margin-top:.3rem;margin-bottom:1rem;}
+  .hero-slogan-img{width:min(360px,78vw);}
+  .hero-btns{flex-direction:column;align-items:center;gap:.55rem;margin-top:0;}
+  .btn-primary{width:100%;max-width:280px;text-align:center;padding:.55rem 1.2rem;font-size:.85rem;}
+  .hero-badges{gap:.8rem;margin-top:.9rem;}
+  .hero-desc{font-size:.8rem;margin-top:.8rem;}
+  .badge{font-size:.76rem;}
+  .badge-icon{font-size:1.1rem;}
   #interventions,#engagements,#forfaits{padding:3rem 1.2rem;}
   .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
   .forfaits-grid{grid-template-columns:1fr;}
