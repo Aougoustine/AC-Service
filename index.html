@@ -152,13 +152,8 @@ footer span{color:var(--cyan);}
 .section-title span{color:var(--cyan);}
 .section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));margin:0 auto 3rem;border-radius:2px;}
 
-#particles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-.particle{position:absolute;border-radius:50%;opacity:.7;animation:float linear infinite;}
-@keyframes float{
-  0%{transform:translateY(100vh) scale(0);opacity:0;}
-  10%{opacity:.45;} 90%{opacity:.45;}
-  100%{transform:translateY(-10vh) scale(1);opacity:0;}
-}
+#hero-illustrations{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+#hero-illustrations svg{width:100%;height:100%;}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
@@ -342,7 +337,62 @@ footer span{color:var(--cyan);}
   </div>
 </nav>
 <section id="hero" style="position:relative;overflow:hidden;">
-  <div id="particles"></div>
+  <div id="hero-illustrations" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4de1ff"></stop>
+          <stop offset="100%" stop-color="#0066ff"></stop>
+        </linearGradient>
+      </defs>
+      <!-- Capsules gauche -->
+      <g opacity="0.18">
+        <rect x="20" y="120" width="180" height="28" rx="14" fill="url(#cyanBlue)"></rect>
+        <rect x="-20" y="200" width="220" height="28" rx="14" fill="url(#cyanBlue)"></rect>
+        <rect x="-40" y="280" width="200" height="28" rx="14" fill="url(#cyanBlue)"></rect>
+      </g>
+      <!-- Diagonales coin haut gauche -->
+      <g stroke="url(#cyanBlue)" stroke-width="3">
+        <line x1="0" y1="90" x2="80" y2="0"></line>
+        <line x1="0" y1="520" x2="110" y2="410"></line>
+        <line x1="70" y1="520" x2="180" y2="410"></line>
+      </g>
+      <!-- Pointillés haut gauche -->
+      <g fill="#4de1ff">
+        <circle cx="330" cy="70" r="3"></circle><circle cx="350" cy="70" r="3"></circle><circle cx="370" cy="70" r="3"></circle>
+        <circle cx="390" cy="70" r="3"></circle><circle cx="410" cy="70" r="3"></circle><circle cx="430" cy="70" r="3"></circle><circle cx="450" cy="70" r="3"></circle>
+        <circle cx="330" cy="90" r="3"></circle><circle cx="350" cy="90" r="3"></circle><circle cx="370" cy="90" r="3"></circle>
+        <circle cx="390" cy="90" r="3"></circle><circle cx="410" cy="90" r="3"></circle><circle cx="430" cy="90" r="3"></circle><circle cx="450" cy="90" r="3"></circle>
+      </g>
+      <!-- Pointillés bas gauche -->
+      <g fill="#007dff">
+        <circle cx="30" cy="560" r="3"></circle><circle cx="60" cy="560" r="3"></circle><circle cx="90" cy="560" r="3"></circle>
+        <circle cx="30" cy="590" r="3"></circle><circle cx="60" cy="590" r="3"></circle><circle cx="90" cy="590" r="3"></circle>
+        <circle cx="30" cy="620" r="3"></circle><circle cx="60" cy="620" r="3"></circle><circle cx="90" cy="620" r="3"></circle>
+        <circle cx="30" cy="650" r="3"></circle><circle cx="60" cy="650" r="3"></circle><circle cx="90" cy="650" r="3"></circle>
+      </g>
+      <!-- Capsule coin haut droit -->
+      <g opacity="0.20">
+        <rect x="1020" y="30" width="180" height="90" rx="45" transform="rotate(25 1110 75)" fill="url(#cyanBlue)"></rect>
+      </g>
+      <!-- Hexagones verticaux -->
+      <g fill="none" stroke="#a0a8b8" stroke-width="2" opacity="0.7">
+        <polygon points="1020,250 1050,232 1080,250 1080,286 1050,304 1020,286"></polygon>
+        <polygon points="1010,355 1040,337 1070,355 1070,391 1040,409 1010,391"></polygon>
+        <polygon points="1060,445 1090,427 1120,445 1120,481 1090,499 1060,481"></polygon>
+      </g>
+      <!-- Arc inférieur droit -->
+      <g fill="none">
+        <path d="M1100 700 A220 220 0 0 1 1200 430" stroke="#00cfff" stroke-width="5"></path>
+        <path d="M1135 700 A180 180 0 0 1 1200 480" stroke="#006dff" stroke-width="10"></path>
+      </g>
+      <!-- Lignes fines coin haut droit -->
+      <g stroke="#00d4ff" stroke-width="2">
+        <line x1="950" y1="70" x2="1000" y2="20"></line>
+        <line x1="1080" y1="170" x2="1140" y2="110"></line>
+      </g>
+    </svg>
+  </div>
   <div class="hero-inner">
     <div class="hero-title-group">
       <h1 class="sr-only">Réparateur électroménager à domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck et Bailleul (Nord 59 / Pas-de-Calais 62) — Réparation lave-linge, lave-vaisselle, four, réfrigérateur et sèche-linge</h1>
@@ -750,18 +800,6 @@ const ham=document.getElementById('hamburger');
 const navLinks=document.getElementById('navLinks');
 ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classList.toggle('open');});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
-
-/* ── Particules hero ── */
-(function(){
-  const container=document.getElementById('particles');
-  for(let i=0;i<200;i++){
-    const p=document.createElement('div');p.className='particle';
-    const s=Math.random()*22+6;
-    const color='#00b4d8';
-    p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+color+';animation-duration:'+(Math.random()*16+8)+'s;animation-delay:'+Math.random()*14+'s;opacity:'+(Math.random()*.5+.2);
-    container.appendChild(p);
-  }
-})();
 
 /* ── Animations scroll ── */
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
