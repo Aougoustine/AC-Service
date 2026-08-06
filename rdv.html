@@ -321,6 +321,8 @@ textarea{resize:vertical;min-height:110px;}
       <input type="hidden" name="from_name" value="AC SERVICE – Site web">
       <input type="hidden" name="redirect" value="false">
       <input type="hidden" name="botcheck" value="" style="display:none">
+      <!-- Honeypot anti-bot : champ invisible pour un visiteur humain, souvent rempli par les bots qui remplissent tous les champs d'un formulaire sans regarder le rendu visuel. -->
+      <input type="text" id="hpWebsite" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:1px;width:1px;overflow:hidden;">
 
       <div class="form-full check-row" style="display:flex;align-items:flex-start;gap:.7rem;margin-top:1.2rem;">
         <input type="checkbox" id="acceptCgv" name="acceptCgv" required style="width:auto;margin-top:.2rem;flex-shrink:0;">
@@ -595,6 +597,7 @@ async function sendToGestionApp(d){
         'x-api-key': '7f3a9c1e4b8d2f6a0c5e9b3d7a1f4c8e6b2d9a3f5c7e1b4d8a2f6c9e3b5d7a1f'
       },
       body: JSON.stringify({
+        hpWebsite: (document.getElementById('hpWebsite')||{}).value || '',
         clientName: d.prenom + ' ' + d.nom,
         firstName: d.prenom,
         lastName: d.nom,
@@ -626,6 +629,10 @@ async function sendToGestionApp(d){
 /* ────────── Envoi Web3Forms → Gmail ────────── */
 function handleSubmit(e){
   e.preventDefault();
+  // Honeypot : un humain ne voit ni ne remplit jamais ce champ (positionné hors écran).
+  // S'il est rempli, on abandonne silencieusement sans rien envoyer, ni alerter le bot.
+  const hp=document.getElementById('hpWebsite');
+  if(hp && hp.value.trim()!==''){ return; }
   function fv(id){return document.getElementById(id).value.trim();}
   const prenom=fv('prenom'),nom=fv('nom'),tel=fv('tel'),adresse=fv('adresse');
   const codePostal=fv('codePostal'),ville=fv('ville');
