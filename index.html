@@ -84,7 +84,7 @@
   ]
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="shortcut icon" type="image/png" href="/favicon.png">
 <style>
@@ -97,7 +97,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;line-height:1.65;letter-spacing:-.005em;background:linear-gradient(180deg,#011331 0%,#000000 100%);color:var(--white);overflow-x:hidden;min-height:100vh;}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(180deg,#011331 0%,#000000 100%);color:var(--white);overflow-x:hidden;min-height:100vh;}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;background:rgba(1,19,49,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-links{display:flex;gap:2rem;list-style:none;}
@@ -131,7 +131,7 @@ footer span{color:var(--cyan);}
 .footer-copy span{color:var(--cyan);}
 
 /* ── Bouton WhatsApp flottant ── */
-.btn-whatsapp-float{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:.75rem 1.2rem .75rem .95rem;border-radius:50px;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
+.btn-whatsapp-float{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:.75rem 1.2rem .75rem .95rem;border-radius:50px;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
 .btn-whatsapp-float:hover{background:#1ebe5d;transform:translateY(-3px) scale(1.04);box-shadow:0 8px 28px rgba(37,211,102,.55);}
 .btn-whatsapp-float svg{width:1.5rem;height:1.5rem;flex-shrink:0;}
 @media(max-width:520px){
@@ -148,10 +148,17 @@ footer span{color:var(--cyan);}
 }
 
 
-.section-title{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;text-align:center;letter-spacing:.04em;margin-bottom:.7rem;}
+.section-title{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;text-align:center;letter-spacing:.04em;margin-bottom:.5rem;}
 .section-title span{color:var(--cyan);}
-.section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));margin:0 auto 4.5rem;border-radius:2px;}
+.section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));margin:0 auto 3rem;border-radius:2px;}
 
+#particles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.particle{position:absolute;border-radius:50%;opacity:.7;animation:float linear infinite;}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);opacity:0;}
+  10%{opacity:.45;} 90%{opacity:.45;}
+  100%{transform:translateY(-10vh) scale(1);opacity:0;}
+}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
@@ -182,9 +189,9 @@ footer span{color:var(--cyan);}
 }
 
 /* ── Section Interventions ── */
-#interventions{padding:8rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
+#interventions{padding:5rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
 .interventions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto;}
-.interv-card{background:rgba(255,255,255,0.04);border:1px solid rgba(0,180,216,.15);border-top:3px solid var(--cyan);border-radius:14px;padding:2.2rem 2rem;position:relative;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:border-color .3s,transform .3s,box-shadow .3s;}
+.interv-card{background:rgba(255,255,255,0.04);border:1px solid rgba(0,180,216,.15);border-top:3px solid var(--cyan);border-radius:14px;padding:2.2rem 2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
 .interv-card:hover{border-color:var(--cyan);transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,180,216,.15);}
 .interv-card-num{position:absolute;top:1.2rem;right:1.5rem;font-family:'Rajdhani',sans-serif;font-size:3.5rem;font-weight:700;color:rgba(0,180,216,.07);line-height:1;}
 .interv-card-icon{font-size:2.8rem;margin-bottom:1rem;display:block;}
@@ -194,9 +201,9 @@ footer span{color:var(--cyan);}
 .interv-card ul li::before{content:'›';position:absolute;left:0;color:var(--cyan);font-weight:700;font-size:1.1rem;}
 
 /* ── Forfaits ── */
-#forfaits{padding:8rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);scroll-margin-top:90px;}
+#forfaits{padding:5rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);scroll-margin-top:90px;}
 .forfaits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1100px;margin:0 auto;}
-.forfait-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2.5rem 2rem;position:relative;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s;}
+.forfait-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
 .forfait-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));}
 .forfait-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,180,216,.2);}
 .forfait-card.card-autres{border-color:rgba(0,180,216,.18);}
@@ -219,11 +226,11 @@ footer span{color:var(--cyan);}
 
 
 /* ── Garantie / Engagements ── */
-#garantie,#engagements{padding:8rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
-#avis{padding:8rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
+#garantie,#engagements{padding:4rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
+#avis{padding:5rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
 .garantie-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:800px;margin:0 auto;}
-.gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s;flex:1 1 220px;max-width:260px;}
-.gar-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,180,216,.15);}
+.gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;transition:transform .3s;flex:1 1 220px;max-width:260px;}
+.gar-card:hover{transform:translateY(-4px);}
 .gar-icon{font-size:2.5rem;margin-bottom:1rem;}
 .gar-card h4{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem;}
 .gar-card p{font-size:.88rem;color:var(--text-light);line-height:1.5;}
@@ -250,7 +257,7 @@ footer span{color:var(--cyan);}
 }
 
 /* ── Contact ── */
-#contact{padding:5rem 2rem;background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+#contact{padding:3rem 2rem;background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .contact-inner{max-width:800px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;align-items:center;}
 .contact-item{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--white);font-weight:600;font-size:1.05rem;transition:color .2s;}
 .contact-item:hover{color:var(--cyan);}
@@ -335,6 +342,7 @@ footer span{color:var(--cyan);}
   </div>
 </nav>
 <section id="hero" style="position:relative;overflow:hidden;">
+  <div id="particles"></div>
   <div class="hero-inner">
     <div class="hero-title-group">
       <h1 class="sr-only">Réparateur électroménager à domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck et Bailleul (Nord 59 / Pas-de-Calais 62) — Réparation lave-linge, lave-vaisselle, four, réfrigérateur et sèche-linge</h1>
@@ -342,8 +350,8 @@ footer span{color:var(--cyan);}
       <div class="hero-tagline"><img class="hero-slogan-img" src="assets/slogan.svg" alt="Votre électroménager satisfait et réparé — AC SERVICE, réparateur électroménager à Esquelbecq"></div>
     </div>
     <div class="hero-btns">
-      <a href="tel:+33744859895" class="btn-primary" aria-label="Appeler AC SERVICE au 07 44 85 98 95">📞 07 44 85 98 95</a>
       <a href="rdv.html" class="btn-primary">📅 Prendre rendez-vous</a>
+      <a href="tel:+33744859895" class="btn-primary" aria-label="Appeler AC SERVICE au 07 44 85 98 95">📞 07 44 85 98 95</a>
       <a href="#forfaits" class="btn-primary">💶 Nos forfaits</a>
     </div>
     <div class="hero-badges">
@@ -371,7 +379,7 @@ footer span{color:var(--cyan);}
     Des interventions sérieuses, honnêtes, et sans mauvaise surprise.
   </p>
   <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:1780px;margin:0 auto;">
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">E</div>
         <div>
@@ -382,7 +390,7 @@ footer span{color:var(--cyan);}
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
       <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très satisfaite de l'intervention. Réparateur sérieux, professionnel et efficace. La panne a été rapidement identifiée et réparée avec des explications claires. Travail soigné et tarifs corrects. Je recommande sans hésitation.</p>
     </div>
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">J</div>
         <div>
@@ -393,7 +401,7 @@ footer span{color:var(--cyan);}
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
       <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Travail de qualité, prend le temps pour tester les éléments de mon appareil et le prix est très abordable. Vive les petits artisans qui aiment encore leur travail. Bravo Augustin et merci pour votre gentillesse.</p>
     </div>
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">F</div>
         <div>
@@ -404,7 +412,7 @@ footer span{color:var(--cyan);}
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
       <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très professionnel et honnête. Au regard du problème que j'avais sur mon appareil, il m'a indiqué clairement que je devais changer mon électroménager. Il m'a très bien expliqué l'origine de ma panne. Bon nombre de professionnels m'auraient certainement dit qu'il fallait se déplacer pour voir. Je tiens à souligner ce point fort qui est cette honnêteté. En cas de besoin je recontacterais sans hésitation. Et encore merci à lui.</p>
     </div>
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">A</div>
         <div>
@@ -526,7 +534,7 @@ footer span{color:var(--cyan);}
 
   <div class="forfaits-toggle reveal">
     <button type="button" class="forfaits-toggle-item active" data-panel="gros">🔧 Gros électroménager</button>
-    <button type="button" class="forfaits-toggle-item" data-panel="petit">🔌 Petit électroménager</button>
+    <button type="button" class="forfaits-toggle-item" data-panel="petit">🧹 Petit électroménager</button>
   </div>
 
   <div class="forfaits-slider">
@@ -742,6 +750,18 @@ const ham=document.getElementById('hamburger');
 const navLinks=document.getElementById('navLinks');
 ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classList.toggle('open');});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
+
+/* ── Particules hero ── */
+(function(){
+  const container=document.getElementById('particles');
+  for(let i=0;i<200;i++){
+    const p=document.createElement('div');p.className='particle';
+    const s=Math.random()*22+6;
+    const color='#00b4d8';
+    p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+color+';animation-duration:'+(Math.random()*16+8)+'s;animation-delay:'+Math.random()*14+'s;opacity:'+(Math.random()*.5+.2);
+    container.appendChild(p);
+  }
+})();
 
 /* ── Animations scroll ── */
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
