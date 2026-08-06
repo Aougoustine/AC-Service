@@ -7,7 +7,7 @@
 <meta name="description" content="Prenez rendez-vous avec AC SERVICE pour la réparation de votre électroménager à domicile. Devis gratuit, RDV sous 48h.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.acservicepro.fr/rdv.html">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="shortcut icon" type="image/png" href="/favicon.png">
 <style>
@@ -20,7 +20,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Nunito',sans-serif;background:linear-gradient(180deg,#011331 0%,#000000 100%);color:var(--white);overflow-x:hidden;min-height:100vh;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#011331 0%,#000000 100%);color:var(--white);overflow-x:hidden;min-height:100vh;}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;background:rgba(1,19,49,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-links{display:flex;gap:2rem;list-style:none;}
@@ -53,7 +53,7 @@ footer span{color:var(--cyan);}
 .footer-copy span{color:var(--cyan);}
 
 /* ── Bouton WhatsApp flottant ── */
-.btn-whatsapp-float{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:.75rem 1.2rem .75rem .95rem;border-radius:50px;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
+.btn-whatsapp-float{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:.75rem 1.2rem .75rem .95rem;border-radius:50px;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
 .btn-whatsapp-float:hover{background:#1ebe5d;transform:translateY(-3px) scale(1.04);box-shadow:0 8px 28px rgba(37,211,102,.55);}
 .btn-whatsapp-float svg{width:1.5rem;height:1.5rem;flex-shrink:0;}
 @media(max-width:520px){
@@ -85,7 +85,7 @@ footer span{color:var(--cyan);}
 .form-grid>div{min-width:0;}
 .form-full{grid-column:1 / -1;}
 label{display:block;font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:.4rem;}
-input:not([type="checkbox"]):not([type="radio"]),select,textarea{width:100%;max-width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1px solid rgba(0,180,216,.25);border-radius:8px;color:var(--white);font-family:'Nunito',sans-serif;font-size:16px;padding:.75rem 1rem;transition:border-color .25s,box-shadow .25s;outline:none;-webkit-appearance:none;}
+input:not([type="checkbox"]):not([type="radio"]),select,textarea{width:100%;max-width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1px solid rgba(0,180,216,.25);border-radius:8px;color:var(--white);font-family:'Inter',sans-serif;font-size:16px;padding:.75rem 1rem;transition:border-color .25s,box-shadow .25s;outline:none;-webkit-appearance:none;}
 input:not([type="checkbox"]):not([type="radio"]):focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,180,216,.15);}
 select option{background:var(--navy-mid);color:var(--white);}
 textarea{resize:vertical;min-height:110px;}
@@ -180,7 +180,7 @@ textarea{resize:vertical;min-height:110px;}
 </nav>
 <section class="page-hero">
   <h1>Prendre <span>Rendez-vous</span></h1>
-  <p>Réservez votre créneau dés maintenant.</p>
+  <p>Réservez votre créneau dès maintenant.</p>
 </section>
 
 <section id="rdv">
@@ -330,11 +330,11 @@ textarea{resize:vertical;min-height:110px;}
       </div>
 
       <button type="submit" class="form-submit" id="submitBtn">
-        <span id="submitText">📨 Envoyer ma demande de RDV</span>
+        <span id="submitText">📅 Confirmer mon rendez-vous</span>
         <span id="submitLoader" style="display:none">⏳ Envoi en cours…</span>
       </button>
       <p class="form-note">
-  🔒 Envoi sécurisé directement dans notre boîte mail — nous vous rappelons sous 48h.<br>
+  🔒 Envoi sécurisé directement dans notre boîte mail — votre créneau est réservé dès validation.<br>
   <span style="font-size:.78rem;opacity:.6;">En validant cette demande, vous vous engagez à être présent(e) au créneau sélectionné. En cas d'indisponibilité, merci de nous appeler pour annuler ou reporter le rendez-vous.</span>
 </p>
     </form>
