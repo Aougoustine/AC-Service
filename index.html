@@ -84,6 +84,54 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Combien coûte une réparation électroménager à domicile ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Le tarif dépend du type d'appareil : 60 € TTC pour la cuisson, 65 € TTC pour le lavage et séchage, 70 € TTC pour le froid. Ce forfait couvre le déplacement, le diagnostic et la réparation lorsqu'elle est réalisable immédiatement. Aucune pièce détachée n'est incluse dans ce prix."}
+    },
+    {
+      "@type": "Question",
+      "name": "Le devis est-il vraiment gratuit ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui. Si une pièce doit être commandée, un devis écrit et gratuit vous est présenté avant toute commande — vous n'êtes jamais engagé sans votre accord."}
+    },
+    {
+      "@type": "Question",
+      "name": "Sous combien de temps pouvez-vous intervenir ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Un rendez-vous est généralement proposé sous 48h, selon les disponibilités et votre secteur."}
+    },
+    {
+      "@type": "Question",
+      "name": "Dans quelles villes intervenez-vous ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "J'interviens à domicile à Esquelbecq et dans un rayon de 30 km : Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck, Bailleul et leurs environs (Nord 59 / Pas-de-Calais 62)."}
+    },
+    {
+      "@type": "Question",
+      "name": "Quelles marques et quels appareils réparez-vous ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Toutes les marques du marché (Whirlpool, Bosch, Samsung, LG, Electrolux, Indesit…), sur lave-linge, lave-vaisselle, sèche-linge, four, micro-onde, plaque de cuisson, réfrigérateur et congélateur. Le petit électroménager (centrale vapeur, aspirateur, cafetière…) est traité en dépôt à l'atelier."}
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je déposer mon appareil directement à l'atelier ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, pour le petit électroménager transportable. Le forfait Dépôt & Diagnostic est de 40 € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention."}
+    },
+    {
+      "@type": "Question",
+      "name": "Les réparations sont-elles garanties ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, chaque réparation est garantie 15 jours sur la main d'œuvre. Les pièces détachées sont garanties selon les conditions du fournisseur."}
+    },
+    {
+      "@type": "Question",
+      "name": "Comment prendre rendez-vous ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Directement en ligne via le formulaire de prise de rendez-vous, ou par téléphone au 07 44 85 98 95."}
+    }
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="shortcut icon" type="image/png" href="/favicon.png">
@@ -220,6 +268,16 @@ footer span{color:var(--cyan);}
 
 /* ── Garantie / Engagements ── */
 #garantie,#engagements{padding:6rem 2rem;background:linear-gradient(180deg,#011331 0%,#000000 100%);}
+#faq{padding:6rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;}
+.faq-item{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.25);overflow:hidden;transition:border-color .2s;}
+.faq-item[open]{border-color:rgba(0,180,216,.4);}
+.faq-item summary{list-style:none;cursor:pointer;padding:1.2rem 3.2rem 1.2rem 1.6rem;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.02em;color:var(--white);position:relative;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';position:absolute;right:1.6rem;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--cyan);font-weight:400;transition:transform .25s;}
+.faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg);}
+.faq-item p{padding:0 1.6rem 1.4rem;color:var(--text-light);font-size:.92rem;line-height:1.65;}
+
 #avis{padding:6rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
 .garantie-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:800px;margin:0 auto;}
 .gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s;flex:1 1 220px;max-width:260px;}
@@ -279,7 +337,7 @@ footer span{color:var(--cyan);}
   .hero-desc{font-size:.8rem;margin-top:.8rem;}
   .badge{font-size:.76rem;}
   .badge-icon{font-size:1.1rem;}
-  #interventions,#engagements,#forfaits,#avis,#contact{padding:3rem 1.2rem;}
+  #interventions,#engagements,#forfaits,#avis,#faq,#contact{padding:3rem 1.2rem;}
   .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
   .forfaits-grid{grid-template-columns:1fr;}
   .garantie-grid .gar-card{flex-basis:160px;}
@@ -300,7 +358,7 @@ footer span{color:var(--cyan);}
   html{font-size:18px;}
   nav{padding:1rem 3.5rem;}
   .hero-inner{max-width:1000px;}
-  #interventions,#engagements,#forfaits,#contact{padding-left:3rem;padding-right:3rem;}
+  #interventions,#engagements,#forfaits,#avis,#faq,#contact{padding-left:3rem;padding-right:3rem;}
   .interventions-grid{max-width:1400px;gap:2.4rem;}
   .forfaits-grid{max-width:1300px;gap:2.4rem;}
   .forfaits-grid.forfaits-grid-single{grid-template-columns:minmax(0,408px);}
@@ -683,6 +741,45 @@ footer span{color:var(--cyan);}
   });
 })();
 </script>
+
+<section id="faq">
+  <h2 class="section-title reveal">Questions <span>fréquentes</span></h2>
+  <div class="section-line reveal"></div>
+  <div class="faq-list">
+    <details class="faq-item reveal">
+      <summary>Combien coûte une réparation électroménager à domicile ?</summary>
+      <p>Le tarif dépend du type d'appareil : 60 € TTC pour la cuisson, 65 € TTC pour le lavage et séchage, 70 € TTC pour le froid. Ce forfait couvre le déplacement, le diagnostic et la réparation lorsqu'elle est réalisable immédiatement. Aucune pièce détachée n'est incluse dans ce prix.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Le devis est-il vraiment gratuit ?</summary>
+      <p>Oui. Si une pièce doit être commandée, un devis écrit et gratuit vous est présenté avant toute commande — vous n'êtes jamais engagé sans votre accord.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Sous combien de temps pouvez-vous intervenir ?</summary>
+      <p>Un rendez-vous est généralement proposé sous 48h, selon les disponibilités et votre secteur.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Dans quelles villes intervenez-vous ?</summary>
+      <p>J'interviens à domicile à Esquelbecq et dans un rayon de 30 km : Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck, Bailleul et leurs environs (Nord 59 / Pas-de-Calais 62).</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Quelles marques et quels appareils réparez-vous ?</summary>
+      <p>Toutes les marques du marché (Whirlpool, Bosch, Samsung, LG, Electrolux, Indesit…), sur lave-linge, lave-vaisselle, sèche-linge, four, micro-onde, plaque de cuisson, réfrigérateur et congélateur. Le petit électroménager (centrale vapeur, aspirateur, cafetière…) est traité en dépôt à l'atelier.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Puis-je déposer mon appareil directement à l'atelier ?</summary>
+      <p>Oui, pour le petit électroménager transportable. Le forfait Dépôt &amp; Diagnostic est de 40 € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Les réparations sont-elles garanties ?</summary>
+      <p>Oui, chaque réparation est garantie 15 jours sur la main d'œuvre. Les pièces détachées sont garanties selon les conditions du fournisseur.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Comment prendre rendez-vous ?</summary>
+      <p>Directement en ligne via le formulaire de <a href="rdv.html" style="color:var(--cyan);">prise de rendez-vous</a>, ou par téléphone au <a href="tel:+33744859895" style="color:var(--cyan);">07 44 85 98 95</a>.</p>
+    </details>
+  </div>
+</section>
 
 <section id="contact">
   <div class="contact-inner">
