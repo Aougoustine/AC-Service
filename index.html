@@ -596,7 +596,7 @@ footer span{color:var(--cyan);}
     <div class="forfaits-track" id="forfaitsTrack">
 
       <div class="forfaits-panel">
-        <div class="forfaits-grid">
+        <div class="forfaits-grid" id="forfaitsGridGros">
           <div class="forfait-card">
             <div class="forfait-price"><sup>€</sup>60 <span>TTC</span></div>
             <p class="forfait-disclaimer">Pièces détachées éventuelles non incluses.</p>
@@ -662,7 +662,7 @@ footer span{color:var(--cyan);}
       </div>
 
       <div class="forfaits-panel">
-        <div class="forfaits-grid forfaits-grid-single">
+        <div class="forfaits-grid forfaits-grid-single" id="forfaitsGridPetit">
           <div class="forfait-card card-autres">
             <div class="forfait-price"><sup>€</sup>40 <span>TTC</span></div>
             <p class="forfait-disclaimer">Pièces détachées éventuelles non incluses.</p>
@@ -744,6 +744,52 @@ footer span{color:var(--cyan);}
       track.classList.toggle('show-petit', btn.dataset.panel === 'petit');
     });
   });
+})();
+</script>
+
+<script>
+// Remplace les forfaits codés en dur ci-dessus par ceux gérés depuis l'appli interne
+// (Paramètres > Tarifs, case "Afficher sur le site"). Si l'appel échoue (API en
+// maintenance, hors-ligne...), le HTML codé en dur reste affiché tel quel — aucune
+// section vide possible.
+(function(){
+  var GATEWAY_BASE = 'https://ac-service-application.vercel.app';
+  var gridGros = document.getElementById('forfaitsGridGros');
+  var gridPetit = document.getElementById('forfaitsGridPetit');
+  if(!gridGros || !gridPetit) return;
+
+  function escapeHtml(str){
+    return String(str==null?'':str).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function cardHtml(f, features, disclaimer, extraClass){
+    var appareils = (f.appliances||[]).map(function(a){ return '<span class="tag">'+escapeHtml(a)+'</span>'; }).join('');
+    var feats = (features||[]).map(function(p){ return '<li>'+escapeHtml(p)+'</li>'; }).join('');
+    return '<div class="forfait-card'+(extraClass?' '+extraClass:'')+'">'
+      + '<div class="forfait-price"><sup>€</sup>'+Math.round(f.amount)+' <span>TTC</span></div>'
+      + '<p class="forfait-disclaimer">'+escapeHtml(disclaimer)+'</p>'
+      + '<div class="forfait-name">'+escapeHtml(f.icon||'')+' '+escapeHtml(f.label)+'</div>'
+      + '<div class="forfait-appareils">'+appareils+'</div>'
+      + '<ul class="forfait-features">'+feats+'</ul>'
+      + '</div>';
+  }
+
+  fetch(GATEWAY_BASE+'/api/forfaits-public')
+    .then(function(res){ if(!res.ok) throw new Error('bad status'); return res.json(); })
+    .then(function(data){
+      var forfaits = data.forfaits||[];
+      var gros = forfaits.filter(function(f){ return f.category==='gros'; });
+      var petit = forfaits.filter(function(f){ return f.category==='petit'; });
+      if(gros.length){
+        gridGros.innerHTML = gros.map(function(f){ return cardHtml(f, data.featuresGros, data.disclaimer, ''); }).join('');
+      }
+      if(petit.length){
+        gridPetit.innerHTML = petit.map(function(f){ return cardHtml(f, data.featuresPetit, data.disclaimer, 'card-autres'); }).join('');
+      }
+    })
+    .catch(function(){ /* garde le contenu HTML codé en dur déjà présent, silencieusement */ });
 })();
 </script>
 
