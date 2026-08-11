@@ -88,7 +88,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json" id="faqSchema">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -788,6 +788,35 @@ footer span{color:var(--cyan);}
       if(petit.length){
         gridPetit.innerHTML = petit.map(function(f){ return cardHtml(f, data.featuresPetit, data.disclaimer, 'card-autres'); }).join('');
       }
+
+      // FAQ (texte visible + schéma JSON-LD associé) : mêmes prix, reconstruits au
+      // même format que la section forfaits et le CGV, plutôt que de retomber sur la
+      // phrase d'origine (qui nommait chaque forfait un par un et casserait si un
+      // forfait "gros" est ajouté/retiré/renommé côté appli).
+      var homeText = gros.length ? (
+        "Le tarif dépend du type d'appareil : "+gros.map(function(f){ return f.label+' — '+Math.round(f.amount)+' € TTC'; }).join(' ; ')
+        + ". Ce forfait couvre le déplacement, le diagnostic et la réparation lorsqu'elle est réalisable immédiatement. Aucune pièce détachée n'est incluse dans ce prix."
+      ) : null;
+      var depotText = petit.length ? (
+        "Oui, pour le petit électroménager transportable. Le forfait "+petit[0].label+' est de '+Math.round(petit[0].amount)+" € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention. Le dépôt s'organise uniquement par téléphone."
+      ) : null;
+
+      var faqHomeEl = document.getElementById('faqPriceHome');
+      if(faqHomeEl && homeText) faqHomeEl.textContent = homeText;
+      var faqDepotEl = document.getElementById('faqPriceDepot');
+      if(faqDepotEl && depotText) faqDepotEl.textContent = depotText;
+
+      var faqSchemaEl = document.getElementById('faqSchema');
+      if(faqSchemaEl && (homeText || depotText)){
+        try{
+          var schema = JSON.parse(faqSchemaEl.textContent);
+          (schema.mainEntity||[]).forEach(function(q){
+            if(homeText && q.name === "Combien coûte une réparation d'électroménager à domicile ?") q.acceptedAnswer.text = homeText;
+            if(depotText && q.name === 'Puis-je déposer mon appareil directement à l\'atelier ?') q.acceptedAnswer.text = depotText;
+          });
+          faqSchemaEl.textContent = JSON.stringify(schema);
+        }catch(e){ /* JSON-LD malformé ou introuvable : on laisse tel quel, silencieusement */ }
+      }
     })
     .catch(function(){ /* garde le contenu HTML codé en dur déjà présent, silencieusement */ });
 })();
@@ -799,7 +828,7 @@ footer span{color:var(--cyan);}
   <div class="faq-list">
     <details class="faq-item reveal" name="faq-group">
       <summary>Combien coûte une réparation d'électroménager à domicile ?</summary>
-      <p>Le tarif dépend du type d'appareil : 60 € TTC pour la cuisson, 65 € TTC pour le lavage et séchage, 70 € TTC pour le froid. Ce forfait couvre le déplacement, le diagnostic et la réparation lorsqu'elle est réalisable immédiatement. Aucune pièce détachée n'est incluse dans ce prix.</p>
+      <p id="faqPriceHome">Le tarif dépend du type d'appareil : 60 € TTC pour la cuisson, 65 € TTC pour le lavage et séchage, 70 € TTC pour le froid. Ce forfait couvre le déplacement, le diagnostic et la réparation lorsqu'elle est réalisable immédiatement. Aucune pièce détachée n'est incluse dans ce prix.</p>
     </details>
     <details class="faq-item reveal" name="faq-group">
       <summary>Le devis est-il vraiment gratuit ?</summary>
@@ -819,7 +848,7 @@ footer span{color:var(--cyan);}
     </details>
     <details class="faq-item reveal" name="faq-group">
       <summary>Puis-je déposer mon appareil directement à l'atelier ?</summary>
-      <p>Oui, pour le petit électroménager transportable. Le forfait Dépôt &amp; Diagnostic est de 40 € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention. Le dépôt s'organise uniquement par téléphone.</p>
+      <p id="faqPriceDepot">Oui, pour le petit électroménager transportable. Le forfait Dépôt &amp; Diagnostic est de 40 € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention. Le dépôt s'organise uniquement par téléphone.</p>
     </details>
     <details class="faq-item reveal" name="faq-group">
       <summary>Les réparations sont-elles garanties ?</summary>
