@@ -160,7 +160,7 @@ footer span{color:var(--cyan);}
     <div class="legal-article">
       <h4>Art. 6 – Tarifs</h4>
       <p>Les prestations sont facturées selon les tarifs en vigueur au jour de l'intervention ou de l'acceptation du devis.</p>
-      <p>Le forfait d'intervention est fixé à 60 € TTC pour les appareils de cuisson, 65 € TTC pour les appareils de lavage et de séchage, 70 € TTC pour les appareils frigorifiques et 40 € TTC pour le dépôt et le diagnostic en atelier.</p>
+      <p id="art6Prices">Le forfait d'intervention est fixé à 60 € TTC pour les appareils de cuisson, 65 € TTC pour les appareils de lavage et de séchage, 70 € TTC pour les appareils frigorifiques et 40 € TTC pour le dépôt et le diagnostic en atelier.</p>
       <p>Le second déplacement nécessaire à l'installation d'une pièce commandée est facturé 30 € TTC, auxquels s'ajoute le prix de la pièce.</p>
       <p>Les pièces détachées sont facturées en supplément conformément au devis accepté par le client.</p>
       <p>Le prestataire se réserve le droit de modifier ses tarifs à tout moment. Les tarifs applicables sont ceux en vigueur à la date d'acceptation du devis.</p>
@@ -274,6 +274,25 @@ const ham=document.getElementById('hamburger');
 const navLinks=document.getElementById('navLinks');
 ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classList.toggle('open');});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');navLinks.classList.remove('open');}));
+
+/* ── Art. 6 (Tarifs) : reprend les prix réels depuis l'appli interne, pour rester
+   cohérent avec la section Forfaits de la page d'accueil. Si l'appel échoue, le
+   texte codé en dur ci-dessus reste affiché tel quel. ── */
+(function(){
+  var priceEl = document.getElementById('art6Prices');
+  if(!priceEl) return;
+  fetch('https://ac-service-application.vercel.app/api/forfaits-public')
+    .then(function(res){ if(!res.ok) throw new Error('bad status'); return res.json(); })
+    .then(function(data){
+      var forfaits = (data.forfaits||[]).slice().sort(function(a,b){
+        return (a.category||'').localeCompare(b.category||'');
+      });
+      if(!forfaits.length) return;
+      var parts = forfaits.map(function(f){ return f.label+' — '+Math.round(f.amount)+' € TTC'; });
+      priceEl.textContent = 'Le forfait d\'intervention est fixé à : '+parts.join(' ; ')+'.';
+    })
+    .catch(function(){ /* garde le texte codé en dur déjà présent, silencieusement */ });
+})();
 
 </script>
 </body>
