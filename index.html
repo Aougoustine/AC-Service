@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="Réparateur électroménager indépendant à Esquelbecq — devis gratuit, intervention rapide, forfaits à partir de 40€.">
 <meta name="twitter:image" content="https://www.acservicepro.fr/favicon.png">
 <link rel="canonical" href="https://www.acservicepro.fr/">
-<script type="application/ld+json">
+<script type="application/ld+json" id="localBusinessSchema">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -651,7 +651,7 @@ footer span{color:var(--cyan);}
         <div class="forfaits-note">
           <div class="forfaits-note-row">
             <span class="forfaits-note-icon">🔧</span>
-            <span><strong>2ème passage (pose de la pièce commandée) :</strong> forfait déplacement de <strong>20 €</strong> uniquement + prix de la pièce — le forfait d'intervention complet n'est plus refacturé.</span>
+            <span id="faqSecondVisitNote"><strong>2ème passage (pose de la pièce commandée) :</strong> forfait déplacement de <strong>20 €</strong> uniquement + prix de la pièce — le forfait d'intervention complet n'est plus refacturé.</span>
           </div>
         </div>
       </div>
@@ -811,6 +811,25 @@ footer span{color:var(--cyan);}
           });
           faqSchemaEl.textContent = JSON.stringify(schema);
         }catch(e){ /* JSON-LD malformé ou introuvable : on laisse tel quel, silencieusement */ }
+      }
+
+      // Frais de 2ème passage (note sous les forfaits + priceRange du schéma
+      // LocalBusiness) : même valeur que celle réglée dans Paramètres > Tarifs.
+      if(data.secondVisitFee != null){
+        var fee = Math.round(data.secondVisitFee);
+        var noteEl = document.getElementById('faqSecondVisitNote');
+        if(noteEl) noteEl.innerHTML = '<strong>2ème passage (pose de la pièce commandée) :</strong> forfait déplacement de <strong>'+fee+' €</strong> uniquement + prix de la pièce — le forfait d\'intervention complet n\'est plus refacturé.';
+
+        var bizSchemaEl = document.getElementById('localBusinessSchema');
+        if(bizSchemaEl){
+          try{
+            var biz = JSON.parse(bizSchemaEl.textContent);
+            var maxPrice = forfaits.length ? Math.max.apply(null, forfaits.map(function(f){ return f.amount; })) : 70;
+            var minPrice = Math.min(fee, forfaits.length ? Math.min.apply(null, forfaits.map(function(f){ return f.amount; })) : fee);
+            biz.priceRange = Math.round(minPrice)+'€–'+Math.round(maxPrice)+'€';
+            bizSchemaEl.textContent = JSON.stringify(biz);
+          }catch(e){ /* JSON-LD malformé ou introuvable : on laisse tel quel, silencieusement */ }
+        }
       }
     })
     .catch(function(){ /* garde le contenu HTML codé en dur déjà présent, silencieusement */ });
