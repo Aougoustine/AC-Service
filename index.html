@@ -278,6 +278,8 @@ footer span{color:var(--cyan);}
 .faq-item p{padding:0 1.6rem 1.4rem;color:var(--text-light);font-size:.92rem;line-height:1.65;}
 
 #avis{padding:4rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
+.avis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1780px;margin:0 auto;}
+.avis-card{background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.25);}
 .garantie-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:800px;margin:0 auto;}
 .gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s;flex:1 1 220px;max-width:260px;}
 .gar-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,180,216,.15);}
@@ -320,6 +322,7 @@ footer span{color:var(--cyan);}
   .forfaits-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
   .garantie-grid .gar-card{flex-basis:180px;}
   .contact-inner{gap:1.2rem;}
+  .avis-grid{grid-template-columns:repeat(2,1fr);}
 }
 
 /* ══ MOBILE (≤ 680px) ══ */
@@ -338,6 +341,7 @@ footer span{color:var(--cyan);}
   .badge-icon{font-size:1.1rem;}
   #interventions,#engagements,#forfaits,#avis,#faq,#contact{padding:2.2rem 1.2rem;}
   .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
+  .avis-grid{grid-template-columns:1fr;}
   .forfaits-grid{grid-template-columns:1fr;}
   .garantie-grid .gar-card{flex-basis:160px;}
   .forfait-card{padding:2rem 1.5rem;}
@@ -428,8 +432,8 @@ footer span{color:var(--cyan);}
   <p style="text-align:center;color:var(--text-light);font-size:.95rem;margin-bottom:2.5rem;">
     Des interventions sérieuses, honnêtes, et sans mauvaise surprise.
   </p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:1780px;margin:0 auto;">
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+  <div class="avis-grid">
+    <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">E</div>
         <div>
@@ -440,7 +444,7 @@ footer span{color:var(--cyan);}
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
       <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très satisfaite de l'intervention. Réparateur sérieux, professionnel et efficace. La panne a été rapidement identifiée et réparée avec des explications claires. Travail soigné et tarifs corrects. Je recommande sans hésitation.</p>
     </div>
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+    <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">J</div>
         <div>
@@ -451,7 +455,7 @@ footer span{color:var(--cyan);}
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
       <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Travail de qualité, prend le temps pour tester les éléments de mon appareil et le prix est très abordable. Vive les petits artisans qui aiment encore leur travail. Bravo Augustin et merci pour votre gentillesse.</p>
     </div>
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+    <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">F</div>
         <div>
@@ -462,7 +466,7 @@ footer span{color:var(--cyan);}
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
       <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très professionnel et honnête. Au regard du problème que j'avais sur mon appareil, il m'a indiqué clairement que je devais changer mon électroménager. Il m'a très bien expliqué l'origine de ma panne. Bon nombre de professionnels m'auraient certainement dit qu'il fallait se déplacer pour voir. Je tiens à souligner ce point fort qui est cette honnêteté. En cas de besoin je recontacterais sans hésitation. Et encore merci à lui.</p>
     </div>
-    <div class="reveal" style="background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;flex:0 1 420px;max-width:420px;box-shadow:0 8px 30px rgba(0,0,0,.25);">
+    <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
         <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0077b6);display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;flex-shrink:0;">A</div>
         <div>
