@@ -121,7 +121,7 @@
     {
       "@type": "Question",
       "name": "Puis-je déposer mon appareil directement à l'atelier ?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Oui, pour le petit électroménager transportable. Le forfait Dépôt & Diagnostic est de 40 € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention. Le dépôt s'organise uniquement par téléphone."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, pour le petit électroménager transportable. Le forfait Dépôt & Diagnostic est de 40 € TTC et couvre l'examen complet de l'appareil. Si une réparation est nécessaire — avec ou sans pièce à commander — je vous établis un devis avant toute intervention, et rien n'est réalisé sans votre accord. Si une pièce doit être commandée, le même fonctionnement s'applique qu'à domicile. Le dépôt s'organise uniquement par téléphone."}
     },
     {
       "@type": "Question",
@@ -802,7 +802,7 @@ footer span{color:var(--cyan);}
         + ". Ce forfait couvre le déplacement, le diagnostic et la réparation lorsqu'elle est réalisable immédiatement. Aucune pièce détachée n'est incluse dans ce prix."
       ) : null;
       var depotText = petit.length ? (
-        "Oui, pour le petit électroménager transportable. Le forfait "+petit[0].label+' est de '+Math.round(petit[0].amount)+" € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention. Le dépôt s'organise uniquement par téléphone."
+        "Oui, pour le petit électroménager transportable. Le forfait "+petit[0].label+' est de '+Math.round(petit[0].amount)+" € TTC et couvre l'examen complet de l'appareil. Si une réparation est nécessaire — avec ou sans pièce à commander — je vous établis un devis avant toute intervention, et rien n'est réalisé sans votre accord. Si une pièce doit être commandée, le même fonctionnement s'applique qu'à domicile (voir la question précédente). Le dépôt s'organise uniquement par téléphone."
       ) : null;
 
       var faqHomeEl = document.getElementById('faqPriceHome');
@@ -885,7 +885,7 @@ footer span{color:var(--cyan);}
     </details>
     <details class="faq-item reveal" name="faq-group">
       <summary>Puis-je déposer mon appareil directement à l'atelier ?</summary>
-      <p id="faqPriceDepot">Oui, pour le petit électroménager transportable. Le forfait Dépôt &amp; Diagnostic est de 40 € TTC. Si une réparation est nécessaire, un devis est établi et soumis à votre accord avant toute intervention. Le dépôt s'organise uniquement par téléphone.</p>
+      <p id="faqPriceDepot">Oui, pour le petit électroménager transportable. Le forfait Dépôt &amp; Diagnostic est de 40 € TTC et couvre l'examen complet de l'appareil. Si une réparation est nécessaire — avec ou sans pièce à commander — je vous établis un devis avant toute intervention, et rien n'est réalisé sans votre accord. Si une pièce doit être commandée, le même fonctionnement s'applique qu'à domicile (voir la question précédente). Le dépôt s'organise uniquement par téléphone.</p>
     </details>
     <details class="faq-item reveal" name="faq-group">
       <summary>Les réparations sont-elles garanties ?</summary>
