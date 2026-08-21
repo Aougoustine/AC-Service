@@ -101,7 +101,7 @@
     {
       "@type": "Question",
       "name": "Comment ça marche en cas de besoin de pièces ?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Si une pièce détachée est nécessaire, je vous établis un devis avant toute commande — rien n'est commandé sans votre accord. Une fois validé, la pièce est généralement disponible sous 24 à 48h selon le fournisseur, et nous fixons alors un second rendez-vous pour la poser. Ce second passage est facturé 20 € TTC de forfait déplacement uniquement (le forfait d'intervention complet n'est pas refacturé) + le prix de la pièce. Les pièces neuves posées sont garanties par le fabricant."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Si une pièce détachée est nécessaire, je vous établis un devis avant toute commande — rien n'est commandé sans votre accord. Une fois validé, la pièce est généralement disponible sous 24 à 48h selon le fournisseur. Dès sa réception, je vous contacte pour fixer le second rendez-vous et venir la poser. Ce second passage est facturé 20 € TTC de forfait déplacement uniquement (le forfait d'intervention complet n'est pas refacturé) + le prix de la pièce. Les pièces neuves posées sont garanties par le fabricant."}
     },
     {
       "@type": "Question",
@@ -836,7 +836,7 @@ footer span{color:var(--cyan);}
             var schema2 = JSON.parse(faqSchemaEl.textContent);
             (schema2.mainEntity||[]).forEach(function(q){
               if(q.name === 'Comment ça marche en cas de besoin de pièces ?'){
-                q.acceptedAnswer.text = "Si une pièce détachée est nécessaire, je vous établis un devis avant toute commande — rien n'est commandé sans votre accord. Une fois validé, la pièce est généralement disponible sous 24 à 48h selon le fournisseur, et nous fixons alors un second rendez-vous pour la poser. Ce second passage est facturé "+fee+" € TTC de forfait déplacement uniquement (le forfait d'intervention complet n'est pas refacturé) + le prix de la pièce. Les pièces neuves posées sont garanties par le fabricant.";
+                q.acceptedAnswer.text = "Si une pièce détachée est nécessaire, je vous établis un devis avant toute commande — rien n'est commandé sans votre accord. Une fois validé, la pièce est généralement disponible sous 24 à 48h selon le fournisseur. Dès sa réception, je vous contacte pour fixer le second rendez-vous et venir la poser. Ce second passage est facturé "+fee+" € TTC de forfait déplacement uniquement (le forfait d'intervention complet n'est pas refacturé) + le prix de la pièce. Les pièces neuves posées sont garanties par le fabricant.";
               }
             });
             faqSchemaEl.textContent = JSON.stringify(schema2);
@@ -869,7 +869,7 @@ footer span{color:var(--cyan);}
     </details>
     <details class="faq-item reveal" name="faq-group">
       <summary>Comment ça marche en cas de besoin de pièces ?</summary>
-      <p>Si une pièce détachée est nécessaire, je vous établis un devis avant toute commande — rien n'est commandé sans votre accord. Une fois validé, la pièce est généralement disponible sous 24 à 48h selon le fournisseur, et nous fixons alors un second rendez-vous pour la poser. Ce second passage est facturé <strong><span id="faqPartsFee">20</span> € TTC</strong> de forfait déplacement uniquement (le forfait d'intervention complet n'est pas refacturé) + le prix de la pièce. Les pièces neuves posées sont garanties par le fabricant.</p>
+      <p>Si une pièce détachée est nécessaire, je vous établis un devis avant toute commande — rien n'est commandé sans votre accord. Une fois validé, la pièce est généralement disponible sous 24 à 48h selon le fournisseur. Dès sa réception, je vous contacte pour fixer le second rendez-vous et venir la poser. Ce second passage est facturé <strong><span id="faqPartsFee">20</span> € TTC</strong> de forfait déplacement uniquement (le forfait d'intervention complet n'est pas refacturé) + le prix de la pièce. Les pièces neuves posées sont garanties par le fabricant.</p>
     </details>
     <details class="faq-item reveal" name="faq-group">
       <summary>Sous combien de temps pouvez-vous intervenir ?</summary>
