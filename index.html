@@ -301,8 +301,8 @@ footer span{color:var(--cyan);}
 .faq-item p{padding:0 1.6rem 1.4rem;color:var(--text-light);font-size:.92rem;line-height:1.65;}
 
 #avis{padding:4rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
-.avis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1780px;margin:0 auto;}
-.avis-card{background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.25);}
+.avis-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:1780px;margin:0 auto;}
+.avis-card{background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.25);flex:0 1 calc(25% - 1.125rem);min-width:260px;}
 .garantie-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:800px;margin:0 auto;}
 .gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s;flex:1 1 220px;max-width:260px;}
 .gar-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,180,216,.15);}
@@ -345,7 +345,7 @@ footer span{color:var(--cyan);}
   .forfaits-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
   .garantie-grid .gar-card{flex-basis:180px;}
   .contact-inner{gap:1.2rem;}
-  .avis-grid{grid-template-columns:repeat(2,1fr);}
+  .avis-card{flex-basis:calc(50% - .75rem);}
 }
 
 /* ══ MOBILE (≤ 680px) ══ */
@@ -364,7 +364,7 @@ footer span{color:var(--cyan);}
   .badge-icon{font-size:1.1rem;}
   #interventions,#engagements,#forfaits,#avis,#faq,#contact{padding:2.2rem 1.2rem;}
   .interventions-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
-  .avis-grid{grid-template-columns:1fr;}
+  .avis-card{flex-basis:100%;min-width:0;}
   .forfaits-grid{grid-template-columns:1fr;}
   .garantie-grid .gar-card{flex-basis:160px;}
   .forfait-card{padding:2rem 1.5rem;}
