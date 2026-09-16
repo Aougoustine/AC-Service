@@ -1093,13 +1093,32 @@ document.querySelectorAll('.avis-date').forEach(el=>{
 // (.avis-text), un bouton "Lire la suite" ne s'affiche que si ça coupe vraiment
 // quelque chose (scrollHeight > clientHeight), pour développer/replier ce seul avis
 // sans jamais quitter la page.
-document.querySelectorAll('.avis-card').forEach(card=>{
-  const text = card.querySelector('.avis-text');
-  const toggle = card.querySelector('.avis-toggle');
-  if(!text || !toggle) return;
-  requestAnimationFrame(()=>{
-    if(text.scrollHeight > text.clientHeight + 1) toggle.style.display = 'inline-block';
+//
+// checkAvisTruncation() est rappelée à plusieurs moments plutôt qu'une seule fois
+// au chargement (bug réel signalé : certains avis coupés n'affichaient pas le
+// bouton) — la police (Google Fonts, chargée en display:swap plus haut) peut
+// s'appliquer APRÈS ce tout premier rendu et changer le nombre de lignes réellement
+// occupées, et la largeur d'une carte change avec la mise en page responsive
+// (4/2/1 par ligne) — un texte pile à la limite peut donc devenir tronqué (ou ne
+// plus l'être) selon la police déjà chargée ou la taille d'écran au moment du test.
+function checkAvisTruncation(){
+  document.querySelectorAll('.avis-card').forEach(card=>{
+    const text = card.querySelector('.avis-text');
+    const toggle = card.querySelector('.avis-toggle');
+    if(!text || !toggle || text.classList.contains('expanded')) return;
+    toggle.style.display = (text.scrollHeight > text.clientHeight + 1) ? 'inline-block' : 'none';
   });
+}
+checkAvisTruncation();
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(checkAvisTruncation);
+window.addEventListener('load', checkAvisTruncation);
+let avisResizeTimer;
+window.addEventListener('resize', ()=>{
+  clearTimeout(avisResizeTimer);
+  avisResizeTimer = setTimeout(checkAvisTruncation, 200);
+});
+document.querySelectorAll('.avis-toggle').forEach(toggle=>{
+  const text = toggle.closest('.avis-card').querySelector('.avis-text');
   toggle.addEventListener('click', ()=>{
     const expanded = text.classList.toggle('expanded');
     toggle.textContent = expanded ? 'Réduire ▲' : 'Lire la suite ▾';
