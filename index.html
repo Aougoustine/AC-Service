@@ -336,6 +336,10 @@ footer span{color:var(--cyan);}
 #avis{padding:4rem 2rem;background:linear-gradient(180deg,#000000 0%,#011331 100%);}
 .avis-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:1780px;margin:0 auto;}
 .avis-card{background:var(--card-bg);border:1px solid rgba(0,180,216,.4);border-radius:12px;padding:1.6rem;text-align:left;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.25);flex:0 1 calc(25% - 1.125rem);min-width:260px;}
+.avis-text{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+.avis-text.expanded{-webkit-line-clamp:unset;overflow:visible;}
+.avis-toggle{display:none;margin-top:.6rem;background:none;border:none;padding:0;color:var(--cyan);font-family:inherit;font-size:.82rem;font-weight:700;letter-spacing:.02em;cursor:pointer;text-align:left;}
+.avis-toggle:hover{text-decoration:underline;}
 .garantie-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:800px;margin:0 auto;}
 .gar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s;flex:1 1 220px;max-width:260px;}
 .gar-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,180,216,.15);}
@@ -498,7 +502,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très professionnel et honnête. Au regard du problème que j'avais sur mon appareil, il m'a indiqué clairement que je devais changer mon électroménager. Il m'a très bien expliqué l'origine de ma panne. Bon nombre de professionnels m'auraient certainement dit qu'il fallait se déplacer pour voir. Je tiens à souligner ce point fort qui est cette honnêteté. En cas de besoin je recontacterais sans hésitation. Et encore merci à lui.</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très professionnel et honnête. Au regard du problème que j'avais sur mon appareil, il m'a indiqué clairement que je devais changer mon électroménager. Il m'a très bien expliqué l'origine de ma panne. Bon nombre de professionnels m'auraient certainement dit qu'il fallait se déplacer pour voir. Je tiens à souligner ce point fort qui est cette honnêteté. En cas de besoin je recontacterais sans hésitation. Et encore merci à lui.</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
     <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
@@ -509,7 +514,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Intervention très rapide, travail sérieux. Évite des dépenses inutiles lorsque la réparation coûte presque aussi cher que le remplacement, ce qui est rare! Je recommande ++! Merci!</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Intervention très rapide, travail sérieux. Évite des dépenses inutiles lorsque la réparation coûte presque aussi cher que le remplacement, ce qui est rare! Je recommande ++! Merci!</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
     <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
@@ -520,7 +526,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Excellent artisan. Je recommande vivement, très consciencieux et très réactif. Je le recommande les yeux fermés.</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Excellent artisan. Je recommande vivement, très consciencieux et très réactif. Je le recommande les yeux fermés.</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
     <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
@@ -531,7 +538,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Je recommande les yeux fermés ! Un réparateur très rapide, compétent et professionnel, mais surtout vraiment gentil et sympathique. Il a été super arrangeant pour les horaires et l'intervention a été efficace et très bien expliquée. Un vrai plaisir d'avoir affaire à quelqu'un de sérieux et humain. Je n'hésiterai pas à refaire appel à lui si besoin. Merci encore pour votre gentillesse et votre professionnalisme !</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Je recommande les yeux fermés ! Un réparateur très rapide, compétent et professionnel, mais surtout vraiment gentil et sympathique. Il a été super arrangeant pour les horaires et l'intervention a été efficace et très bien expliquée. Un vrai plaisir d'avoir affaire à quelqu'un de sérieux et humain. Je n'hésiterai pas à refaire appel à lui si besoin. Merci encore pour votre gentillesse et votre professionnalisme !</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
     <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
@@ -542,7 +550,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très réactif et arrangeant avec les horaires. Réparation réalisée immédiatement. Pour un prix défiant toute concurrence. Je recommande.</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Très réactif et arrangeant avec les horaires. Réparation réalisée immédiatement. Pour un prix défiant toute concurrence. Je recommande.</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
     <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
@@ -553,7 +562,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Merci, au top je recommande fortement AC Service qui a remis mon micro-onde en service.</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Merci, au top je recommande fortement AC Service qui a remis mon micro-onde en service.</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
     <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
@@ -564,7 +574,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Rapide et efficace. Parfait.</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Rapide et efficace. Parfait.</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
     <div class="avis-card reveal">
       <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
@@ -575,7 +586,8 @@ footer span{color:var(--cyan);}
         </div>
       </div>
       <div style="color:var(--cyan);letter-spacing:.15em;margin-bottom:.7rem;">★★★★★</div>
-      <p style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Micro-onde réparé en moins de deux. C'est cool, car on n'en fait plus comme celui-là. Je recommande les yeux fermés !</p>
+      <p class="avis-text" style="font-size:.88rem;color:var(--text-light);line-height:1.6;">Micro-onde réparé en moins de deux. C'est cool, car on n'en fait plus comme celui-là. Je recommande les yeux fermés !</p>
+      <button type="button" class="avis-toggle">Lire la suite ▾</button>
     </div>
   </div>
   <div style="text-align:center;margin-top:2.5rem;">
@@ -1075,6 +1087,23 @@ function relativeTimeFr(dateStr){
 }
 document.querySelectorAll('.avis-date').forEach(el=>{
   el.textContent = relativeTimeFr(el.dataset.date);
+});
+
+// Cadres d'avis de même taille : le texte est tronqué à 4 lignes par CSS
+// (.avis-text), un bouton "Lire la suite" ne s'affiche que si ça coupe vraiment
+// quelque chose (scrollHeight > clientHeight), pour développer/replier ce seul avis
+// sans jamais quitter la page.
+document.querySelectorAll('.avis-card').forEach(card=>{
+  const text = card.querySelector('.avis-text');
+  const toggle = card.querySelector('.avis-toggle');
+  if(!text || !toggle) return;
+  requestAnimationFrame(()=>{
+    if(text.scrollHeight > text.clientHeight + 1) toggle.style.display = 'inline-block';
+  });
+  toggle.addEventListener('click', ()=>{
+    const expanded = text.classList.toggle('expanded');
+    toggle.textContent = expanded ? 'Réduire ▲' : 'Lire la suite ▾';
+  });
 });
 </script>
 </body>
