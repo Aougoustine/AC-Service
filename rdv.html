@@ -506,12 +506,11 @@ function openSlots(dateStr){
   const morningBtn=document.querySelector('.slot-btn[data-slot="morning"]');
   const afternoonBtn=document.querySelector('.slot-btn[data-slot="afternoon"]');
   const mRem=day.morningRemaining||0, aRem=day.afternoonRemaining||0;
-  // Le jour même, l'agenda ferme les réservations en ligne à une heure limite (voir
-  // api/availability.js) : on affiche "Réservations closes" plutôt que "Complet".
-  const emptyLabel=function(closed){ return closed ? 'Réservations closes' : 'Complet'; };
+  // Aucune distinction affichée entre "plus de place" et "heure limite dépassée" (voir
+  // api/availability.js) : toujours "Complet", comme n'importe quel créneau plein.
 
-  morningBtn.innerHTML='🌅 Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')<small>'+(mRem>0?(mRem+' place'+(mRem>1?'s':'')+' restante'+(mRem>1?'s':'')):emptyLabel(day.morningClosed))+'</small>';
-  afternoonBtn.innerHTML='🌇 Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')<small>'+(aRem>0?(aRem+' place'+(aRem>1?'s':'')+' restante'+(aRem>1?'s':'')):emptyLabel(day.afternoonClosed))+'</small>';
+  morningBtn.innerHTML='🌅 Matin ('+fmtHour(scheduleInfo.morningStart)+' – '+fmtHour(scheduleInfo.morningEnd)+')<small>'+(mRem>0?(mRem+' place'+(mRem>1?'s':'')+' restante'+(mRem>1?'s':'')):'Complet')+'</small>';
+  afternoonBtn.innerHTML='🌇 Après-midi ('+fmtHour(scheduleInfo.afternoonStart)+' – '+fmtHour(scheduleInfo.afternoonEnd)+')<small>'+(aRem>0?(aRem+' place'+(aRem>1?'s':'')+' restante'+(aRem>1?'s':'')):'Complet')+'</small>';
   morningBtn.disabled = mRem<=0;
   afternoonBtn.disabled = aRem<=0;
   morningBtn.classList.remove('slot-active');
