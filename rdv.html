@@ -231,8 +231,8 @@ textarea{resize:vertical;min-height:110px;}
             <input type="tel" id="tel" name="telephone" placeholder="06 XX XX XX XX" required>
           </div>
           <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="jean@exemple.fr">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.fr" required>
           </div>
           <div class="form-full">
             <label for="autreNumero">Autre numéro pour le jour du RDV (optionnel — si ce n'est pas vous qui accueillerez le technicien)</label>
@@ -646,8 +646,13 @@ function handleSubmit(e){
   let panne=fv('panne');
   const rdvDate=fv('rdvDate'), rdvSlot=fv('rdvSlot');
 
-  if(!prenom||!nom||!tel||!adresse||!codePostal||!ville||!appareil||!panne){
+  const emailVal=fv('email');
+  if(!prenom||!nom||!tel||!emailVal||!adresse||!codePostal||!ville||!appareil||!panne){
     alert('Merci de remplir tous les champs obligatoires (*).');
+    return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)){
+    alert("Merci d'indiquer une adresse email valide.");
     return;
   }
   if(!rdvDate||!rdvSlot){
