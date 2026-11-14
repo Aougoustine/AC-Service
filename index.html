@@ -464,7 +464,21 @@ footer span{color:var(--cyan);}
 /* slogan recadré sur sa zone visible (l'image d'origine a beaucoup de vide autour) */
 .hero-tagline{position:relative;width:min(760px,86vw);aspect-ratio:3.47/1;overflow:hidden;margin:0 auto;}
 .hero-slogan-img{position:absolute;left:0;top:0;width:100%;height:auto;margin:0;animation:none;transform:translateY(-47.27%);}
-.hero-subline{position:relative;margin:clamp(.9rem,2.2vh,1.6rem) 0 0;text-align:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(1.25rem,2vw,2rem);line-height:1.1;letter-spacing:.03em;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.5);animation:fadeDown .9s .2s ease both;}
+.hero-subline{position:relative;margin:clamp(.9rem,2.2vh,1.6rem) 0 0;text-align:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(1.25rem,2.1vw,2.1rem);line-height:1.05;letter-spacing:.05em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.12em;animation:fadeDown .9s .2s ease both;}
+.sl-main{background:linear-gradient(180deg,#ffffff 0%,#bfe3ff 45%,#44a8ee 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 14px rgba(0,0,0,.5));}
+.sl-sub{font-size:.6em;letter-spacing:.2em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+/* « Votre électroménager » en dégradé blanc → bleu : la même image du slogan sert de masque à un dégradé,
+   et la ligne blanche d'origine est masquée. Sans prise en charge des masques CSS, le slogan reste inchangé. */
+@supports ((-webkit-mask-image:url(x)) or (mask-image:url(x))){
+  .hero-slogan-img{clip-path:inset(40.5% 0 0 0);}
+  .hero-tagline::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#ffffff 3.5%,#dff0ff 15%,#8fcdf6 28%,#3d9fea 39%,rgba(61,159,234,0) 40.5%);
+    -webkit-mask-image:url(assets/slogan.svg);mask-image:url(assets/slogan.svg);
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    -webkit-mask-size:100% auto;mask-size:100% auto;
+    -webkit-mask-position:0 66.41%;mask-position:0 66.41%;
+    filter:drop-shadow(0 2px 20px rgba(0,0,0,.5));}
+}
 .hero-inner .hero-desc{max-width:640px;margin:0 auto;font-size:1.08rem;line-height:1.7;color:#c3d2e4;}
 .hero-btns{margin-top:clamp(1.6rem,3.8vh,3.2rem);display:grid;grid-template-columns:repeat(3,minmax(0,210px));justify-content:center;gap:.9rem;}
 .hero-btns .btn-primary{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;max-width:none;box-sizing:border-box;padding:.85rem .8rem;border:1.5px solid transparent;white-space:nowrap;text-align:center;}
@@ -516,7 +530,7 @@ footer span{color:var(--cyan);}
       <h1 class="sr-only">Réparateur électroménager à domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck, Bailleul, Lumbres, Wormhout, Steenvoorde et Watten (Nord 59 / Pas-de-Calais 62) — Réparation lave-linge, lave-vaisselle, four, réfrigérateur et sèche-linge</h1>
       <div class="hero-watermark"><img src="assets/logo.svg" alt=""></div>
       <div class="hero-tagline"><img class="hero-slogan-img" src="assets/slogan.svg" alt="Votre électroménager satisfait et réparé — AC SERVICE, réparateur électroménager à Esquelbecq"></div>
-      <p class="hero-subline">Réparation à domicile et en atelier</p>
+      <p class="hero-subline"><span class="sl-main">Réparation à domicile</span><span class="sl-sub">et en atelier</span></p>
     </div>
     <p class="hero-desc reveal">Réparateur électroménager indépendant, j'interviens à domicile sur toutes les pannes — lave-linge, lave-vaisselle, four, réfrigérateur… — je suis basé à Esquelbecq et j'interviens chez vous dans le Nord 59 &amp; Pas-de-Calais 62.</p>
     <div class="hero-btns">
