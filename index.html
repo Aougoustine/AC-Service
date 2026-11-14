@@ -454,7 +454,9 @@ footer span{color:var(--cyan);}
 }
 
 /* ═══ En-tête d'accueil : pastille, filigrane AC discret, texte avant les boutons ═══ */
-#hero{padding-top:112px;}
+/* l'en-tête occupe tout l'écran, contenu centré : les avis ne se voient qu'en faisant défiler */
+#hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:104px;padding-bottom:64px;box-sizing:border-box;}
+.hero-inner{width:100%;}
 .hero-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.42rem 1.1rem;border:1px solid rgba(0,180,216,.38);border-radius:999px;background:rgba(0,119,182,.13);color:var(--cyan-glow);font-size:.82rem;font-weight:500;letter-spacing:.02em;animation:fadeDown .9s ease both;}
 .hero-pill-dot{width:7px;height:7px;border-radius:50%;background:#2ecc71;box-shadow:0 0 8px rgba(46,204,113,.8);}
 .hero-title-group{margin-top:1.3rem;margin-bottom:1.1rem;}
