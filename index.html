@@ -453,6 +453,43 @@ footer span{color:var(--cyan);}
   .garantie-grid{max-width:1300px;}
 }
 
+/* ═══ En-tête d'accueil : pastille, filigrane AC discret, texte avant les boutons ═══ */
+#hero{padding-top:112px;}
+.hero-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.42rem 1.1rem;border:1px solid rgba(0,180,216,.38);border-radius:999px;background:rgba(0,119,182,.13);color:var(--cyan-glow);font-size:.82rem;font-weight:500;letter-spacing:.02em;animation:fadeDown .9s ease both;}
+.hero-pill-dot{width:7px;height:7px;border-radius:50%;background:#2ecc71;box-shadow:0 0 8px rgba(46,204,113,.8);}
+.hero-title-group{margin-top:1.3rem;margin-bottom:1.1rem;}
+.hero-watermark{top:50%;width:min(520px,78vw);height:min(520px,78vw);opacity:.06;}
+/* slogan recadré sur sa zone visible (l'image d'origine a beaucoup de vide autour) */
+.hero-tagline{position:relative;width:min(700px,86vw);aspect-ratio:3.47/1;overflow:hidden;margin:0 auto;}
+.hero-slogan-img{position:absolute;left:0;top:0;width:100%;height:auto;margin:0;animation:none;transform:translateY(-47.27%);}
+.hero-inner .hero-desc{max-width:620px;margin:0 auto;font-size:1.02rem;line-height:1.65;color:#c3d2e4;}
+.hero-btns{margin-top:1.5rem;display:grid;grid-template-columns:repeat(3,minmax(0,210px));justify-content:center;gap:.9rem;}
+.hero-btns .btn-primary{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;max-width:none;box-sizing:border-box;padding:.85rem .8rem;border:1.5px solid transparent;white-space:nowrap;text-align:center;}
+.hero-btns .btn-primary:nth-child(2){background:linear-gradient(135deg,#1a7fdc,#0b4fa8);box-shadow:0 4px 20px rgba(26,127,220,.35);}
+.hero-btns .btn-primary:nth-child(3){background:transparent;border:1.5px solid rgba(0,180,216,.55);box-shadow:none;color:var(--cyan-glow);}
+.hero-btns .btn-primary:nth-child(3):hover{background:rgba(0,180,216,.12);}
+.hero-badges{margin-top:1.3rem;}
+.hero-desc-depot{margin-top:.9rem;}
+@media(max-width:680px){
+  #hero{padding-top:98px;}
+  .hero-pill{font-size:.72rem;padding:.38rem .9rem;}
+  .hero-title-group{margin-top:1rem;margin-bottom:.8rem;}
+  .hero-tagline{width:min(340px,86vw);}
+  .hero-inner .hero-desc{font-size:.88rem;margin-top:0;}
+  .hero-btns{margin-top:1.1rem;grid-template-columns:minmax(0,280px);gap:.55rem;}
+  .hero-btns .btn-primary{padding:.7rem 1rem;}
+  .hero-watermark{width:min(300px,86vw);height:min(300px,86vw);}
+}
+@media(min-width:681px) and (max-height:900px){
+  #hero{padding-top:104px;}
+  .hero-tagline{width:min(560px,60vw);}
+  .hero-title-group{margin-top:.9rem;margin-bottom:.7rem;}
+  .hero-inner .hero-desc{font-size:.92rem;}
+  .hero-btns{margin-top:1rem;}
+  .hero-badges{margin-top:.8rem;}
+  .hero-desc-depot{margin-top:.5rem;}
+}
+
 </style>
 </head>
 <body>
@@ -472,14 +509,16 @@ footer span{color:var(--cyan);}
 </nav>
 <section id="hero" style="position:relative;overflow:hidden;">
   <div class="hero-inner">
+    <div class="hero-pill"><span class="hero-pill-dot"></span>Intervention sous 48h • Secteurs 59 / 62</div>
     <div class="hero-title-group">
       <h1 class="sr-only">Réparateur électroménager à domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck, Bailleul, Lumbres, Wormhout, Steenvoorde et Watten (Nord 59 / Pas-de-Calais 62) — Réparation lave-linge, lave-vaisselle, four, réfrigérateur et sèche-linge</h1>
       <div class="hero-watermark"><img src="assets/logo.svg" alt=""></div>
       <div class="hero-tagline"><img class="hero-slogan-img" src="assets/slogan.svg" alt="Votre électroménager satisfait et réparé — AC SERVICE, réparateur électroménager à Esquelbecq"></div>
     </div>
+    <p class="hero-desc reveal">Réparateur électroménager indépendant, j'interviens à domicile sur toutes les pannes — lave-linge, lave-vaisselle, four, réfrigérateur… — je suis basé à Esquelbecq et j'interviens chez vous dans le Nord 59 &amp; Pas-de-Calais 62.</p>
     <div class="hero-btns">
-      <a href="rdv.html" class="btn-primary">📅 Prendre rendez-vous</a>
-      <a href="tel:+33744859895" class="btn-primary" aria-label="Appeler AC SERVICE au 07 44 85 98 95">📞 07 44 85 98 95</a>
+      <a href="rdv.html" class="btn-primary">📅 Rendez-vous</a>
+      <a href="#contact" class="btn-primary">📞 Nous contacter</a>
       <a href="#forfaits" class="btn-primary">💶 Nos forfaits</a>
     </div>
     <div class="hero-badges">
@@ -488,8 +527,7 @@ footer span{color:var(--cyan);}
       <div class="badge"><span class="badge-icon">🛡️</span> Garantie 15 jours</div>
       <div class="badge"><span class="badge-icon">📍</span> Déplacement inclus</div>
     </div>
-    <p class="hero-desc reveal">Réparateur électroménager indépendant, j'interviens à domicile sur toutes les pannes — lave-linge, lave-vaisselle, four, réfrigérateur… — je suis basé à Esquelbecq et j'interviens chez vous dans le Nord 59 &amp; Pas-de-Calais 62.</p>
-    <p class="hero-desc hero-desc-depot reveal">📥 Petit électroménager (centrale vapeur, aspirateur, cafetière…) ? Un dépôt à l'atelier est aussi possible.</p>
+    <p class="hero-desc hero-desc-depot reveal">📥 Petit électroménager (machine à café, tireuse à bière, centrale vapeur, aspirateur…) ? Un dépôt à l'atelier est aussi possible.</p>
   </div>
 </section>
 
@@ -791,6 +829,8 @@ footer span{color:var(--cyan);}
             <div class="forfait-name">📥 Dépôt &amp; Diagnostic</div>
             <div class="forfait-appareils">
               <span class="tag">Petit électroménager</span>
+              <span class="tag">Machine à café</span>
+              <span class="tag">Tireuse à bière</span>
             </div>
             <ul class="forfait-features">
               <li>Diagnostic complet à l'atelier</li>
@@ -908,6 +948,11 @@ footer span{color:var(--cyan);}
         gridGros.innerHTML = gros.map(function(f){ return cardHtml(f, data.featuresGros, data.disclaimer, ''); }).join('');
       }
       if(petit.length){
+        petit.forEach(function(f){
+          var apps = (f.appliances||[]).slice();
+          ['Machine à café','Tireuse à bière'].forEach(function(x){ if(apps.indexOf(x) < 0) apps.push(x); });
+          f.appliances = apps;
+        });
         gridPetit.innerHTML = petit.map(function(f){ return cardHtml(f, data.featuresPetit, data.disclaimer, 'card-autres'); }).join('');
       }
 
