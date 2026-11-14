@@ -462,11 +462,11 @@ footer span{color:var(--cyan);}
 .hero-title-group{margin-top:clamp(2.2rem,5vh,4rem);margin-bottom:clamp(2rem,4.6vh,3.6rem);}
 .hero-watermark{top:54%;width:min(400px,64vw,42vh);height:min(400px,64vw,42vh);opacity:.07;}
 /* slogan recadré sur sa zone visible (l'image d'origine a beaucoup de vide autour) */
-.hero-tagline{position:relative;width:min(760px,86vw);aspect-ratio:3.47/1;overflow:hidden;margin:0 auto;}
+.hero-tagline{position:relative;width:min(620px,82vw);aspect-ratio:3.47/1;overflow:hidden;margin:0 auto;}
 .hero-slogan-img{position:absolute;left:0;top:0;width:100%;height:auto;margin:0;animation:none;transform:translateY(-47.27%);}
-.hero-subline{position:relative;margin:clamp(.9rem,2.2vh,1.6rem) 0 0;text-align:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(1.25rem,2.1vw,2.1rem);line-height:1.05;letter-spacing:.05em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.12em;animation:fadeDown .9s .2s ease both;}
+.hero-subline{position:relative;margin:clamp(.9rem,2.2vh,1.6rem) 0 0;text-align:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.8rem);line-height:1.05;letter-spacing:.05em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.12em;animation:fadeDown .9s .2s ease both;}
 .sl-main{background:linear-gradient(180deg,#ffffff 0%,#bfe3ff 45%,#44a8ee 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 14px rgba(0,0,0,.5));}
-.sl-sub{font-size:.6em;letter-spacing:.2em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+.sl-sub{font-size:.42em;letter-spacing:.24em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5);}
 /* « Votre électroménager » en dégradé blanc → bleu : la même image du slogan sert de masque à un dégradé,
    et la ligne blanche d'origine est masquée. Sans prise en charge des masques CSS, le slogan reste inchangé. */
 @supports ((-webkit-mask-image:url(x)) or (mask-image:url(x))){
@@ -491,7 +491,7 @@ footer span{color:var(--cyan);}
   #hero{padding-top:92px;padding-bottom:26px;}
   .hero-pill{font-size:.72rem;padding:.38rem .9rem;}
   .hero-title-group{margin-top:clamp(1.5rem,3.2vh,2.2rem);margin-bottom:clamp(1.2rem,2.4vh,1.7rem);}
-  .hero-tagline{width:min(340px,86vw);}
+  .hero-tagline{width:min(300px,80vw);}
   .hero-inner .hero-desc{font-size:.88rem;margin-top:0;}
   .hero-btns{margin-top:clamp(1.2rem,2.6vh,1.8rem);grid-template-columns:minmax(0,280px);gap:.55rem;}
   .hero-badges{margin-top:clamp(1.1rem,2.4vh,1.6rem);}
@@ -501,7 +501,7 @@ footer span{color:var(--cyan);}
 }
 @media(min-width:681px) and (max-height:900px){
   #hero{padding-top:104px;}
-  .hero-tagline{width:min(620px,60vw);}
+  .hero-tagline{width:min(500px,56vw);}
   .hero-inner .hero-desc{font-size:.98rem;}
   .hero-title-group{margin-top:clamp(1.8rem,4.6vh,3rem);margin-bottom:clamp(1.6rem,4vh,2.6rem);}
 }
