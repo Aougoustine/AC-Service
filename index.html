@@ -457,9 +457,7 @@ footer span{color:var(--cyan);}
 /* l'en-tête occupe tout l'écran, contenu centré : les avis ne se voient qu'en faisant défiler */
 #hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:104px;padding-bottom:44px;box-sizing:border-box;}
 .hero-inner{width:100%;}
-.hero-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.42rem 1.1rem;border:1px solid rgba(0,180,216,.38);border-radius:999px;background:rgba(0,119,182,.13);color:var(--cyan-glow);font-size:.82rem;font-weight:500;letter-spacing:.02em;animation:fadeDown .9s ease both;}
-.hero-pill-dot{width:7px;height:7px;border-radius:50%;background:#2ecc71;box-shadow:0 0 8px rgba(46,204,113,.8);}
-.hero-title-group{margin-top:clamp(2.2rem,5vh,4rem);margin-bottom:clamp(2rem,4.6vh,3.6rem);}
+.hero-title-group{margin-top:0;margin-bottom:clamp(2rem,4.6vh,3.6rem);}
 .hero-watermark{top:54%;width:min(520px,70vw,55vh);height:min(520px,70vw,55vh);opacity:.07;}
 /* slogan recadré sur sa zone visible (l'image d'origine a beaucoup de vide autour) */
 .hero-tagline{position:relative;width:min(620px,82vw);aspect-ratio:3.47/1;overflow:hidden;margin:0 auto;}
@@ -490,8 +488,7 @@ footer span{color:var(--cyan);}
 .hero-desc-depot{margin-top:clamp(1rem,2.4vh,2rem);}
 @media(max-width:680px){
   #hero{padding-top:92px;padding-bottom:26px;}
-  .hero-pill{font-size:.72rem;padding:.38rem .9rem;}
-  .hero-title-group{margin-top:clamp(1.5rem,3.2vh,2.2rem);margin-bottom:clamp(1.2rem,2.4vh,1.7rem);}
+  .hero-title-group{margin-top:0;margin-bottom:clamp(1.2rem,2.4vh,1.7rem);}
   .hero-tagline{width:min(300px,80vw);}
   .hero-inner .hero-desc{font-size:.8rem;margin-top:0;}
   .hero-btns{margin-top:clamp(1.2rem,2.6vh,1.8rem);grid-template-columns:minmax(0,280px);gap:.55rem;}
@@ -504,7 +501,7 @@ footer span{color:var(--cyan);}
   #hero{padding-top:104px;}
   .hero-tagline{width:min(500px,56vw);}
   .hero-inner .hero-desc{font-size:.88rem;}
-  .hero-title-group{margin-top:clamp(1.8rem,4.6vh,3rem);margin-bottom:clamp(1.6rem,4vh,2.6rem);}
+  .hero-title-group{margin-top:0;margin-bottom:clamp(1.6rem,4vh,2.6rem);}
 }
 
 </style>
@@ -526,7 +523,6 @@ footer span{color:var(--cyan);}
 </nav>
 <section id="hero" style="position:relative;overflow:hidden;">
   <div class="hero-inner">
-    <div class="hero-pill"><span class="hero-pill-dot"></span>Intervention sous 48h • Secteurs 59 / 62</div>
     <div class="hero-title-group">
       <h1 class="sr-only">Réparateur électroménager à domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck, Bailleul, Lumbres, Wormhout, Steenvoorde et Watten (Nord 59 / Pas-de-Calais 62) — Réparation lave-linge, lave-vaisselle, four, réfrigérateur et sèche-linge</h1>
       <div class="hero-watermark"><img src="assets/logo.svg" alt=""></div>
