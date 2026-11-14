@@ -455,27 +455,28 @@ footer span{color:var(--cyan);}
 
 /* ═══ En-tête d'accueil : pastille, filigrane AC discret, texte avant les boutons ═══ */
 /* l'en-tête occupe tout l'écran, contenu centré : les avis ne se voient qu'en faisant défiler */
-#hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:104px;padding-bottom:64px;box-sizing:border-box;}
+#hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:104px;padding-bottom:44px;box-sizing:border-box;}
 .hero-inner{width:100%;}
 .hero-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.42rem 1.1rem;border:1px solid rgba(0,180,216,.38);border-radius:999px;background:rgba(0,119,182,.13);color:var(--cyan-glow);font-size:.82rem;font-weight:500;letter-spacing:.02em;animation:fadeDown .9s ease both;}
 .hero-pill-dot{width:7px;height:7px;border-radius:50%;background:#2ecc71;box-shadow:0 0 8px rgba(46,204,113,.8);}
-.hero-title-group{margin-top:clamp(2.8rem,7.4vh,5rem);margin-bottom:clamp(2.4rem,6.4vh,4.4rem);}
+.hero-title-group{margin-top:clamp(2.2rem,5vh,4rem);margin-bottom:clamp(2rem,4.6vh,3.6rem);}
 .hero-watermark{top:54%;width:min(345px,64vw,40vh);height:min(345px,64vw,40vh);opacity:.07;}
 /* slogan recadré sur sa zone visible (l'image d'origine a beaucoup de vide autour) */
 .hero-tagline{position:relative;width:min(760px,86vw);aspect-ratio:3.47/1;overflow:hidden;margin:0 auto;}
 .hero-slogan-img{position:absolute;left:0;top:0;width:100%;height:auto;margin:0;animation:none;transform:translateY(-47.27%);}
+.hero-subline{position:relative;margin:clamp(.9rem,2.2vh,1.6rem) 0 0;text-align:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(1.25rem,2vw,2rem);line-height:1.1;letter-spacing:.03em;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.5);animation:fadeDown .9s .2s ease both;}
 .hero-inner .hero-desc{max-width:640px;margin:0 auto;font-size:1.08rem;line-height:1.7;color:#c3d2e4;}
-.hero-btns{margin-top:clamp(1.8rem,4.6vh,3.6rem);display:grid;grid-template-columns:repeat(3,minmax(0,210px));justify-content:center;gap:.9rem;}
+.hero-btns{margin-top:clamp(1.6rem,3.8vh,3.2rem);display:grid;grid-template-columns:repeat(3,minmax(0,210px));justify-content:center;gap:.9rem;}
 .hero-btns .btn-primary{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;max-width:none;box-sizing:border-box;padding:.85rem .8rem;border:1.5px solid transparent;white-space:nowrap;text-align:center;}
 .hero-btns .btn-primary:nth-child(2){background:linear-gradient(135deg,#1a7fdc,#0b4fa8);box-shadow:0 4px 20px rgba(26,127,220,.35);}
 .hero-btns .btn-primary:nth-child(3){background:transparent;border:1.5px solid rgba(0,180,216,.55);box-shadow:none;color:var(--cyan-glow);}
 .hero-btns .btn-primary:nth-child(3):hover{background:rgba(0,180,216,.12);}
-.hero-badges{margin-top:clamp(1.6rem,4vh,3.2rem);}
-.hero-desc-depot{margin-top:clamp(1.1rem,3vh,2.4rem);}
+.hero-badges{margin-top:clamp(1.4rem,3.2vh,2.8rem);}
+.hero-desc-depot{margin-top:clamp(1rem,2.4vh,2rem);}
 @media(max-width:680px){
-  #hero{padding-top:98px;}
+  #hero{padding-top:92px;padding-bottom:26px;}
   .hero-pill{font-size:.72rem;padding:.38rem .9rem;}
-  .hero-title-group{margin-top:clamp(1.8rem,4vh,2.6rem);margin-bottom:clamp(1.6rem,3.2vh,2.2rem);}
+  .hero-title-group{margin-top:clamp(1.5rem,3.2vh,2.2rem);margin-bottom:clamp(1.2rem,2.4vh,1.7rem);}
   .hero-tagline{width:min(340px,86vw);}
   .hero-inner .hero-desc{font-size:.88rem;margin-top:0;}
   .hero-btns{margin-top:clamp(1.2rem,2.6vh,1.8rem);grid-template-columns:minmax(0,280px);gap:.55rem;}
@@ -488,6 +489,7 @@ footer span{color:var(--cyan);}
   #hero{padding-top:104px;}
   .hero-tagline{width:min(620px,60vw);}
   .hero-inner .hero-desc{font-size:.98rem;}
+  .hero-title-group{margin-top:clamp(1.8rem,4.6vh,3rem);margin-bottom:clamp(1.6rem,4vh,2.6rem);}
 }
 
 </style>
@@ -514,6 +516,7 @@ footer span{color:var(--cyan);}
       <h1 class="sr-only">Réparateur électroménager à domicile à Esquelbecq, Dunkerque, Saint-Omer, Bergues, Cassel, Hazebrouck, Bailleul, Lumbres, Wormhout, Steenvoorde et Watten (Nord 59 / Pas-de-Calais 62) — Réparation lave-linge, lave-vaisselle, four, réfrigérateur et sèche-linge</h1>
       <div class="hero-watermark"><img src="assets/logo.svg" alt=""></div>
       <div class="hero-tagline"><img class="hero-slogan-img" src="assets/slogan.svg" alt="Votre électroménager satisfait et réparé — AC SERVICE, réparateur électroménager à Esquelbecq"></div>
+      <p class="hero-subline">Réparation à domicile et en atelier</p>
     </div>
     <p class="hero-desc reveal">Réparateur électroménager indépendant, j'interviens à domicile sur toutes les pannes — lave-linge, lave-vaisselle, four, réfrigérateur… — je suis basé à Esquelbecq et j'interviens chez vous dans le Nord 59 &amp; Pas-de-Calais 62.</p>
     <div class="hero-btns">
