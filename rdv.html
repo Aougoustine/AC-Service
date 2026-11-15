@@ -92,6 +92,10 @@ textarea{resize:vertical;min-height:110px;}
 .form-submit{margin-top:1.5rem;width:100%;background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff;border:none;border-radius:8px;padding:1rem;font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,180,216,.3);}
 .form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
 .form-note{margin-top:1rem;text-align:center;font-size:.82rem;color:var(--text-light);}
+.pay-note{display:flex;align-items:flex-start;gap:.9rem;margin-top:1.2rem;padding:1rem 1.3rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;}
+.pay-note-icon{font-size:1.25rem;line-height:1.3;flex-shrink:0;}
+.pay-note strong{display:block;font-size:.95rem;color:#f0f4ff;font-weight:700;}
+.pay-note p{margin:.25rem 0 0;font-size:.86rem;line-height:1.5;color:var(--text-light);}
 .photo-modal-btn{width:100%;box-sizing:border-box;background:linear-gradient(135deg,var(--cyan),#0077b6);border:none;border-radius:8px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.75rem 1rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,180,216,.3);transition:transform .2s,box-shadow .2s;}
 .photo-modal-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
 #form-success{display:none;text-align:center;padding:2rem;}
@@ -323,6 +327,14 @@ textarea{resize:vertical;min-height:110px;}
       <input type="hidden" name="botcheck" value="" style="display:none">
       <!-- Honeypot anti-bot : champ invisible pour un visiteur humain, souvent rempli par les bots qui remplissent tous les champs d'un formulaire sans regarder le rendu visuel. -->
       <input type="text" id="hpWebsite" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:1px;width:1px;overflow:hidden;">
+
+      <div class="form-full pay-note">
+        <span class="pay-note-icon" aria-hidden="true">💳</span>
+        <div>
+          <strong>Moyens de paiement acceptés</strong>
+          <p>Carte bancaire ou virement bancaire. Les espèces et les chèques ne sont pas acceptés.</p>
+        </div>
+      </div>
 
       <div class="form-full check-row" style="display:flex;align-items:flex-start;gap:.7rem;margin-top:1.2rem;">
         <input type="checkbox" id="acceptCgv" name="acceptCgv" required style="width:auto;margin-top:.2rem;flex-shrink:0;">
