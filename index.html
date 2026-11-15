@@ -319,6 +319,7 @@ footer span{color:var(--cyan);}
 .forfait-price span{font-size:1rem;color:var(--text-light);font-weight:400;}
 .forfait-name{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:.8rem 0 1.5rem;color:var(--white);}
 .forfait-appareils{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
+.forfait-appareils:empty{display:none;}
 .tag{background:rgba(0,180,216,.15);border:1px solid rgba(0,180,216,.3);color:var(--cyan-glow);padding:.3rem .8rem;border-radius:20px;font-size:.82rem;font-weight:600;}
 .forfait-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
 .forfait-features li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:var(--text-light);}
@@ -842,11 +843,7 @@ footer span{color:var(--cyan);}
             <div class="forfait-price"><sup>€</sup>40 <span>TTC</span></div>
             <p class="forfait-disclaimer">Pièces détachées éventuelles non incluses.</p>
             <div class="forfait-name">📥 Dépôt &amp; Diagnostic</div>
-            <div class="forfait-appareils">
-              <span class="tag">Petit électroménager</span>
-              <span class="tag">Machine à café</span>
-              <span class="tag">Tireuse à bière</span>
-            </div>
+            <div class="forfait-appareils"></div>
             <ul class="forfait-features">
               <li>Diagnostic complet à l'atelier</li>
               <li>Bon de dépôt remis à la prise en charge</li>
@@ -964,9 +961,7 @@ footer span{color:var(--cyan);}
       }
       if(petit.length){
         petit.forEach(function(f){
-          var apps = (f.appliances||[]).slice();
-          ['Machine à café','Tireuse à bière'].forEach(function(x){ if(apps.indexOf(x) < 0) apps.push(x); });
-          f.appliances = apps;
+          f.appliances = []; // pas d'étiquettes bleues sur la carte petit électroménager
         });
         gridPetit.innerHTML = petit.map(function(f){ return cardHtml(f, data.featuresPetit, data.disclaimer, 'card-autres'); }).join('');
       }
