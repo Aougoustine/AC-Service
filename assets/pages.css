@@ -1,0 +1,131 @@
+:root{
+  --navy-mid:#010e22;
+  --cyan:#00b4d8; --cyan-glow:#48cae4; --gold:#00b4d8;
+  --white:#f0f4ff; --text-light:#a8c0d6;
+  --card-bg:rgba(255,255,255,0.04); --border:rgba(0,180,216,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#011331 0%,#000000 100%);color:var(--white);overflow-x:hidden;min-height:100vh;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;background:rgba(1,19,49,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--text-light);text-decoration:none;text-transform:uppercase;transition:color .25s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff!important;padding:.5rem 1.4rem;border-radius:4px;font-weight:700!important;transition:transform .2s,box-shadow .2s!important;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,216,.4)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+.nav-logo{display:flex;align-items:center;gap:.7rem;}
+.nav-logo img{height:52px;width:auto;mix-blend-mode:screen;}
+.nav-brand-name{font-family:'Rajdhani',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:.06em;color:#fff;line-height:1;text-transform:uppercase;white-space:nowrap;}
+
+section{position:relative;z-index:1;}
+
+.btn-primary{background:linear-gradient(135deg,var(--cyan),#0077b6);color:#fff;padding:.85rem 2.2rem;border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,180,216,.3);display:inline-block;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,180,216,.5);}
+
+/* ── Footer ── */
+footer{background:#000;border-top:1px solid rgba(0,180,216,.15);padding:2.5rem 1.5rem 1.5rem;text-align:center;}
+footer span{color:var(--cyan);}
+.footer-legal-links{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.5rem;margin-bottom:1rem;}
+.footer-legal-links a{font-size:.78rem;color:rgba(240,244,255,.45);text-decoration:underline;transition:color .2s;}
+.footer-legal-links a:hover{color:var(--cyan);}
+.footer-copy{font-size:.78rem;color:rgba(240,244,255,.35);line-height:1.6;}
+.footer-copy span{color:var(--cyan);}
+
+/* ── Bouton WhatsApp flottant ── */
+.btn-whatsapp-float{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:.75rem 1.2rem .75rem .95rem;border-radius:50px;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
+.btn-whatsapp-float:hover{background:#1ebe5d;transform:translateY(-3px) scale(1.04);box-shadow:0 8px 28px rgba(37,211,102,.55);}
+.btn-whatsapp-float svg{width:1.5rem;height:1.5rem;flex-shrink:0;}
+@media(max-width:520px){
+  .btn-whatsapp-float .wa-label{display:none;}
+  .btn-whatsapp-float{padding:.8rem;border-radius:50%;box-shadow:0 4px 18px rgba(37,211,102,.5);}
+}
+
+/* ══ MOBILE (≤ 680px) ══ */
+@media(max-width:680px){
+  nav{padding:.8rem 1.2rem;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(1,13,33,.98);flex-direction:column;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border);}
+  .nav-links.open{display:flex;}
+}
+
+
+.page-hero{padding:7.5rem 2rem 2.5rem;text-align:center;background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(0,119,182,.18) 0%,transparent 70%),linear-gradient(180deg,#011331 0%,#000000 100%);border-bottom:1px solid var(--border);}
+.page-hero h1{font-family:'Rajdhani',sans-serif;font-size:clamp(1.9rem,5vw,2.6rem);font-weight:700;letter-spacing:.04em;}
+.page-hero h1 span{color:var(--cyan);}
+.page-hero p{color:var(--text-light);margin-top:.6rem;font-size:.92rem;}
+
+.legal-page{padding:3rem 2rem 5rem;}
+.legal-container{max-width:800px;margin:0 auto;font-size:.92rem;line-height:1.75;color:rgba(240,244,255,.82);}
+.legal-article{border-bottom:1px solid rgba(0,180,216,.12);padding-bottom:1.2rem;margin-bottom:1.2rem;}
+.legal-article:last-child{border-bottom:none;margin-bottom:0;}
+.legal-article h4{font-family:'Rajdhani',sans-serif;color:var(--cyan);font-size:1.05rem;font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;text-transform:uppercase;}
+.legal-article p{margin-bottom:.6rem;}
+.legal-article ul{padding-left:1.2rem;margin-bottom:.6rem;}
+.legal-article ul li{margin-bottom:.3rem;}
+.legal-article a{color:var(--cyan);}
+.legal-back{text-align:center;margin-top:2.5rem;}
+
+@media(max-width:680px){
+  .page-hero{padding:6rem 1.2rem 2rem;}
+  .legal-page{padding:2rem 1.2rem 3.5rem;}
+}
+
+
+/* ══ Pages de prestations (réparation par type d'appareil, Dunkerque) ══
+   Même charte que le reste du site : mêmes couleurs, mêmes polices, mêmes boutons. */
+.crumbs{font-size:.8rem;color:var(--text-light);margin-bottom:1.1rem;}
+.crumbs a{color:var(--cyan);text-decoration:none;}
+.crumbs a:hover{text-decoration:underline;}
+.page-hero .hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem;}
+.page-hero .btn-primary{margin:0;}
+.btn-outline{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:.85rem 2.2rem;border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;transition:background .2s,transform .2s;}
+.btn-outline:hover{background:rgba(0,180,216,.12);transform:translateY(-3px);}
+
+.svc-page{padding:3rem 2rem 4.5rem;}
+.svc-container{max-width:860px;margin:0 auto;font-size:.98rem;line-height:1.75;color:rgba(240,244,255,.84);}
+.svc-container h2{font-family:'Rajdhani',sans-serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--white);margin:2.6rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(0,180,216,.18);}
+.svc-container h2 span{color:var(--cyan);}
+.svc-container h3{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem;}
+.svc-container p{margin-bottom:1rem;}
+.svc-container a{color:var(--cyan);}
+.svc-lead{font-size:1.05rem;color:rgba(240,244,255,.92);}
+.svc-container ul.svc-list{list-style:none;padding:0;margin:0 0 1rem;display:flex;flex-direction:column;gap:.5rem;}
+.svc-container ul.svc-list li{padding-left:1.3rem;position:relative;}
+.svc-container ul.svc-list li::before{content:'›';position:absolute;left:0;color:var(--cyan);font-weight:700;}
+.svc-container ol.svc-steps{list-style:none;counter-reset:step;padding:0;margin:0 0 1rem;display:flex;flex-direction:column;gap:.9rem;}
+.svc-container ol.svc-steps li{counter-increment:step;position:relative;padding-left:3rem;}
+.svc-container ol.svc-steps li::before{content:counter(step);position:absolute;left:0;top:0;width:2.1rem;height:2.1rem;border-radius:50%;background:rgba(0,180,216,.15);border:1px solid rgba(0,180,216,.4);color:var(--cyan);font-family:'Rajdhani',sans-serif;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin:0 0 1rem;}
+.svc-card{background:var(--card-bg);border:1px solid rgba(0,180,216,.15);border-top:3px solid var(--cyan);border-radius:12px;padding:1.2rem 1.3rem;}
+.svc-card p{margin:0;font-size:.92rem;color:rgba(240,244,255,.78);line-height:1.6;}
+.svc-price{background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.3);border-radius:12px;padding:1.4rem 1.6rem;margin:0 0 1rem;}
+.svc-price strong{color:var(--cyan);font-family:'Rajdhani',sans-serif;font-size:1.3rem;}
+.svc-price p:last-child{margin-bottom:0;}
+.svc-faq{display:flex;flex-direction:column;gap:.8rem;}
+.svc-faq details{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.svc-faq details[open]{border-color:rgba(0,180,216,.4);}
+.svc-faq summary{list-style:none;cursor:pointer;padding:1rem 3rem 1rem 1.3rem;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);position:relative;}
+.svc-faq summary::-webkit-details-marker{display:none;}
+.svc-faq summary::after{content:'+';position:absolute;right:1.3rem;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--cyan);font-weight:400;}
+.svc-faq details[open] summary::after{content:'–';}
+.svc-faq details p{padding:0 1.3rem 1.2rem;margin:0;color:var(--text-light);font-size:.93rem;}
+.svc-related{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1rem;}
+.svc-related a{background:rgba(0,180,216,.12);border:1px solid rgba(0,180,216,.3);color:var(--cyan-glow);padding:.45rem 1rem;border-radius:20px;font-size:.85rem;font-weight:600;text-decoration:none;transition:background .2s;}
+.svc-related a:hover{background:rgba(0,180,216,.22);}
+.svc-cta{margin-top:2.8rem;text-align:center;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:2rem 1.5rem;}
+.svc-cta h2{border:none;margin:0 0 .6rem;padding:0;}
+.svc-cta p{color:var(--text-light);}
+.svc-cta .hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem;}
+.footer-services{margin-bottom:.8rem;}
+@media(max-width:680px){
+  .svc-page{padding:2rem 1.2rem 3.5rem;}
+  .svc-grid{grid-template-columns:1fr;}
+  .page-hero .btn-primary,.page-hero .btn-outline,.svc-cta .btn-primary,.svc-cta .btn-outline{width:100%;text-align:center;}
+}

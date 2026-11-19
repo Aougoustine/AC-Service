@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page introuvable – AC SERVICE</title>
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#011331">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/assets/pages.css">
+</head>
+<body>
+<nav>
+  <a href="/" aria-label="Retour à l'accueil AC SERVICE" style="text-decoration:none;"><div class="nav-logo">
+    <img src="/assets/logo-nav.png" alt="AC SERVICE Logo" width="160" height="115">
+    <span class="nav-brand-name">AC <span style="color:var(--cyan)">Service</span></span>
+  </div></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/rdv.html" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Page <span>introuvable</span></h1>
+  <p>Cette adresse n'existe pas ou a été déplacée.</p>
+  <div class="hero-ctas">
+    <a href="/" class="btn-primary">Retour à l'accueil</a>
+    <a href="/rdv.html" class="btn-outline">Prendre rendez-vous</a>
+  </div>
+</section>
+
+<main class="svc-page">
+  <div class="svc-container">
+    <h2>Nos <span>réparations</span></h2>
+    <div class="svc-related">
+      <a href="/reparation-lave-linge.html">Réparation lave-linge</a>
+      <a href="/reparation-lave-vaisselle.html">Réparation lave-vaisselle</a>
+      <a href="/reparation-seche-linge.html">Réparation sèche-linge</a>
+      <a href="/reparation-refrigerateur-congelateur.html">Réparation frigo et congélateur</a>
+      <a href="/reparation-four-micro-ondes-plaque.html">Réparation four, micro-ondes, plaque</a>
+      <a href="/reparation-petit-electromenager.html">Petit électroménager</a>
+      <a href="/reparateur-electromenager-dunkerque.html">Réparateur à Dunkerque</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-legal-links">
+    <a href="/mentions-legales.html">Mentions légales</a>
+    <a href="/cgv.html">Conditions Générales de Vente</a>
+    <a href="/rgpd.html">Données personnelles (RGPD)</a>
+  </div>
+  <p class="footer-copy">© 2026 <span>AC SERVICE</span> — Réparateur électroménager à domicile — Nord &amp; Pas-de-Calais</p>
+</footer>
+
+<script>
+const ham=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');navLinks.classList.toggle('open');});
+</script>
+</body>
+</html>
